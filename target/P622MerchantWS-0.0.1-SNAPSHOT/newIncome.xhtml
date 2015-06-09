@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h1>New Income</h1>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText value="Income item:"></h:outputText>
+				<h:inputText id="iItem" value="#{incomeBean.income.income_Itemname}"
+					required="true" requiredMessage="#{msgs.incomeRequired}">
+				</h:inputText>
+				<h:message for="iItem" style="color:red" />
+
+				<h:outputText value="Weight:"></h:outputText>
+				<h:inputText id="iWeight" value="#{incomeBean.income.income_OrderWeight}"
+					required="true" requiredMessage="#{msgs.orderWeightRequired}"
+					validatorMessage="#{msgs.WeightRange}">
+					<f:convertNumber minFractionDigits="3" />
+					<f:validateDoubleRange minimum="0.10" maximum="100000.00" />
+				</h:inputText>
+				<h:message for="iWeight" style="color:red" />
+			</h:panelGrid>
+			<h:commandButton value="Submit" action="#{incomeBean.saveIncome}"></h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

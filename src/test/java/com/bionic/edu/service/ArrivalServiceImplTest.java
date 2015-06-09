@@ -28,10 +28,6 @@ public class ArrivalServiceImplTest {
 	@Test
 	public void saveTest(){
 //		Arrival arrival = new Arrival();
-//		LocalDateTime ldt1 = LocalDateTime.of(2015, 2, 3, 12, 34);
-//		arrival.setArrival_OrderDate(Timestamp.valueOf(ldt1));
-//		arrival.setArrival_sum(12423.23);
-//		arrivalService.save(arrival);
 		
 	}
 	

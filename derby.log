@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Tue Jun 09 23:39:52 EEST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-014d-da0c-f013-000003713aa8 
-on database directory C:\Users\Bohdan\workspace\FishTC\CM with class loader sun.misc.Launcher$AppClassLoader@816f27d 
+Wed Jun 10 00:39:42 EEST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-014d-da43-a759-00000325c6a0 
+on database directory C:\Users\Bohdan\workspace\FishTC\CM with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
 Loaded from file:/C:/Users/Bohdan/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_31-b13

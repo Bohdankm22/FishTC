@@ -1,0 +1,15 @@
+a {
+	color: white;
+	font-weight: bold;
+	font-size: 1.4em;
+	font-style: normal;
+}
+
+div {
+	color: blue;
+}
+
+.header {
+	background-color: brown;
+	color: black;
+}
