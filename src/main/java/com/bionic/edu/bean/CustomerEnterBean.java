@@ -10,14 +10,14 @@ import com.bionic.edu.service.CustomerService;
 
 @Named
 @Scope("session")
-public class UserEnterBean {
+public class CustomerEnterBean {
 	public Customer customer = null;
+	public String email = null;
 	
 	@Inject
 	private CustomerService customerService;
 	
-	public UserEnterBean(){
-		
+	public CustomerEnterBean(){	
 	}
 
 	public Customer getCustomer() {
@@ -29,10 +29,25 @@ public class UserEnterBean {
 	}
 	
 	public String findCustomer(){
-		customer = customerService.findByEmail(customer.getCustomer_email());
-		if(customer.getCustomer_id() != 0)
+		customer = customerService.findByEmail(email);
+		if(customer != null){
+			System.out.println("customer page");
 			return "customerPage";
-		else
-			return "";
+		}
+		else{
+			System.out.println("Error 404");
+			return "error404";
+			}
+		
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 }

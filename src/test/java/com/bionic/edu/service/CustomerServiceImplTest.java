@@ -73,5 +73,7 @@ public class CustomerServiceImplTest {
 		String email = "bohda.asdfQ1";
 		Customer customer = customerService.findByEmail(email);
 		assertNotNull(customer);
+		Customer customer1 = customerService.findByEmail("fadf");
+		assertNull(customer1);
 	}
 }
