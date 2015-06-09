@@ -9,6 +9,8 @@ public interface CustomerDao {
 	
 	public Customer findById(int id);
 	
+	public Customer findByEmail(String email);
+	
 	public void save(Customer customer);
 	
 	public List<Customer> findAll();

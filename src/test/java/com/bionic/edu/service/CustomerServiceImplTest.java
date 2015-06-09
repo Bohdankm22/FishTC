@@ -69,9 +69,9 @@ public class CustomerServiceImplTest {
 	}
 	
 	@Test
-	public void just(){
-//		Customer customer = customerService.findById(2);
-//		customer.setCustomer_email("bodsss");
-//		customerService.update(customer);
+	public void findByEmailTest(){
+		String email = "bohda.asdfQ1";
+		Customer customer = customerService.findByEmail(email);
+		assertNotNull(customer);
 	}
 }

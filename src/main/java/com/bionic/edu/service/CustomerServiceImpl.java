@@ -21,6 +21,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer findById(int id) {
 		return customerDao.findById(id);
 	}
+	
+	@Override
+	public Customer findByEmail(String email){
+		return customerDao.findByEmail(email);
+	}
 
 	@Transactional
 	public void save(Customer customer) {
