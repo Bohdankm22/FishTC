@@ -15,9 +15,16 @@
 					required="true" requiredMessage="#{msgsCustomer.emailRequired}">
 				</h:inputText>
 				<h:message for="email" style="color:red" />
+				
+				<h:outputText value="Password"></h:outputText>
+				<h:inputText id="pass" value="#{customerEnterBean.pass}"
+						required="true" requiredMessage="#{msgsCustomer.passRequired}">
+				</h:inputText>
+				<h:message for="pass" style="color:red" />
 
 			</h:panelGrid>
-			<h:commandButton value="Submit" action="#{customerEnterBean.findCustomer}"></h:commandButton>
+				<h:commandButton value="Submit"
+					action="#{customerEnterBean.findCustomer}"></h:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

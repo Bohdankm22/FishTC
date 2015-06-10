@@ -13,6 +13,7 @@ public class MessageCustBean implements Serializable{
 	
 	private static final String emailRequired = "Email field could not be empty";
 	private static final String emailNotFound = "User email is not exist";
+	private static final String passRequired = "Password field could not be empty";
 	
 	public MessageCustBean(){   }
 	
@@ -22,6 +23,10 @@ public class MessageCustBean implements Serializable{
 	
 	public String getEmailNotFound(){
 		return emailNotFound;
+	}
+	
+	public String getPassRequired(){
+		return passRequired;
 	}
 	
 }

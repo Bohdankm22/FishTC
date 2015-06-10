@@ -13,6 +13,7 @@ import com.bionic.edu.service.CustomerService;
 public class CustomerEnterBean {
 	public Customer customer = null;
 	public String email = null;
+	public String pass = null;
 	
 	@Inject
 	private CustomerService customerService;
@@ -30,14 +31,10 @@ public class CustomerEnterBean {
 	
 	public String findCustomer(){
 		customer = customerService.findByEmail(email);
-		if(customer != null){
-			System.out.println("customer page");
+		if(customer != null && customer.getCustomer_password().equals(pass))
 			return "customerPage";
-		}
-		else{
-			System.out.println("Error 404");
+		else
 			return "error404";
-			}
 		
 	}
 
@@ -48,6 +45,16 @@ public class CustomerEnterBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	
+	
 	
 	
 }

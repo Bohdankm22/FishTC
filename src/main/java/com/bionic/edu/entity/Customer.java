@@ -19,6 +19,7 @@ public class Customer {
 	private String Customer_bancAccount;
 	private int Customer_prepaymenttype;
 	private boolean Customer_isDeleted;
+	private String Customer_password;
 	@OneToMany(mappedBy="customer")
 	private List<Payment> listOfPayment;
 	
@@ -66,7 +67,13 @@ public class Customer {
 	public void setCustomer_isDeleted(boolean customer_isDeleted) {
 		Customer_isDeleted = customer_isDeleted;
 	}
+	public String getCustomer_password() {
+		return Customer_password;
+	}
+	public void setCustomer_password(String customer_password) {
+		Customer_password = customer_password;
+	}
 	
-
+	
 	
 }
