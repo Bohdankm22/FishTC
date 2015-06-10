@@ -1,5 +1,5 @@
 a {
-	color: white;
+	color: black;
 	font-weight: bold;
 	font-size: 1.4em;
 	font-style: normal;
@@ -7,6 +7,7 @@ a {
 
 div {
 	color: blue;
+	text-align: center;
 }
 
 .header {
