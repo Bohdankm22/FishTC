@@ -1,10 +1,9 @@
 package com.bionic.edu.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,8 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bionic.edu.entity.Payment;
-import com.bionic.edu.service.CustomerService;
-import com.bionic.edu.service.PaymentService;
 
 public class PaymentServiceImplTest {
 	

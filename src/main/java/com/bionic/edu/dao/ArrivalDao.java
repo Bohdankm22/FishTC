@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.bionic.edu.entity.Arrival;
-
+				
 public interface ArrivalDao {
 	
 	public void save(Arrival arrival);
@@ -18,5 +18,7 @@ public interface ArrivalDao {
 	public List<Arrival> getListOfUndeliveredArrivals();
 	
 	public List<Arrival> getArrivalsListInDuringPeriod(Timestamp start, Timestamp end); 
+	
+//	public Arrival findByIncome(Income income);
 
 }

@@ -2,7 +2,6 @@ package com.bionic.edu.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.print.attribute.standard.MediaSize.Other;
 
 import org.springframework.stereotype.Repository;
 

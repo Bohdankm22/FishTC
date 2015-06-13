@@ -1,6 +1,4 @@
 package com.bionic.edu.service;
-import static org.junit.Assert.*;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

@@ -1,10 +1,9 @@
 package com.bionic.edu.service;
 
-import static org.junit.Assert.*;
-import com.bionic.edu.entity.*;
-import com.bionic.edu.dao.*;
-import com.bionic.edu.service.*;
-import java.util.List;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,7 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bionic.edu.entity.Customer;
-import com.bionic.edu.service.CustomerService;
 
 public class CustomerServiceImplTest {
 	

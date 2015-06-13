@@ -13,4 +13,12 @@ div {
 .header {
 	background-color: brown;
 	color: black;
+	height: 200;
+	
+}
+
+.footer {
+	background-color: green;
+	color: red;
+	height: 200;
 }

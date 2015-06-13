@@ -1,7 +1,5 @@
 package com.bionic.edu.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -13,14 +11,14 @@ import com.bionic.edu.entity.Outcome;
 public class OutcomeServiceImplTest {
 
 	private static ApplicationContext context;
-	private static OutcomeService outcomeService;
+//	private static OutcomeService outcomeService;
 	private static IncomeService incomeService;
 	private static PaymentService paymentService;
 	
 	@BeforeClass
 	public static void beforeClass(){
 		context = new ClassPathXmlApplicationContext("beans.xml");
-		outcomeService = context.getBean(OutcomeService.class);
+//		outcomeService = context.getBean(OutcomeService.class);
 		incomeService = context.getBean(IncomeService.class);
 		paymentService = context.getBean(PaymentService.class);
 	}

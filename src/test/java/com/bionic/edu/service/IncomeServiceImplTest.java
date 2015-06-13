@@ -1,8 +1,9 @@
 package com.bionic.edu.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -10,22 +11,19 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bionic.edu.entity.Customer;
 import com.bionic.edu.entity.Income;
-import com.bionic.edu.service.ArrivalService;
-import com.bionic.edu.service.IncomeService;
 
 public class IncomeServiceImplTest {
 	
 	private static ApplicationContext context;
 	private static IncomeService incomeService;
-	private static ArrivalService arrivalService;
+//	private static ArrivalService arrivalService;
 	
 	@BeforeClass
 	public static void beforeClass(){
 		context = new ClassPathXmlApplicationContext("beans.xml");
 	    incomeService = context.getBean(IncomeService.class);
-	    arrivalService = context.getBean(ArrivalService.class);
+//	    arrivalService = context.getBean(ArrivalService.class);
 	}
 	
 //	@Test

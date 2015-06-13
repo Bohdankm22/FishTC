@@ -38,7 +38,13 @@ public class IncomeDaoImpl implements IncomeDao {
 		boolean a = false;
 		String txt = "SELECT i FROM Income i WHERE i.income_registredbygm = " + a;
 		TypedQuery<Income> q = em.createQuery(txt, Income.class);
-		return q.getResultList();
+		List<Income> list =q.getResultList();
+//		for(Income i: list){
+//			String txt1 = "SELECT a From Arrival a,Income i WHERE i.arrival_id=a.Arrival_id";
+//			TypedQuery<Arrival> m = em.createQuery(txt1, Arrival.class);
+//			m.getSingleResult();
+//		}
+		return list;
 	}
 	
 	@Override

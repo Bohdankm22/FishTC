@@ -26,7 +26,6 @@ public class AvailibleIncomeBean {
 	
 	public void RefreshList(){
 		incomes = incomeService.getAvailibleForSellFish();
-
 	}
 
 	public Income getIncome() {

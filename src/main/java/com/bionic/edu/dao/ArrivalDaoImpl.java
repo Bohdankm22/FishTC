@@ -68,5 +68,6 @@ public class ArrivalDaoImpl implements ArrivalDao {
 		TypedQuery<Arrival> q = em.createQuery(txt, Arrival.class);
 		return q.getResultList();
 	}
+	
 
 }

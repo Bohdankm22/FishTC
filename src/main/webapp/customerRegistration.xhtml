@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h1>New Customer</h1>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText value="Name:"></h:outputText>
+				<h:inputText id="Name" value="#{customerRegBean.customer.customer_Name}"
+					required="true" requiredMessage="#{msgsReg.nameRequired}"
+					validatorMessage="#{msgsReg.nameLength}">
+					<f:validateLength minimum="5" maximum="25"></f:validateLength>
+				</h:inputText>
+				<h:message for="Name" style="color:red" />
+				
+				<h:outputText value="Email:"></h:outputText>
+				<h:inputText id="Email" value="#{customerRegBean.customer.customer_email}"
+					required="true" requiredMessage="#{msgsReg.emailRequired}">
+					<f:validator validatorId="EmailValidator" />
+				</h:inputText>
+				<h:message for="Email" style="color:red" />
+				
+				<h:outputText value="Password:"></h:outputText>
+				<h:inputSecret id="Password" value="#{customerRegBean.customer.customer_password}"
+					required="true" requiredMessage="#{msgsReg.passwordRequired}"
+					validatorMessage="#{msgsReg.passwordLength}">
+					<f:validateLength minimum="4" maximum="128"></f:validateLength>
+				</h:inputSecret>
+				<h:message for="Password" style="color:red" />
+				
+				<h:outputText value="Bank account:"></h:outputText>
+				<h:inputText id="bank" value="#{customerRegBean.customer.customer_bancAccount}"
+					required="true" requiredMessage="#{msgsReg.bankAccRequired}"
+					validatorMessage="#{msgsReg.bankAccLength}">
+					<f:validateLength minimum="4" maximum="25"></f:validateLength>
+				</h:inputText>
+				<h:message for="bank" style="color:red" />
+				
+			</h:panelGrid>
+			<h:commandButton value="Submit" action="#{customerRegBean.SaveCust}"></h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

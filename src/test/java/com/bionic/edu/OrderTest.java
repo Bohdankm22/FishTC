@@ -1,9 +1,7 @@
 package com.bionic.edu;
 
-import static org.junit.Assert.*;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 

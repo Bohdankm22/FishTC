@@ -1,22 +1,31 @@
 package com.bionic.edu.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.springframework.context.annotation.Scope;
 
 import com.bionic.edu.entity.Customer;
+import com.bionic.edu.entity.Income;
 import com.bionic.edu.service.CustomerService;
+import com.bionic.edu.service.IncomeService;
 
 @Named
 @Scope("session")
 public class CustomerEnterBean {
-	public Customer customer = null;
-	public String email = null;
-	public String pass = null;
+	private Customer customer = null;
+	private String email = null;
+	private String pass = null;
+	private List<Income> incomes = null;
+	private List<Income> bucket = new ArrayList<Income>();
 	
 	@Inject
 	private CustomerService customerService;
+	@Inject
+	private IncomeService incomeService;
 	
 	public CustomerEnterBean(){	
 	}
@@ -52,6 +61,24 @@ public class CustomerEnterBean {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	
+	public void RefreshList(){
+		incomes = incomeService.getAvailibleForSellFish();
+	}
+	
+	public String addToBucket(String id){
+		int n = Integer.valueOf(id);
+		bucket.add(incomeService.findById(n));
+		return "bucket";
+	}
+
+	public List<Income> getIncomes() {
+		return incomes;
+	}
+
+	public void setIncomes(List<Income> incomes) {
+		this.incomes = incomes;
 	}
 	
 	
