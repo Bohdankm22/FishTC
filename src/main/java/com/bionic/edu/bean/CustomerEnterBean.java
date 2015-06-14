@@ -1,7 +1,8 @@
 package com.bionic.edu.bean;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,8 +21,18 @@ public class CustomerEnterBean {
 	private String email = null;
 	private String pass = null;
 	private List<Income> incomes = null;
-	private List<Income> bucket = new ArrayList<Income>();
+	private Map<Income, Double> bucket = new HashMap<>();
+	private Income income = null;
+	private double weight = 0.0d;
 	
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
 	@Inject
 	private CustomerService customerService;
 	@Inject
@@ -69,7 +80,9 @@ public class CustomerEnterBean {
 	
 	public String addToBucket(String id){
 		int n = Integer.valueOf(id);
-		bucket.add(incomeService.findById(n));
+		Income in = incomeService.findById(n);
+		bucket.put(in, 0.0d);
+		income = in;
 		return "bucket";
 	}
 
@@ -80,7 +93,15 @@ public class CustomerEnterBean {
 	public void setIncomes(List<Income> incomes) {
 		this.incomes = incomes;
 	}
+
+	public Income getIncome() {
+		return income;
+	}
 	
+	public String saveIncome(){
+		bucket.put(income, weight);
+		return "customerPage";
+	}
 	
 	
 	

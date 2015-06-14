@@ -15,6 +15,8 @@ public class MessageBean implements Serializable{
 	private final String itemRequired = "Item field could not be empty";
 	private final String orderWeightRequired = "Order weight field could not be empty";
 	private final String weightRange = "Weight field is not between the expected values of 0.10 and 10 000.0";
+	private final String weightRange1 = "Weight field is not between the expected values of 0.10 and availible weight";
+	
 
 	public MessageBean(){   }
 	
@@ -28,6 +30,10 @@ public class MessageBean implements Serializable{
 
 	public String getWeightRange() {
 		return weightRange;
+	}
+	
+	public String getWeightRange1(){
+		return weightRange1;
 	}
 	
 }
