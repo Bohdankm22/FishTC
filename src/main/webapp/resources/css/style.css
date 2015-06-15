@@ -14,11 +14,26 @@ div {
 	background-color: brown;
 	color: black;
 	height: 200;
-	
 }
 
 .footer {
 	background-color: green;
 	color: red;
 	height: 200;
+}
+
+.image {
+	height ="40";
+	width ="40";
+}
+.totalPrice{
+	color: red;
+}
+.contentAdmin{
+	text-align: left;
+	color:red;
+}
+h2{
+	text-align: center;
+	color:blue;
 }

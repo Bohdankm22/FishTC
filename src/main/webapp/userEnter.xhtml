@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h1>User log in</h1>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText value="Name"></h:outputText>
+				<h:inputText id="name" value="#{userEnterBean.name}"
+					required="true" requiredMessage="#{msgsReg.nameRequired}">
+				</h:inputText>
+				<h:message for="name" style="color:red" />
+				
+				<h:outputText value="Password"></h:outputText>
+				<h:inputSecret id="pass" value="#{userEnterBean.pass}"
+						required="true" requiredMessage="#{msgsReg.passwordRequired}"
+					validatorMessage="#{msgsReg.passwordLength}">
+						<f:validateLength minimum="4" maximum="128"></f:validateLength>
+				</h:inputSecret>
+				<h:message for="pass" style="color:red" />
+
+			</h:panelGrid>
+				<h:commandButton value="Submit"
+					action="#{userEnterBean.findUser}"></h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

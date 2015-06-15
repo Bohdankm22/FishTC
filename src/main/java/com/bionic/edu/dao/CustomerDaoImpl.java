@@ -35,8 +35,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		catch(NoResultException e){
 		}
-		return customer;
-		
+		return customer;	
 	}
 
 	@Override

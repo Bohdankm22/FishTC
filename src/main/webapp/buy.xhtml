@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
-<body>
-	<ui:composition>
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
 		<h2>Your bucket</h2>
 		<h:form>
 			<h:panelGrid columns="1">
@@ -24,30 +26,17 @@
 						<f:facet name="header">Price</f:facet> 
 						#{bucket.outcome_price} 
 					</h:column>
-					<h:column>
-						<f:facet name="header">
-						</f:facet>
-						<h:commandLink action="#{customerEnterBean.editOutcome(bucket.outcome_id)}">
-							<h:graphicImage value="resources/edit4.ico" height="16"
-								width="16" title="Edit" />
-						</h:commandLink>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-						</f:facet>
-						<h:commandLink action="#{customerEnterBean.deleteOutcome(bucket.outcome_id)}">
-							<h:graphicImage value="resources/delete.ico" height="16"
-								width="16" title="Delete" />
-						</h:commandLink>
-					</h:column>
 				</h:dataTable>
+				<h:outputLabel class='totalPrice'>Total price is : #{customerEnterBean.pay.payment_sum}</h:outputLabel>
 			</h:panelGrid>
+			
 			<br />
-			<h:commandLink action="#{customerEnterBean.buy}">
-				<h:graphicImage value="resources/buy.ico" height="32" width="32"
-					title="Buy" />
+			<h:commandLink action="#{customerEnterBean.buyAll}">
+				<h:graphicImage value="resources/buyAll.ico" title="Buy"
+					class="image" />
 			</h:commandLink>
+
 		</h:form>
-	</ui:composition>
-</body>
+	</ui:define>
+</ui:composition>
 </html>

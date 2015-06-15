@@ -13,7 +13,14 @@ public class Users {
 	private String Users_Name;
 	private int Users_Role;
 	private boolean Users_isDeleted;
+	private String Users_password;
 	
+	public String getUsers_password() {
+		return Users_password;
+	}
+	public void setUsers_password(String users_password) {
+		Users_password = users_password;
+	}
 	public int getUsers_id() {
 		return Users_id;
 	}

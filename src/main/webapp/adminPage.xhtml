@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="WEB-INF/templates/basicTemplate.xhtml">
+
+		<ui:define name="content">
+			<div class="contentAdmin">
+				<h2 class="h2">Admin page!</h2>
+				<h:form>
+					<h:outputLabel>Show all users</h:outputLabel>
+					<h:commandLink action="#{adminBean.showAllUsers}">
+						<h:graphicImage value="resources/showUsers.ico" height="26"
+							width="26" title="Show all users" />
+					</h:commandLink>
+					<br />
+					
+					<h:outputLabel>Show all users</h:outputLabel>
+					<h:commandLink action="#{adminBean.showAllUsers}">
+						<h:graphicImage value="resources/showUsers.ico" height="26"
+							width="26" title="Show all users" />
+					</h:commandLink>
+					<br />
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

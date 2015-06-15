@@ -18,4 +18,12 @@ public class UsersServiceImpl implements UsersService{
 	public void save(Users user){
 		usersDao.save(user);
 	}
+	
+	@Override
+	public Users findByNamePass(String name, String pass){
+		Users u = usersDao.findByName(name);
+		if(u != null && u.getUsers_password().equals(pass))
+			return u;
+		return null;
+	}
 }

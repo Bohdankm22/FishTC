@@ -14,11 +14,11 @@
     	<h:form>
 			<h:panelGrid columns="3">
 				<h:outputText value="Income item:"></h:outputText>
-				<h:outputText value="#{customerEnterBean.income.income_Itemname}"/>
+				<h:outputText value="#{customerEnterBean.outcome.income.income_Itemname}"/>
 				<br/>
 
 				<h:outputText value="Availible weight:"></h:outputText>
-				<h:outputText value="#{customerEnterBean.income.income_Availibleweight}"/>
+				<h:outputText value="#{customerEnterBean.outcome.income.income_Availibleweight}"/>
 				<br/>
 				
 				<h:outputText value="Weight:"></h:outputText>
@@ -26,7 +26,7 @@
 					required="true" requiredMessage="#{msgs.orderWeightRequired}"
 					validatorMessage="#{msgs.weightRange}">
 					<f:convertNumber minFractionDigits="3" />
-					<f:validateDoubleRange minimum="0.10" maximum="#{customerEnterBean.income.income_Availibleweight}" />
+					<f:validateDoubleRange minimum="0.10" maximum="#{customerEnterBean.outcome.income.income_Availibleweight}" />
 				</h:inputText>
 				<h:message for="iWeight" style="color:red" />
 			</h:panelGrid>

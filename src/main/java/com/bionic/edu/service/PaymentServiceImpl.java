@@ -7,8 +7,10 @@ import javax.inject.Named;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bionic.edu.dao.IncomeDao;
 import com.bionic.edu.dao.OutcomeDao;
 import com.bionic.edu.dao.PaymentDao;
+import com.bionic.edu.entity.Income;
 import com.bionic.edu.entity.Outcome;
 import com.bionic.edu.entity.Payment;
 
@@ -18,6 +20,8 @@ public class PaymentServiceImpl implements PaymentService{
 	private PaymentDao paymentDao;
 	@Inject
 	private OutcomeDao outcomeDao;
+	@Inject
+	private IncomeDao incomeDao;
 	
 	@Override
 	public Payment findById(int id) {
@@ -33,6 +37,10 @@ public class PaymentServiceImpl implements PaymentService{
 	public void saveWithTheList(Payment payment){
 		paymentDao.save(payment);
 		for(Outcome o: payment.getListOfOutcome()){
+			Income in = o.getIncome();
+			in.setIncome_Availibleweight(in.getIncome_Availibleweight() -
+					o.getOutcome_weight());
+			incomeDao.update(in);
 			outcomeDao.save(o);
 		}
 	}
