@@ -1,8 +1,10 @@
 package com.bionic.edu.bean;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,14 +26,9 @@ public class CustomerEnterBean {
 	private Map<Income, Double> bucket = new HashMap<>();
 	private Income income = null;
 	private double weight = 0.0d;
+	private List<Entry<Income, Double>> entries;
 	
-	public double getWeight() {
-		return weight;
-	}
 
-	public void setWeight(double weight) {
-		this.weight = weight;
-	}
 
 	@Inject
 	private CustomerService customerService;
@@ -39,6 +36,7 @@ public class CustomerEnterBean {
 	private IncomeService incomeService;
 	
 	public CustomerEnterBean(){	
+		
 	}
 
 	public Customer getCustomer() {
@@ -75,7 +73,15 @@ public class CustomerEnterBean {
 	}
 	
 	public void RefreshList(){
-		incomes = incomeService.getAvailibleForSellFish();
+		List<Income> list = incomeService.getAvailibleForSellFish();
+		List<Income> out = new ArrayList<>();
+		for(Income i : list){
+			if(!bucket.containsKey(i)){
+				out.add(i);
+				System.err.print("YA NE SODERJU HRENY");
+			}
+		}
+		incomes = out;
 	}
 	
 	public String addToBucket(String id){
@@ -102,7 +108,25 @@ public class CustomerEnterBean {
 		bucket.put(income, weight);
 		return "customerPage";
 	}
+
+	public Map<Income, Double> getBucket() {
+		return bucket;
+	}
 	
+	public void RefreshBucket(){
+		entries = new ArrayList<Entry<Income, Double>>(bucket.entrySet());
+	}
 	
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
+	public List<Entry<Income, Double>> getEntries() {
+		return entries;
+	}
 	
 }

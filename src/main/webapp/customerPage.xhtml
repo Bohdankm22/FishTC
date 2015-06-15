@@ -5,7 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/customerTemplate.xhtml">
+
 	<ui:define name="content">
 		<h2>Add to bucket</h2> 
     		#{customerEnterBean.RefreshList()}
@@ -26,17 +27,13 @@
 						<f:facet name="header">Availible weight</f:facet> 
 						#{availibleIncome.income_Availibleweight} 
 					</h:column>
-					<h:column>
-						<f:facet name="header">Delivery date</f:facet> 
-						#{availibleIncome.arrival.arrival_Deliverydate} 
-					</h:column>
 					
 					<h:column>
 						<f:facet name="header">
 						</f:facet>
 						<h:commandLink action="#{customerEnterBean.addToBucket(availibleIncome.income_id)}">
-							<h:graphicImage value="resources/addIcon.png" height="16"
-								width="16" title="Add" />
+							<h:graphicImage value="resources/add4.ico" height="26"
+								width="26" title="Add" />
 						</h:commandLink>
 					</h:column>
 				</h:dataTable>

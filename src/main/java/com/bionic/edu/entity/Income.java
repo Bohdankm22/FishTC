@@ -84,4 +84,14 @@ public class Income {
 	public void setIncome_isselling(boolean income_isselling) {
 		this.income_isselling = income_isselling;
 	}
+	@Override
+	public boolean equals(Object income){
+		if(income_id == ((Income)income).getIncome_id())
+			return true;
+		return false;
+	}
+	@Override
+	public int hashCode(){
+		return income_id;
+	}
 }
