@@ -7,14 +7,13 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
-
 	<ui:define name="header">
 		<h2>General manager header</h2>
 		<h:link value="Go to General manager page" outcome="adminPage" />
 	</ui:define>
 	<ui:define name="content">
-		<h2>Unregistred incomes</h2> 
-    #{adminBean.refreshList()}
+		<h2>Cold store fish list</h2> 
+    #{adminBean.refreshList1()}
     <h:form>
 			<h:panelGrid columns="1">
 				<h:dataTable value="#{adminBean.incomes}" var="income"
@@ -47,7 +46,7 @@
 					<h:column>
 						<f:facet name="header">
 						</f:facet>
-						<h:commandLink action="#{adminBean.editIncome(income.income_id)}">
+						<h:commandLink action="#{adminBean.editSellPrice(income.income_id)}">
 							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</h:commandLink>
@@ -55,6 +54,14 @@
 					<h:column>
 						<f:facet name="header">Registred by GM</f:facet> 
 						#{income.income_registredbygm} 
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+						</f:facet>
+						<h:commandLink action="#{adminBean.registerIncome1(income.income_id)}">
+							<h:graphicImage value="resources/edit4.ico" height="16"
+								width="16" title="Edit" />
+						</h:commandLink>
 					</h:column>
 					<h:column>
 						<f:facet name="header">Availible Weight</f:facet> 
@@ -67,13 +74,13 @@
 					<h:column>
 						<f:facet name="header">
 						</f:facet>
-						<h:commandLink
-							action="#{adminBean.registerIncome(income.income_id)}">
-							<h:graphicImage value="resources/order.ico" height="16"
+						<h:commandLink action="#{adminBean.putForSaleIncome1(income.income_id)}">
+							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</h:commandLink>
 					</h:column>
-
+			
+					
 				</h:dataTable>
 			</h:panelGrid>
 		</h:form>

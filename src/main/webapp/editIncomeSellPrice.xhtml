@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="header">
+		<h2>General manager header</h2>
+		<h:link value="Go to General manager page" outcome="adminPage" />
+	</ui:define>
+	<ui:define name="content">
+		<h1>Change sell price</h1>
+		<h:form>
+			<h:panelGrid columns="3">
+				<h:outputText
+					value="Income item: #{adminBean.inForEdit.income_Itemname}"></h:outputText>
+				<br />
+				<h:outputText value="Sell price:"></h:outputText>
+				<h:inputText id="iWeight"
+					value="#{adminBean.inForEdit.income_SellPrice}" required="true"
+					requiredMessage="#{msgs.priceRequired}"
+					validatorMessage="#{msgs.priceRange}">
+					<f:convertNumber minFractionDigits="2" />
+					<f:validateDoubleRange minimum="0.10" maximum="100000.00" />
+				</h:inputText>
+				<h:message for="iWeight" style="color:red" />
+			</h:panelGrid>
+			<h:commandButton value="Submit" action="#{adminBean.editSellPrice}"></h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

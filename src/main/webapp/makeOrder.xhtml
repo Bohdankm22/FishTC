@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="WEB-INF/templates/admin.xhtml">
+
+		<ui:define name="content">
+			<div class="contentAdmin">
+				<h2 class="h2">Arrival List to order</h2>
+				<h:form>
+					
+					<h:panelGrid columns="1">
+						<h:dataTable value="#{adminBean.order}" var="order"
+							styleClass="orderTable" headerClass="orderTableHeader"
+							rowClasses="orderTableOddRow, orderTableEvenRow">
+							<h:column>
+								<f:facet name="header">Item</f:facet> 
+								#{order.income_Itemname} 
+							</h:column>
+							<h:column>
+								<f:facet name="header">Order weight</f:facet> 
+								#{order.income_OrderWeight} 
+							</h:column>
+					
+							<h:column>
+								<f:facet name="header">
+								</f:facet>
+								<h:commandLink action="#{adminBean.deleteItem(order.income_Itemname)}">
+									<h:graphicImage value="resources/delete.ico" height="16"
+										width="16" title="Delete" />
+								</h:commandLink>
+							</h:column>
+						</h:dataTable>
+					</h:panelGrid>
+					
+					<h:outputLabel>Add new item to arrival</h:outputLabel>
+					<h:commandLink action="#{adminBean.addItem}">
+						<h:graphicImage value="resources/add4.ico" height="26"
+							width="26" title="Add item" />
+					</h:commandLink>
+					<br />
+					
+					<h:outputLabel>Order this list:</h:outputLabel>
+					<h:commandLink action="#{adminBean.orderList}">
+						<h:graphicImage value="resources/order.ico" height="26"
+							width="26" title="Order list" />
+					</h:commandLink>
+					<br />
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

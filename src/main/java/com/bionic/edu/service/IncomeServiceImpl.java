@@ -47,5 +47,10 @@ public class IncomeServiceImpl implements IncomeService {
 	public Income update(Income income){
 		return incomeDao.update(income);
 	}
+	
+	@Override
+	public List<Income> getAvailibleFish(){
+		return incomeDao.getAvailibleFish();
+	}
 
 }

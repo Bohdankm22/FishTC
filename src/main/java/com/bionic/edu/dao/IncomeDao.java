@@ -17,5 +17,7 @@ public interface IncomeDao {
 	public List<Income> getAvailibleForSellFish();
 	
 	public Income update(Income income);
+	
+	public List<Income> getAvailibleFish();
 
 }

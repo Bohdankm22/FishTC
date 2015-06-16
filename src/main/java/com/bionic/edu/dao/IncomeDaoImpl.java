@@ -66,4 +66,13 @@ public class IncomeDaoImpl implements IncomeDao {
 		return income1;
 	}
 	
+	@Override
+	public List<Income> getAvailibleFish(){
+		List<Income> list;
+		String txt = "SELECT i From Income i WHERE i.income_Availibleweight>0";
+		TypedQuery<Income> q = em.createQuery(txt, Income.class);
+		list = q.getResultList();
+		return list;
+	}
+	
 }
