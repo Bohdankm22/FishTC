@@ -162,7 +162,8 @@ public class CustomerEnterBean {
 		Iterator<Outcome> i = bucket.iterator();
 		while(i.hasNext()){
 			Outcome o = i.next();
-			if(o.getOutcome_id() == n){
+			Income j = o.getIncome();
+			if(j.getIncome_id() == n){
 				outcome = o;
 				i.remove();
 				break;
@@ -175,7 +176,7 @@ public class CustomerEnterBean {
 		int n = Integer.valueOf(id);
 		Iterator<Outcome> i = bucket.iterator();
 		while(i.hasNext()){
-			if(i.next().getOutcome_id() == n){
+			if(i.next().getIncome().getIncome_id() == n){
 				i.remove();
 				System.err.println("DELETED");
 				break;

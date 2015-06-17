@@ -24,11 +24,13 @@
 						<f:validateLength minimum="4" maximum="128"></f:validateLength>
 				</h:inputSecret>
 				<h:message for="pass" style="color:red" />
+				<h:link value="Or registrate yourself!" outcome="customerRegistration" />
 
 			</h:panelGrid>
 				<h:commandButton value="Submit"
 					action="#{customerEnterBean.findCustomer}"></h:commandButton>
 		</h:form>
+		
 	</ui:define>
 </ui:composition>
 </html>

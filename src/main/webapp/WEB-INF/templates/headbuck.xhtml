@@ -27,7 +27,7 @@
 					<h:column>
 						<f:facet name="header">
 						</f:facet>
-						<h:commandLink action="#{customerEnterBean.editOutcome(bucket.outcome_id)}">
+						<h:commandLink action="#{customerEnterBean.editOutcome(bucket.income.income_id)}">
 							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</h:commandLink>
@@ -35,7 +35,7 @@
 					<h:column>
 						<f:facet name="header">
 						</f:facet>
-						<h:commandLink action="#{customerEnterBean.deleteOutcome(bucket.outcome_id)}">
+						<h:commandLink action="#{customerEnterBean.deleteOutcome(bucket.income.income_id)}">
 							<h:graphicImage value="resources/delete.ico" height="16"
 								width="16" title="Delete" />
 						</h:commandLink>
