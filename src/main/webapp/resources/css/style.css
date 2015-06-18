@@ -37,3 +37,20 @@ h2{
 	text-align: center;
 	color:blue;
 }
+.dateInput{
+	display: inline;
+}
+.dataTable{
+	display: inline-block;
+}
+.dataTableLeft{
+	display: inline-block;
+	position: left;
+}
+.dataTableRight{
+	display: inline-block;
+	position: right;
+}
+.dataInline{
+	display: inline-block;
+}

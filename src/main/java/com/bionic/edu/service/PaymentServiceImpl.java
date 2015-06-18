@@ -1,5 +1,6 @@
 package com.bionic.edu.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -68,6 +69,11 @@ public class PaymentServiceImpl implements PaymentService{
 	@Override
 	public List<Payment> getSortedBySump(){
 		return paymentDao.getSortedBySump();
+	}
+	
+	@Override
+	public List<Payment> getPaymentsListInDuringPeriod(Timestamp start, Timestamp end){
+		return paymentDao.getPaymentsListInDuringPeriod(start, end);
 	}
 
 }

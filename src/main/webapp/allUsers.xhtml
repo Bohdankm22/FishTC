@@ -1,65 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
+
 <h:body>
-	<ui:composition template="WEB-INF/templates/admin.xhtml">
+	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+
+		<ui:define name="header">
+			<h2>General manager header</h2>
+			<h:link value="Go to General manager page" outcome="adminPage" />
+		</ui:define>
 
 		<ui:define name="content">
-		<h2>All the incomes</h2> 
+			<h2>All the incomes</h2> 
     	#{adminBean.refreshListOfUsers()}
     	<h:form>
-			<h:panelGrid columns="1">
-				<h:dataTable value="#{adminBean.customers}" var="customers"
-					styleClass="CustomersTable" headerClass="CustomersTableHeader"
-					rowClasses="CustomersTableOddRow, CustomersTableEvenRow">
-					<h:column>
-						<f:facet name="header">Name</f:facet> 
+				<p:panelGrid columns="1">
+					<p:dataTable value="#{adminBean.customers}" var="customers"
+						styleClass="CustomersTable" headerClass="CustomersTableHeader"
+						rowClasses="CustomersTableOddRow, CustomersTableEvenRow">
+						<p:column>
+							<f:facet name="header">Name</f:facet> 
 						#{customers.customer_Name} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Email</f:facet> 
+					</p:column>
+						<p:column>
+							<f:facet name="header">Email</f:facet> 
 						#{customers.customer_email} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Bank account</f:facet> 
+					</p:column>
+						<p:column>
+							<f:facet name="header">Bank account</f:facet> 
 						#{customers.customer_bancAccount} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Is deleted</f:facet> 
+					</p:column>
+						<p:column>
+							<f:facet name="header">Is deleted</f:facet> 
 						#{customers.customer_isDeleted} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Prepayment type</f:facet> 
+					</p:column>
+						<p:column>
+							<f:facet name="header">Prepayment type</f:facet> 
 						#{customers.customer_prepaymenttype} 
-					</h:column>
-			
-					<h:column>
-						<f:facet name="header">
-						</f:facet>
-						<h:commandLink action="#{adminBean.editCustomer(customers.customer_id)}">
-							<h:graphicImage value="resources/edit4.ico" height="16"
-								width="16" title="Edit" />
-						</h:commandLink>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">
-						</f:facet>
-						<h:commandLink action="#{adminBean.deleteCustomer(customers.customer_id)}">
-							<h:graphicImage value="resources/delete.ico" height="16"
-								width="16" title="Delete" />
-						</h:commandLink>
-					</h:column>
-				</h:dataTable>
-			</h:panelGrid>
-		</h:form>
-	</ui:define>
+					</p:column>
+
+						<p:column>
+							<f:facet name="header">
+							</f:facet>
+							<p:commandLink
+								action="#{adminBean.editCustomer(customers.customer_id)}">
+								<p:graphicImage value="resources/edit4.ico" height="16"
+									width="16" title="Edit" />
+							</p:commandLink>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+							</f:facet>
+							<p:commandLink
+								action="#{adminBean.deleteCustomer(customers.customer_id)}">
+								<p:graphicImage value="resources/delete.ico" height="16"
+									width="16" title="Delete" />
+							</p:commandLink>
+						</p:column>
+					</p:dataTable>
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
@@ -14,39 +15,40 @@
 			<div class="contentAdmin">
 				<h2 class="h2">Admin page!</h2>
 				<h:form>
-					<h:outputLabel>Show all users  </h:outputLabel>
-					<h:commandLink action="#{adminBean.showAllUsers}">
-						<h:graphicImage value="resources/showUsers.ico" height="26"
+
+					<p:commandLink action="#{adminBean.showAllUsers}">
+						<p:outputLabel>Show all users  </p:outputLabel>
+						<p:graphicImage value="resources/showUsers.ico" height="26"
 							width="26" title="Show all users" />
-					</h:commandLink>
+					</p:commandLink>
 					<br />
-					
-					<h:outputLabel>Make an order of fish  </h:outputLabel>
-					<h:commandLink action="#{adminBean.makeOrder}">
-						<h:graphicImage value="resources/fish.ico" height="26"
-							width="26" title="Order fish" />
-					</h:commandLink>
+
+					<p:commandLink action="#{adminBean.makeOrder}">
+						<p:outputLabel>Make an order of fish  </p:outputLabel>
+						<p:graphicImage value="resources/fish.ico" height="26" width="26"
+							title="Order fish" />
+					</p:commandLink>
 					<br />
-					
-					<h:outputLabel>List of unregistred incomes  </h:outputLabel>
-					<h:commandLink action="#{adminBean.lookIncomes}">
-						<h:graphicImage value="resources/list.ico" height="26"
-							width="26" title="List unregistred incomes" />
-					</h:commandLink>
+
+					<p:commandLink action="#{adminBean.lookIncomes}">
+						<p:outputLabel>List of unregistred incomes  </p:outputLabel>
+						<p:graphicImage value="resources/list.ico" height="26" width="26"
+							title="List unregistred incomes" />
+					</p:commandLink>
 					<br />
-					
-					<h:outputLabel>List of cold store incomes  </h:outputLabel>
-					<h:commandLink action="#{adminBean.lookColdStoreIncomes}">
-						<h:graphicImage value="resources/list1.ico" height="26"
-							width="26" title="List unregistred incomes" />
-					</h:commandLink>
+
+					<p:commandLink action="#{adminBean.lookColdStoreIncomes}">
+						<p:outputLabel>List of cold store incomes  </p:outputLabel>
+						<p:graphicImage value="resources/list1.ico" height="26" width="26"
+							title="List unregistred incomes" />
+					</p:commandLink>
 					<br />
-					
-					<h:outputLabel>List at the report </h:outputLabel>
-					<h:commandLink action="#{adminBean.takeReport}">
-						<h:graphicImage value="resources/report.ico" height="26"
+
+					<p:commandLink action="#{adminBean.takeReport}">
+						<p:outputLabel>List at the report </p:outputLabel>
+						<p:graphicImage value="resources/report.ico" height="26"
 							width="26" title="Look at the report" />
-					</h:commandLink>
+					</p:commandLink>
 					<br />
 				</h:form>
 			</div>

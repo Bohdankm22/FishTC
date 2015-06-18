@@ -15,9 +15,11 @@ import org.springframework.context.annotation.Scope;
 import com.bionic.edu.entity.Arrival;
 import com.bionic.edu.entity.Customer;
 import com.bionic.edu.entity.Income;
+import com.bionic.edu.entity.Payment;
 import com.bionic.edu.service.ArrivalService;
 import com.bionic.edu.service.CustomerService;
 import com.bionic.edu.service.IncomeService;
+import com.bionic.edu.service.PaymentService;
 
 @Named
 @Scope("session")
@@ -33,6 +35,9 @@ public class AdminBean {
 	private Date date1;
 	private Date date2;
 	private List<Arrival> arrivals = null;
+	private List<Payment> payments = null;
+	private double totalSumIn = 0;
+	private double totalSumOut = 0;
 
 	@Inject
 	private CustomerService customerService;
@@ -40,6 +45,8 @@ public class AdminBean {
 	private ArrivalService arrivalService;
 	@Inject
 	private IncomeService incomeService;
+	@Inject
+	private PaymentService paymentService;
 
 	public String showAllUsers() {
 		return "allUsers";
@@ -225,7 +232,6 @@ public class AdminBean {
 
 	public void setDate1(Date date1) {
 		this.date1 = date1;
-		refreshArrivals();
 	}
 
 	public Date getDate2() {
@@ -234,18 +240,37 @@ public class AdminBean {
 
 	public void setDate2(Date date2) {
 		this.date2 = date2;
-		refreshArrivals();
 	}
 
 	public List<Arrival> getArrivals() {
 		return arrivals;
 	}
 	
-	public String refreshArrivals(){
+	public List<Payment> getPayments() {
+		return payments;
+	}
+
+	public String refreshReport(){
 		arrivals = arrivalService.getArrivalsListInDuringPeriod(
 				new Timestamp(date1.getTime()), new Timestamp(date2.getTime()));
+		payments = paymentService.getPaymentsListInDuringPeriod(
+				new Timestamp(date1.getTime()), new Timestamp(date2.getTime()));
+		totalSumIn = totalSumOut = 0.0d;
+		for(Arrival a: arrivals)
+			totalSumIn += a.getArrival_sum();
+		for(Payment p: payments)
+			totalSumOut += p.getPayment_sum();
 		return "report";
 	}
+
+	public double getTotalSumIn() {
+		return totalSumIn;
+	}
+
+	public double getTotalSumOut() {
+		return totalSumOut;
+	}
+	
 	
 	
 }

@@ -1,5 +1,6 @@
 package com.bionic.edu.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -60,5 +61,16 @@ public class PaymentDaoImpl implements PaymentDao {
 		TypedQuery<Payment> query = em.createQuery("SELECT p FROM Payment p ORDER BY p.sump", Payment.class);
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Payment> getPaymentsListInDuringPeriod(Timestamp start,
+			Timestamp end) {
+		String txt = "SELECT a From Payment a WHERE a.Payment_date > '" + start 
+				+ "' AND a.Payment_date < '" + end + "'";
+		TypedQuery<Payment> q = em.createQuery(txt, Payment.class);
+		return q.getResultList();
+	}
+	
+	
 
 }

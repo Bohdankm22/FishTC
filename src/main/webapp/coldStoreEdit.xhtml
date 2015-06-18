@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="header">
+		<h2>General manager header</h2>
+		<h:link value="Go to orders page" outcome="coldStore" />
+	</ui:define>
+	<ui:define name="content">
+		<h2>Register arrival</h2>
+
+
+		<h:form>
+			<div class="dataTable">
+				<p:panelGrid columns="2">
+					Incomes in this arrival
+					<p:dataTable value="#{coldStoreManagerBean.arrival.listOfIncome}"
+						var="incomes" styleClass="incomesTable"
+						headerClass="incomesTableHeader"
+						rowClasses="incomesTableOddRow, incomesTableEvenRow">
+						<p:column>
+							<f:facet name="header">Id</f:facet> 
+								#{incomes.income_id} 
+									</p:column>
+						<p:column>
+							<f:facet name="header">Item name</f:facet> 
+									#{incomes.income_Itemname} 
+								</p:column>
+						<p:column>
+							<f:facet name="header">Ordered weight</f:facet> 
+									#{incomes.income_OrderWeight} 
+								</p:column>
+						<p:column>
+							<f:facet name="header">Delivered weight:</f:facet>
+							<p:inputText id="delW" value="#{incomes.income_DeliveredWeight}"
+								required="false" requiredMessage="#{msgs.delWeightRequired}"
+								validatorMessage="#{msgs.delWeightRange}">
+								<f:convertNumber minFractionDigits="2" />
+								<f:validateDoubleRange minimum="1" />
+							</p:inputText>
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Price :</f:facet>
+							<p:inputText id="Price" value="#{incomes.income_price}"
+								required="true" requiredMessage="#{msgs.priceRequired}"
+								validatorMessage="#{msgs.priceRange1}">
+								<f:convertNumber minFractionDigits="2" />
+								<f:validateDoubleRange minimum="1" maximum="1000" />
+							</p:inputText>
+						</p:column>
+						
+					</p:dataTable>
+
+					<p:outputLabel>Delivery Price</p:outputLabel>
+					<p:inputText id="DelPrice"
+						value="#{coldStoreManagerBean.arrival.arrival_deliveryprice}"
+						required="true" requiredMessage="#{msgs.priceRequired}"
+						validatorMessage="#{msgs.priceRange1}">
+						<f:convertNumber minFractionDigits="2" />
+						<f:validateDoubleRange minimum="1" maximum="1000" />
+					</p:inputText>
+
+
+					<p:outputLabel>Ship Name</p:outputLabel>
+					<p:inputText id="Ship"
+						value="#{coldStoreManagerBean.arrival.arrival_RefrigeratorShipName}"
+						required="true" requiredMessage="#{msgs.shipNameRequired}">
+						<f:validateLength minimum="4" maximum="127"></f:validateLength>
+					</p:inputText>
+
+
+					<p:outputLabel></p:outputLabel>
+
+					<p:commandLink action="#{coldStoreManagerBean.registerIncome}">
+						<p:outputLabel>Register</p:outputLabel>
+						<p:graphicImage value="resources/edit4.ico" height="16" width="16"
+							title="Register" />
+					</p:commandLink>
+
+					<h:message for="DelPrice" style="color:red" />
+					<h:message for="Ship" style="color:red" />
+					<h:message for="delW" style="color:red" />
+					<h:message for="Price" style="color:red" />
+				</p:panelGrid>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -18,45 +18,78 @@
 
 
 		<h:form>
-			<div>
+			<div class="dateInput">
 				Start date:
 				<p:calendar value="#{adminBean.date1}" pattern="MM/dd/yyyy" />
 			</div>
-			<div>
+			<div class="dateInput">
 				Finish date:
 				<p:calendar value="#{adminBean.date2}" pattern="MM/dd/yyyy" />
 			</div>
-
-			<br />
-
-
-			<h:panelGrid columns="1">
-				<h:dataTable value="#{adminBean.arrivals}" var="arrivals"
-					styleClass="arrivalsTable" headerClass="arrivalsTableHeader"
-					rowClasses="arrivalsTableOddRow, arrivalsTableEvenRow">
-					<h:column>
-						<f:facet name="header">Id</f:facet> 
-						#{arrivals.arrival_id} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Item</f:facet> 
-						#{arrivals.arrival_sum} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Order Weight</f:facet> 
-						#{arrivals.arrival_OrderDate} 
-					</h:column>
-				</h:dataTable>
-			</h:panelGrid>
-
-			<h:column>
-				<f:facet name="header">
-				</f:facet>
-				<h:commandLink action="#{adminBean.refreshArrivals}">
+			<div class="dateInput">
+				<h:commandLink action="#{adminBean.refreshReport}">
 					<h:graphicImage value="resources/order.ico" height="16" width="16"
 						title="Edit" />
 				</h:commandLink>
-			</h:column>
+			</div>
+			<br />
+			<br />
+			<div class="dataTable">
+				<div class="dataTableLeft">
+					<p:panelGrid columns="1">
+					Arrivals for this period
+					<p:dataTable value="#{adminBean.arrivals}" var="arrivals"
+							styleClass="arrivalsTable" headerClass="arrivalsTableHeader"
+							rowClasses="arrivalsTableOddRow, arrivalsTableEvenRow">
+							<p:column>
+								<f:facet name="header">Id</f:facet> 
+						#{arrivals.arrival_id} 
+					</p:column>
+							<p:column>
+								<f:facet name="header">Sum of arrival</f:facet> 
+						#{arrivals.arrival_sum} 
+					</p:column>
+							<p:column>
+								<f:facet name="header">Order Date</f:facet>
+								<p:outputLabel value="#{arrivals.arrival_OrderDate}">
+									<f:convertDateTime pattern="MM/dd/yyyy" />
+								</p:outputLabel>
+							</p:column>
+						</p:dataTable>
+						<h:outputLabel>Total sum spent this period: #{adminBean.totalSumIn}</h:outputLabel>
+					</p:panelGrid>
+				</div>
+
+				<div class="dataTableRight">
+					<p:panelGrid columns="1">
+				Payments for this period
+					<p:dataTable value="#{adminBean.payments}" var="payments"
+							styleClass="paymentsTable" headerClass="paymentsTableHeader"
+							rowClasses="paymentsTableOddRow, paymentsTableEvenRow">
+							<p:column>
+								<f:facet name="header">Id</f:facet> 
+							#{payments.payment_id} 
+						</p:column>
+							<p:column>
+								<f:facet name="header">Sum of arrival</f:facet> 
+								#{payments.payment_sum} 
+						</p:column>
+							<p:column>
+								<f:facet name="header">Order Date</f:facet>
+								<p:outputLabel value="#{payments.payment_date}">
+									<f:convertDateTime pattern="MM/dd/yyyy" />
+								</p:outputLabel>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">Customer name</f:facet> 
+						#{payments.customer.customer_Name} 
+					</p:column>
+						</p:dataTable>
+						<h:outputLabel>Total sum earned this period: #{adminBean.totalSumOut}</h:outputLabel>
+					</p:panelGrid>
+				</div>
+			</div>
 
 		</h:form>
 	</ui:define>

@@ -20,7 +20,10 @@ public class MessageBean implements Serializable{
 	private final String prepaymentTypeRange = "Prepayment type field is not between the expected values between 1 and 3";
 	private final String priceRequired = "Price field could not be empty";
 	private final String priceRange = "Price field is not between the expected values between 1 and 3";
-
+	private final String delWeightRequired = "Delivered weight field could not be empty";
+	private final String shipNameRequired = "Ship name field could not be empty";
+	private final String delWeightRange = "Weight field is not between the expected values of 0.10 and ordered weight + 100";
+	private final String priceRange1 = "Price field can't be more then 1000. Talk to General manager otherwise!";
 	
 	public MessageBean(){   }
 	
@@ -51,5 +54,16 @@ public class MessageBean implements Serializable{
 	public String getPriceRange(){
 		return priceRange;
 	}
-	
+	public String getDelWeightRequired(){
+		return delWeightRequired;
+	}
+	public String getShipNameRequired(){
+		return shipNameRequired;
+	}
+	public String getDelWeightRange(){
+		return delWeightRange;
+	}
+	public String getPriceRange1(){
+		return priceRange1;
+	}
 }

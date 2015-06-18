@@ -1,5 +1,6 @@
 package com.bionic.edu.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.bionic.edu.entity.Payment;
@@ -21,5 +22,7 @@ public interface PaymentService {
 	double getPaymentSum();
 	
 	List<Payment> getSortedBySump();
+
+	List<Payment> getPaymentsListInDuringPeriod(Timestamp start, Timestamp end);
 
 }
