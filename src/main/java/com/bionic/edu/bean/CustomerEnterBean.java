@@ -101,6 +101,7 @@ public class CustomerEnterBean {
 		outcome.setIncome(in);
 		outcome.setPayment(pay);
 		outcome.setOutcome_price(in.getIncome_SellPrice());
+		countTotal();
 		return "bucket";
 	}
 
@@ -113,6 +114,7 @@ public class CustomerEnterBean {
 	}
 	
 	public String saveIncome(){
+		weight = Math.round(weight*100.0)/100.0;
 		outcome.setOutcome_weight(weight);
 		outcome.setOutcome_price(outcome.getOutcome_price() * weight);
 		bucket.add(outcome);
@@ -132,9 +134,7 @@ public class CustomerEnterBean {
 	}
 	
 	public String buy(){
-		for(Outcome o: bucket){
-			pay.setPayment_sum(pay.getPayment_sum() + o.getOutcome_price());
-		}
+		countTotal();
 		return "buy";
 	}
 	
@@ -182,6 +182,24 @@ public class CustomerEnterBean {
 				break;
 			}
 		}
+		countTotal();
 		return "customerPage";
+	}
+	
+	public double getTotal(){
+		pay.setPayment_sum(0.0);
+		for(Outcome o: bucket){		
+			pay.setPayment_sum(pay.getPayment_sum() + o.getOutcome_price());
+		}
+		pay.setPayment_sum(Math.round(pay.getPayment_sum()*100)/100.0);
+		return pay.getPayment_sum();
+	}
+	
+	private void countTotal(){
+		pay.setPayment_sum(0.0);
+		for(Outcome o: bucket){		
+			pay.setPayment_sum(pay.getPayment_sum() + o.getOutcome_price());
+		}
+		pay.setPayment_sum(Math.round(pay.getPayment_sum()*100)/100.0);
 	}
 }

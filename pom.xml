@@ -209,7 +209,7 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.2-promoted-b65</version>
 		</dependency>
-		
+
 		<!-- JSF -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
@@ -236,6 +236,13 @@
 			<artifactId>jsp-api</artifactId>
 			<version>2.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>4.0</version>
+		</dependency>
+
 
 	</dependencies>
 

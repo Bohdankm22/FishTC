@@ -3,6 +3,7 @@ package com.bionic.edu.bean;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class AdminBean {
 	private Income income = null;
 	private List<Income> incomes = null;
 	private Income inForEdit = null;
+	private Date date1;
+	private Date date2;
+	private List<Arrival> arrivals = null;
 
 	@Inject
 	private CustomerService customerService;
@@ -209,4 +213,39 @@ public class AdminBean {
 		inForEdit = null;
 		return "incomeColdStoreList";
 	}
+	public String takeReport(){
+		date1 = new Date();
+		date2 = new Date();
+		return "report";
+	}
+
+	public Date getDate1() {
+		return date1;
+	}
+
+	public void setDate1(Date date1) {
+		this.date1 = date1;
+		refreshArrivals();
+	}
+
+	public Date getDate2() {
+		return date2;
+	}
+
+	public void setDate2(Date date2) {
+		this.date2 = date2;
+		refreshArrivals();
+	}
+
+	public List<Arrival> getArrivals() {
+		return arrivals;
+	}
+	
+	public String refreshArrivals(){
+		arrivals = arrivalService.getArrivalsListInDuringPeriod(
+				new Timestamp(date1.getTime()), new Timestamp(date2.getTime()));
+		return "report";
+	}
+	
+	
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="header">
+		<h2>General manager header</h2>
+		<h:link value="Go to General manager page" outcome="adminPage" />
+	</ui:define>
+	<ui:define name="content">
+		<h2>Report</h2>
+
+
+		<h:form>
+			<div>
+				Start date:
+				<p:calendar value="#{adminBean.date1}" pattern="MM/dd/yyyy" />
+			</div>
+			<div>
+				Finish date:
+				<p:calendar value="#{adminBean.date2}" pattern="MM/dd/yyyy" />
+			</div>
+
+			<br />
+
+
+			<h:panelGrid columns="1">
+				<h:dataTable value="#{adminBean.arrivals}" var="arrivals"
+					styleClass="arrivalsTable" headerClass="arrivalsTableHeader"
+					rowClasses="arrivalsTableOddRow, arrivalsTableEvenRow">
+					<h:column>
+						<f:facet name="header">Id</f:facet> 
+						#{arrivals.arrival_id} 
+					</h:column>
+					<h:column>
+						<f:facet name="header">Item</f:facet> 
+						#{arrivals.arrival_sum} 
+					</h:column>
+					<h:column>
+						<f:facet name="header">Order Weight</f:facet> 
+						#{arrivals.arrival_OrderDate} 
+					</h:column>
+				</h:dataTable>
+			</h:panelGrid>
+
+			<h:column>
+				<f:facet name="header">
+				</f:facet>
+				<h:commandLink action="#{adminBean.refreshArrivals}">
+					<h:graphicImage value="resources/order.ico" height="16" width="16"
+						title="Edit" />
+				</h:commandLink>
+			</h:column>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

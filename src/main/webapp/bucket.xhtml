@@ -10,27 +10,33 @@
 </head>
 <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-		<h2>Add to bucket</h2> 
-    	<h:form>
+		<h2>Add to bucket</h2>
+		<h:form>
 			<h:panelGrid columns="3">
 				<h:outputText value="Income item:"></h:outputText>
-				<h:outputText value="#{customerEnterBean.outcome.income.income_Itemname}"/>
-				<br/>
+				<h:outputText
+					value="#{customerEnterBean.outcome.income.income_Itemname}" />
+				<br />
 
 				<h:outputText value="Availible weight:"></h:outputText>
-				<h:outputText value="#{customerEnterBean.outcome.income.income_Availibleweight}"/>
-				<br/>
-				
+				<h:outputText
+					value="#{customerEnterBean.outcome.income.income_Availibleweight}">
+					<f:convertNumber minFractionDigits="2" />
+				</h:outputText>
+				<br />
+
 				<h:outputText value="Weight:"></h:outputText>
 				<h:inputText id="iWeight" value="#{customerEnterBean.weight}"
 					required="true" requiredMessage="#{msgs.orderWeightRequired}"
 					validatorMessage="#{msgs.weightRange}">
-					<f:convertNumber minFractionDigits="3" />
-					<f:validateDoubleRange minimum="0.10" maximum="#{customerEnterBean.outcome.income.income_Availibleweight}" />
+					<f:convertNumber minFractionDigits="2" />
+					<f:validateDoubleRange minimum="0.10"
+						maximum="#{customerEnterBean.outcome.income.income_Availibleweight}" />
 				</h:inputText>
 				<h:message for="iWeight" style="color:red" />
 			</h:panelGrid>
-			<h:commandButton value="Submit" action="#{customerEnterBean.saveIncome}"></h:commandButton>
+			<h:commandButton value="Submit"
+				action="#{customerEnterBean.saveIncome}"></h:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>
