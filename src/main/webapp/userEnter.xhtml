@@ -4,30 +4,40 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	
+		<div class="header">
+			<ui:define name="header">
+				<h2>Default r</h2>
+			</ui:define>
+		</div>
+		
+		<ui:define name="content">
+			<h1>User log in</h1>
+			<h:form>
+				<h:panelGrid columns="3">
+					<h:outputText value="Name"></h:outputText>
+					<h:inputText id="name" value="#{userEnterBean.name}"
+						required="true" requiredMessage="#{msgsReg.nameRequired}">
+					</h:inputText>
+					<h:message for="name" style="color:red" />
 
-<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
-	<ui:define name="content">
-		<h1>User log in</h1>
-		<h:form>
-			<h:panelGrid columns="3">
-				<h:outputText value="Name"></h:outputText>
-				<h:inputText id="name" value="#{userEnterBean.name}"
-					required="true" requiredMessage="#{msgsReg.nameRequired}">
-				</h:inputText>
-				<h:message for="name" style="color:red" />
-				
-				<h:outputText value="Password"></h:outputText>
-				<h:inputSecret id="pass" value="#{userEnterBean.pass}"
+					<h:outputText value="Password"></h:outputText>
+					<h:inputSecret id="pass" value="#{userEnterBean.pass}"
 						required="true" requiredMessage="#{msgsReg.passwordRequired}"
-					validatorMessage="#{msgsReg.passwordLength}">
+						validatorMessage="#{msgsReg.passwordLength}">
 						<f:validateLength minimum="4" maximum="128"></f:validateLength>
-				</h:inputSecret>
-				<h:message for="pass" style="color:red" />
+					</h:inputSecret>
+					<h:message for="pass" style="color:red" />
 
-			</h:panelGrid>
-				<h:commandButton value="Submit"
-					action="#{userEnterBean.findUser}"></h:commandButton>
-		</h:form>
-	</ui:define>
-</ui:composition>
+				</h:panelGrid>
+				<h:commandButton value="Submit" action="#{userEnterBean.findUser}"></h:commandButton>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

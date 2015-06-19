@@ -50,6 +50,7 @@ public class ColdStoreManagerBean {
 			arrival.setArrival_sum(arrival.getArrival_sum() + 
 					i.getIncome_DeliveredWeight() * i.getIncome_price());
 		}
+		arrivalService.updateWithTheList(arrival);
 		System.out.println("Arrival order date:" + arrival.getArrival_OrderDate() + 
 				"/n delivery date: " + arrival.getArrival_Deliverydate() + 
 				"/n sum: " + arrival.getArrival_sum() +

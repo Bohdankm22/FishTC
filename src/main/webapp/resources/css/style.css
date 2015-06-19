@@ -6,14 +6,13 @@ a {
 }
 
 div {
-	color: blue;
+	color: black;
 	text-align: center;
 }
 
 .header {
-	background-color: brown;
-	color: black;
-	height: 200;
+	background-color: green;
+	background-image: url("../img/fish.jpg");
 }
 
 .footer {
@@ -34,8 +33,7 @@ div {
 	color:red;
 }
 h2{
-	text-align: center;
-	color:blue;
+	color:#ff80ff;
 }
 .dateInput{
 	display: inline;

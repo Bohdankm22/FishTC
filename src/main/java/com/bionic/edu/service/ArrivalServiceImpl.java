@@ -64,5 +64,14 @@ public class ArrivalServiceImpl implements ArrivalService{
 	public List<Arrival> getArrivalsListInDuringPeriod(Timestamp start, Timestamp end){
 		return arrivalDao.getArrivalsListInDuringPeriod(start, end);
 	}
+	
+	@Override
+	@Transactional
+	public void updateWithTheList(Arrival arrival){
+		arrivalDao.update(arrival);
+		for(Income i: arrival.getListOfIncome()){
+			incomeDao.update(i);
+		}
+	}
 
 }

@@ -21,6 +21,8 @@ public interface ArrivalService {
 	
 	public List<Arrival> getArrivalsListInDuringPeriod(Timestamp start, Timestamp end);
 
+	void updateWithTheList(Arrival arrival);
+
 	
 
 }

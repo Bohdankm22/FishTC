@@ -39,43 +39,60 @@
 								</p:column>
 						<p:column>
 							<f:facet name="header">Delivered weight:</f:facet>
-							<p:inputText id="delW" value="#{incomes.income_DeliveredWeight}"
-								required="false" requiredMessage="#{msgs.delWeightRequired}"
-								validatorMessage="#{msgs.delWeightRange}">
-								<f:convertNumber minFractionDigits="2" />
-								<f:validateDoubleRange minimum="1" />
-							</p:inputText>
+							<p:panelGrid columns="2">
+								<p:inputText id="delW" value="#{incomes.income_DeliveredWeight}"
+									required="false" requiredMessage="#{msgs.delWeightRequired}"
+									validatorMessage="#{msgs.delWeightRange}">
+									<f:convertNumber minFractionDigits="2" />
+									<f:validateDoubleRange minimum="1" />
+								</p:inputText>
+
+								<h:message for="delW" style="color:red" />
+
+							</p:panelGrid>
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">Price :</f:facet>
-							<p:inputText id="Price" value="#{incomes.income_price}"
-								required="true" requiredMessage="#{msgs.priceRequired}"
-								validatorMessage="#{msgs.priceRange1}">
-								<f:convertNumber minFractionDigits="2" />
-								<f:validateDoubleRange minimum="1" maximum="1000" />
-							</p:inputText>
+
+							<p:panelGrid columns="2">
+								<p:inputText id="Price" value="#{incomes.income_price}"
+									required="true" requiredMessage="#{msgs.priceRequired}"
+									validatorMessage="#{msgs.priceRange1}">
+									<f:convertNumber minFractionDigits="2" />
+									<f:validateDoubleRange minimum="1" maximum="1000" />
+								</p:inputText>
+
+								<h:message for="Price" style="color:red" />
+
+							</p:panelGrid>
 						</p:column>
-						
+
 					</p:dataTable>
 
 					<p:outputLabel>Delivery Price</p:outputLabel>
-					<p:inputText id="DelPrice"
-						value="#{coldStoreManagerBean.arrival.arrival_deliveryprice}"
-						required="true" requiredMessage="#{msgs.priceRequired}"
-						validatorMessage="#{msgs.priceRange1}">
-						<f:convertNumber minFractionDigits="2" />
-						<f:validateDoubleRange minimum="1" maximum="1000" />
-					</p:inputText>
+					<p:panelGrid columns="2">
+						<p:inputText id="DelPrice"
+							value="#{coldStoreManagerBean.arrival.arrival_deliveryprice}"
+							required="true" requiredMessage="#{msgs.priceRequired}"
+							validatorMessage="#{msgs.priceRange1}">
+							<f:convertNumber minFractionDigits="2" />
+							<f:validateDoubleRange minimum="1" maximum="1000" />
+						</p:inputText>
 
+						<h:message for="DelPrice" style="color:red" />
+					</p:panelGrid>
 
 					<p:outputLabel>Ship Name</p:outputLabel>
-					<p:inputText id="Ship"
-						value="#{coldStoreManagerBean.arrival.arrival_RefrigeratorShipName}"
-						required="true" requiredMessage="#{msgs.shipNameRequired}">
-						<f:validateLength minimum="4" maximum="127"></f:validateLength>
-					</p:inputText>
+					<p:panelGrid columns="2">
+						<p:inputText id="Ship"
+							value="#{coldStoreManagerBean.arrival.arrival_RefrigeratorShipName}"
+							required="true" requiredMessage="#{msgs.shipNameRequired}">
+							<f:validateLength minimum="4" maximum="127"></f:validateLength>
+						</p:inputText>
 
+						<h:message for="Ship" style="color:red" />
+					</p:panelGrid>
 
 					<p:outputLabel></p:outputLabel>
 
@@ -85,10 +102,6 @@
 							title="Register" />
 					</p:commandLink>
 
-					<h:message for="DelPrice" style="color:red" />
-					<h:message for="Ship" style="color:red" />
-					<h:message for="delW" style="color:red" />
-					<h:message for="Price" style="color:red" />
 				</p:panelGrid>
 			</div>
 		</h:form>

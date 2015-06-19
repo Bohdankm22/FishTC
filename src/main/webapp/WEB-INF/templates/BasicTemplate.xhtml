@@ -8,14 +8,14 @@
 </h:head>
 <h:body>
 	<div
-		style="border-width: 2px; border-color: green; border-style: solid;">
-		<ui:insert name="header" class="header">
+		style="border-width: 2px; border-color: green; border-style: solid;" class="header">
+		<ui:insert name="header">
 			<ui:include src="header.xhtml" />
 		</ui:insert>
 	</div>
 	<br />
 	<div
-		style="border-width: 2px; border-color: black; border-style: solid;">
+		style="border-width: 2px; border-color: black; border-style: solid;" class="header">
 		<ui:insert name="content">
 			<ui:include src="content.xhtml" />
 		</ui:insert>
