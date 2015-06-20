@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.bionic.edu.TotalPayedForEveryCustomer;
 import com.bionic.edu.entity.Customer;
@@ -72,7 +71,6 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	@Transactional
 	public void update(Customer customer) {
 		Customer customer2 = em.find(Customer.class, customer.getCustomer_id());
 		if (customer2 != null) {

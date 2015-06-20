@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="WEB-INF/templates/admin.xhtml">
+	
+		<ui:define name="header">
+			<
+		</ui:define>
+
+		<ui:define name="content">
+		<h2>Edit user</h2> 
+    	<p:form>
+			<h:panelGrid columns="3">
+				<p:outputText value="User's name:"></p:outputText>
+				<p:outputText value="#{securityOfficerBean.user.users_Name}"/>
+				<br/>
+				
+				<p:outputText value="New user's name:"></p:outputText>
+				<p:inputText id="pt" value="#{securityOfficerBean.user.users_Name}"
+					required="true" requiredMessage="#{msgs.nameRequired}"
+					validatorMessage="#{msgs.prepaymentTypeRange}">
+					<f:convertNumber minFractionDigits="0" />
+					<f:validateDoubleRange minimum="1" maximum="4" />
+				</p:inputText>
+				<p:message for="pt" style="color:red" />
+			</h:panelGrid>
+			<p:commandButton value="Submit" action="#{securityOfficerBean.saveUser}"/>
+		</p:form>
+	</ui:define>
+	</ui:composition>
+</h:body>
+</html>

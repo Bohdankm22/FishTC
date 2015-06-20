@@ -36,7 +36,7 @@ public class UserEnterBean {
 			switch(user.getUsers_Role()){
 				case 1: return "adminPage";
 				case 2: return "coldStore";
-				case 3: return "accountent";
+				case 3: return "accountant";
 				case 4: return "security";
 				default: return "error";
 			}

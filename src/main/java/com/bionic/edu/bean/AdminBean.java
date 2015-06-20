@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -271,6 +273,10 @@ public class AdminBean {
 		return totalSumOut;
 	}
 	
-	
+	public void addMessage(String id){
+		int n = Integer.valueOf(id);
+		String summary = customerService.findById(n).isCustomer_isDeleted() ? "Deleted" : "Undeleted";
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+	}
 	
 }

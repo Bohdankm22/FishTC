@@ -15,45 +15,40 @@
 	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 
 		<ui:define name="header">
-			<h2>General manager header</h2>
-			<h:link value="Go to General manager page" outcome="adminPage" />
+			<h2>Security Manager Page</h2>
 		</ui:define>
 
 		<ui:define name="content">
-			<h2>All the incomes</h2> 
-    	#{adminBean.refreshListOfUsers()}
+			<h2>All the users</h2> 
+			#{securityOfficerBean.refreshList()}
     	<h:form>
 
 				<p:panelGrid columns="1">
-					<p:dataTable value="#{adminBean.customers}" var="customers"
-						styleClass="CustomersTable" headerClass="CustomersTableHeader"
-						rowClasses="CustomersTableOddRow, CustomersTableEvenRow">
+					<p:dataTable value="#{securityOfficerBean.users}" var="users"
+						styleClass="usersTable" headerClass="usersTableHeader"
+						rowClasses="usersTableOddRow, usersTableEvenRow">
+						<p:column>
+							<f:facet name="header">ID</f:facet> 
+						#{users.users_id} 
+					</p:column>
 						<p:column>
 							<f:facet name="header">Name</f:facet> 
-						#{customers.customer_Name} 
+						#{users.users_Name} 
 					</p:column>
 						<p:column>
-							<f:facet name="header">Email</f:facet> 
-						#{customers.customer_email} 
-					</p:column>
-						<p:column>
-							<f:facet name="header">Bank account</f:facet> 
-						#{customers.customer_bancAccount} 
+							<f:facet name="header">Users Role</f:facet> 
+						#{securityOfficerBean.userRole(users.users_Role)} 
 					</p:column>
 						<p:column>
 							<f:facet name="header">Is deleted</f:facet> 
-						#{customers.customer_isDeleted} 
-					</p:column>
-						<p:column>
-							<f:facet name="header">Prepayment type</f:facet> 
-						#{customers.customer_prepaymenttype} 
+						#{users.users_isDeleted} 
 					</p:column>
 
 						<p:column>
 							<f:facet name="header">
 							</f:facet>
 							<p:commandLink
-								action="#{adminBean.editCustomer(customers.customer_id)}">
+								action="#{securityOfficerBean.editUser(users.users_id)}">
 								<p:graphicImage value="resources/edit4.ico" height="16"
 									width="16" title="Edit" />
 
@@ -64,7 +59,7 @@
 							<f:facet name="header">
 							</f:facet>
 							<p:commandLink
-								action="#{adminBean.deleteCustomer(customers.customer_id)}">
+								action="#{securityOfficerBean.deleteUser(users.users_id)}">
 								<p:graphicImage value="resources/delete.ico" height="16"
 									width="16" title="Delete" />
 							</p:commandLink>

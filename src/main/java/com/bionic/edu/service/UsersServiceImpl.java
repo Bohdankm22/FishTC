@@ -1,5 +1,7 @@
 package com.bionic.edu.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,5 +27,22 @@ public class UsersServiceImpl implements UsersService{
 		if(u != null && u.getUsers_password().equals(pass))
 			return u;
 		return null;
+	}
+
+	@Override
+	public List<Users> getAll() {
+		return usersDao.getAll();
+	}
+
+	@Override
+	public Users findById(int n) {
+		return usersDao.findById(n);
+	}
+
+	@Override
+	@Transactional
+	public void update(Users user1) {
+		usersDao.update(user1);
+		
 	}
 }
