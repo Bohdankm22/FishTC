@@ -24,7 +24,27 @@ public class MessageBean implements Serializable{
 	private final String shipNameRequired = "Ship name field could not be empty";
 	private final String delWeightRange = "Weight field is not between the expected values of 0.10 and ordered weight + 100";
 	private final String priceRange1 = "Price field can't be more then 1000. Talk to General manager otherwise!";
+	private final String nameRequired = "Item field could not be empty";
+	private final String nameLenght = "Name lenght should be between 4 and 127 symbols";
+	private final String roleRequired = "Role field could not be empty";
+	private final String roleNumb = "Role field should be number between 1 and 4";
 	
+	public String getRoleRequired() {
+		return roleRequired;
+	}
+
+	public String getRoleNumb() {
+		return roleNumb;
+	}
+
+	public String getNameRequired() {
+		return nameRequired;
+	}
+
+	public String getNameLenght() {
+		return nameLenght;
+	}
+
 	public MessageBean(){   }
 	
 	public String getItemRequired(){

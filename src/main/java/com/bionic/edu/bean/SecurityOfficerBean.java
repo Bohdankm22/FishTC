@@ -16,6 +16,8 @@ public class SecurityOfficerBean {
 	
 	private List<Users> users = null;
 	private Users user = null;
+	private String name = null;
+	private int role = 0;
 	
 	@Inject
 	private UsersService usersService;
@@ -41,6 +43,8 @@ public class SecurityOfficerBean {
 	public String editUser(String role){
 		int n = Integer.valueOf(role);
 		user = usersService.findById(n);
+		System.out.println("I'm here");
+		System.out.println(user);
 		return "editUser";
 	}
 	
@@ -49,6 +53,7 @@ public class SecurityOfficerBean {
 		Users user1 = usersService.findById(n);
 		user1.setUsers_isDeleted(!user1.isUsers_isDeleted());
 		usersService.update(user1);
+		System.out.println("I'm here");
 		return "security";
 	}
 
@@ -61,8 +66,26 @@ public class SecurityOfficerBean {
 	}
 	
 	public String saveUser(){
+		user.setUsers_Name(name);
+		user.setUsers_Role(role);
 		usersService.update(user);
-		user = null;
 		return "security";
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
+	}
+	
 }

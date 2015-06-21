@@ -37,7 +37,7 @@
 					</p:column>
 						<p:column>
 							<f:facet name="header">Users Role</f:facet> 
-						#{securityOfficerBean.userRole(users.users_Role)} 
+						#{users.users_Role} 
 					</p:column>
 						<p:column>
 							<f:facet name="header">Is deleted</f:facet> 
@@ -45,7 +45,7 @@
 					</p:column>
 
 						<p:column>
-							<f:facet name="header">
+							<f:facet name="header">Edit
 							</f:facet>
 							<p:commandLink
 								action="#{securityOfficerBean.editUser(users.users_id)}">
@@ -56,7 +56,7 @@
 						</p:column>
 
 						<p:column>
-							<f:facet name="header">
+							<f:facet name="header">Delete/Undelete
 							</f:facet>
 							<p:commandLink
 								action="#{securityOfficerBean.deleteUser(users.users_id)}">
