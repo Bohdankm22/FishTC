@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
-
 <h:body>
 	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 
-
 		<ui:define name="content">
-			<h2>Accountant</h2> 
-    	
+			<div class="contentAdmin">
+				<h2 class="h2">Accountant page!</h2>
+				<h:form>
+
+					<p:commandLink action="#{accountantBean.}" >
+						<p:outputLabel>Show all users  </p:outputLabel>
+						<p:graphicImage value="resources/showUsers.ico" height="26"
+							width="26" title="Show all users" />
+					</p:commandLink>
+					<br />
+
+					<p:commandLink action="#{accountantBean.}">
+						<p:outputLabel>Make an order of fish  </p:outputLabel>
+						<p:graphicImage value="resources/fish.ico" height="26" width="26"
+							title="Order fish" />
+					</p:commandLink>
+					<br />
+
+				</h:form>
+			</div>
 		</ui:define>
 	</ui:composition>
 </h:body>
