@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.RowEditEvent;
 import org.springframework.context.annotation.Scope;
 
 import com.bionic.edu.entity.Arrival;
@@ -28,7 +29,6 @@ import com.bionic.edu.service.PaymentService;
 public class AdminBean {
 
 	private List<Customer> customers = null;
-	private Customer customer = null;
 	private List<Income> order = null;
 	private Arrival arrival = null;
 	private Income income = null;
@@ -49,6 +49,7 @@ public class AdminBean {
 	private IncomeService incomeService;
 	@Inject
 	private PaymentService paymentService;
+	
 
 	public String showAllUsers() {
 		return "allUsers";
@@ -66,29 +67,6 @@ public class AdminBean {
 
 	public List<Customer> getUsers() {
 		return customers;
-	}
-
-	public String editCustomer(String id) {
-		int n = Integer.parseInt(id);
-		customer = customerService.findById(n);
-		return "adminEditCustomer";
-	}
-
-	public String deleteCustomer(String id) {
-		int n = Integer.parseInt(id);
-		Customer customer1 = customerService.findById(n);
-		customer1.setCustomer_isDeleted(!customer1.isCustomer_isDeleted());
-		customerService.update(customer1);
-		return "allUsers";
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public String savePrepaymentType() {
-		customerService.update(customer);
-		return "allUsers";
 	}
 
 	public List<Customer> getCustomers() {
@@ -279,4 +257,27 @@ public class AdminBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
 	}
 	
+	public void onRowEdit(RowEditEvent event) {
+		Customer i = (Customer) event.getObject();
+		if(customerService.findById(i.getCustomer_id()) != null){
+			customerService.update(i);
+		}
+        FacesMessage msg = new FacesMessage("Customer edited", i.getCustomer_Name());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
+	public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Customer) event.getObject()).getCustomer_Name());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
+	public String type(String tp){
+		int n = Integer.valueOf(tp);
+		switch(n){
+		case 1: return "Half prepayment(50%)";
+		case 2: return "Partial prepayment (75%)";
+		case 3: return "Full prepayment (100%)";
+		default: return "It's mistake";
+		}
+	}
 }

@@ -22,56 +22,91 @@
 		<ui:define name="content">
 			<h2>All the customers</h2> 
     	#{adminBean.refreshListOfUsers()}
-    	<h:form>
 
-				<p:panelGrid columns="1">
-					<p:dataTable value="#{adminBean.customers}" var="customers"
-						styleClass="CustomersTable" headerClass="CustomersTableHeader"
-						rowClasses="CustomersTableOddRow, CustomersTableEvenRow">
-						<p:column>
-							<f:facet name="header">Name</f:facet> 
-						#{customers.customer_Name} 
-					</p:column>
-						<p:column>
-							<f:facet name="header">Email</f:facet> 
-						#{customers.customer_email} 
-					</p:column>
-						<p:column>
-							<f:facet name="header">Bank account</f:facet> 
-						#{customers.customer_bancAccount} 
-					</p:column>
-						<p:column>
-							<f:facet name="header">Is deleted</f:facet> 
-						#{customers.customer_isDeleted} 
-					</p:column>
-						<p:column>
-							<f:facet name="header">Prepayment type</f:facet> 
-						#{customers.customer_prepaymenttype} 
-					</p:column>
+			<h:form id="form">
+				<p:growl id="msgs" showDetail="true" />
 
-						<p:column>
-							<f:facet name="header">
+				<p:dataTable id="Incomes" value="#{adminBean.customers}"
+					var="customers" editable="true" style="margin-bottom:20px">
+					<f:facet name="header">
+		           All the customers
+		       </f:facet>
+
+					<p:ajax event="rowEdit" listener="#{adminBean.onRowEdit}"
+						update=":form:msgs" />
+					<p:ajax event="rowEditCancel" listener="#{adminBean.onRowCancel}"
+						update=":form:msgs" />
+
+					<p:column headerText="Name">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputLabel value="#{customers.customer_Name}"></h:outputLabel>
 							</f:facet>
-							<p:commandLink
-								action="#{adminBean.editCustomer(customers.customer_id)}">
-								<p:graphicImage value="resources/edit4.ico" height="16"
-									width="16" title="Edit" />
-
-							</p:commandLink>
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
+							<f:facet name="input">
+								<h:outputLabel value="#{customers.customer_Name}"></h:outputLabel>
 							</f:facet>
-							<p:commandLink
-								action="#{adminBean.deleteCustomer(customers.customer_id)}">
-								<p:graphicImage value="resources/delete.ico" height="16"
-									width="16" title="Delete" />
-							</p:commandLink>
-						</p:column>
-					</p:dataTable>
-				</p:panelGrid>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Email">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputLabel value="#{customers.customer_email}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:outputLabel value="#{customers.customer_email} " />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Bank account">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputLabel value="#{customers.customer_bancAccount}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:outputLabel value="#{customers.customer_bancAccount}" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Is deleted">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputLabel value="#{customers.customer_isDeleted}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectBooleanButton value="#{customers.customer_isDeleted}"
+									onLabel="Deleted" offLabel="Not deleted" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Prepayment type">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputLabel
+									value="#{adminBean.type(customers.customer_prepaymenttype)}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectOneMenu value="#{customers.customer_prepaymenttype}"
+									style="width:125px">
+									<f:selectItem itemLabel="Half prepayment(50%)" itemValue="1" />
+									<f:selectItem itemLabel="Partial prepayment (75%)"
+										itemValue="2" />
+									<f:selectItem itemLabel="Full prepayment (100%)" itemValue="3" />
+								</p:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:rowEditor />
+					</p:column>
+
+				</p:dataTable>
 			</h:form>
+
 		</ui:define>
 	</ui:composition>
 </h:body>
