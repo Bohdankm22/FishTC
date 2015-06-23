@@ -70,6 +70,19 @@ public class PaymentDaoImpl implements PaymentDao {
 		TypedQuery<Payment> q = em.createQuery(txt, Payment.class);
 		return q.getResultList();
 	}
+
+	@Override
+	public List<Payment> getUnregistred() {
+		return em.createQuery("SELECT p FROM Payment p WHERE p.payment_IsRegistred=false ORDER BY p.Payment_date", Payment.class).getResultList();
+	}
+
+	@Override
+	public void update(Payment p) {
+		Payment pay = em.find(Payment.class, p.getPayment_id());
+		if (pay != null) {
+			em.merge(p);
+		}
+	}
 	
 	
 

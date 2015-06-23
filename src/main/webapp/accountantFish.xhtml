@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="header">
+		<h2>General manager header</h2>
+		<h:link value="Go to accountant" outcome="accountant" />
+	</ui:define>
+	<ui:define name="content">
+		<h2>Cold store fish list</h2> 
+    #{accountantBean.refreshIncomes()}
+    <h:form>
+			<h:panelGrid columns="1">
+				<p:dataTable value="#{accountantBean.incomes}" var="income"
+					styleClass="IncomeTable" headerClass="IncomeTableHeader"
+					rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
+					<p:column>
+						<f:facet name="header">Id</f:facet> 
+						#{income.income_id} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">Item</f:facet> 
+						#{income.income_Itemname} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">Income Price</f:facet> 
+						#{income.income_price} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">Sell Price</f:facet> 
+						#{income.income_SellPrice} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">Registred by GM</f:facet> 
+						#{income.income_registredbygm} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">Availible Weight</f:facet> 
+						#{income.income_Availibleweight} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">Prepayment type</f:facet> 
+						#{income.income_PrepaymentType} 
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+						</f:facet>
+						<p:commandLink action="#{accountantBean.setPreType(income.income_id)}">
+							<h:graphicImage value="resources/edit4.ico" height="16"
+								width="16" title="Edit" />
+						</p:commandLink>
+					</p:column>
+			
+					
+				</p:dataTable>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

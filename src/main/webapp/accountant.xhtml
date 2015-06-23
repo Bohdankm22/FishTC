@@ -16,17 +16,17 @@
 				<h2 class="h2">Accountant page!</h2>
 				<h:form>
 
-					<p:commandLink action="#{accountantBean.}" >
-						<p:outputLabel>Show all users  </p:outputLabel>
+					<p:commandLink action="#{accountantBean.showUnregistered}" >
+						<p:outputLabel>Unregistred payments </p:outputLabel>
 						<p:graphicImage value="resources/showUsers.ico" height="26"
-							width="26" title="Show all users" />
+							width="26" title="Show uregistered payments" />
 					</p:commandLink>
 					<br />
 
-					<p:commandLink action="#{accountantBean.}">
-						<p:outputLabel>Make an order of fish  </p:outputLabel>
+					<p:commandLink action="#{accountantBean.fishParcels}">
+						<p:outputLabel>Set cold store fish parcels prepayment type </p:outputLabel>
 						<p:graphicImage value="resources/fish.ico" height="26" width="26"
-							title="Order fish" />
+							title="Fish parcels" />
 					</p:commandLink>
 					<br />
 

@@ -19,6 +19,8 @@ public class Payment {
 	private int Payment_id;
 	private Timestamp Payment_date;
 	private double Payment_sum;
+	private boolean payment_IsRegistred;
+	
 	@ManyToOne
 	@JoinColumn(name="Payment_customerid")
 	private Customer customer;
@@ -54,6 +56,12 @@ public class Payment {
 	}
 	public void setListOfOutcome(List<Outcome> listOfOutcome) {
 		this.listOfOutcome = listOfOutcome;
+	}
+	public boolean isPayment_IsRegistred() {
+		return payment_IsRegistred;
+	}
+	public void setPayment_IsRegistred(boolean payment_IsRegistred) {
+		this.payment_IsRegistred = payment_IsRegistred;
 	}
 	
 	

@@ -25,4 +25,9 @@ public interface PaymentService {
 
 	List<Payment> getPaymentsListInDuringPeriod(Timestamp start, Timestamp end);
 
+	public List<Payment> getUnregisred();
+
+	public void update(Payment p);
+
+
 }

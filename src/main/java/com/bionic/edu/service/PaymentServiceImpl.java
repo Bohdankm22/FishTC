@@ -76,4 +76,16 @@ public class PaymentServiceImpl implements PaymentService{
 		return paymentDao.getPaymentsListInDuringPeriod(start, end);
 	}
 
+	@Override
+	public List<Payment> getUnregisred() {
+		return paymentDao.getUnregistred();
+	}
+
+	@Override
+	@Transactional
+	public void update(Payment p) {
+		paymentDao.update(p);
+		
+	}
+
 }

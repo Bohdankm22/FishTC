@@ -24,4 +24,8 @@ public interface PaymentDao {
 	public List<Payment> getPaymentsListInDuringPeriod(Timestamp start,
 			Timestamp end);
 
+	public List<Payment> getUnregistred();
+
+	public void update(Payment p);
+
 }

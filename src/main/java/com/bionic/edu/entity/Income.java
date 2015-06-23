@@ -20,6 +20,8 @@ public class Income {
 	private boolean income_registredbygm;
 	private double income_Availibleweight;
 	private boolean income_isselling;
+	private int income_PrepaymentType;
+	
 	@ManyToOne
 	@JoinColumn(name="arrival_id")
 	private Arrival arrival;
@@ -94,4 +96,11 @@ public class Income {
 	public int hashCode(){
 		return income_id;
 	}
+	public int getIncome_PrepaymentType() {
+		return income_PrepaymentType;
+	}
+	public void setIncome_PrepaymentType(int income_PrepaymentType) {
+		this.income_PrepaymentType = income_PrepaymentType;
+	}
+	
 }
