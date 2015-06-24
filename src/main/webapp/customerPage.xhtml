@@ -3,42 +3,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
 <ui:composition template="WEB-INF/templates/customerTemplate.xhtml">
 
 	<ui:define name="content">
 		<h2>Add to bucket</h2> 
     		#{customerEnterBean.RefreshList()}
-    	<h:form>
+    	<h:form class="content">
 			<h:panelGrid columns="1">
-				<h:dataTable value="#{customerEnterBean.incomes}" var="availibleIncome"
+				<p:dataTable value="#{customerEnterBean.incomes}" var="availibleIncome"
 					styleClass="AvailibleIncomeTable" headerClass="AvailibleIncomeTableHeader"
 					rowClasses="AvailibleIncomeTableOddRow, AvailibleIncomeTableEvenRow">
-					<h:column>
+					<p:column>
 						<f:facet name="header">Item</f:facet> 
 						#{availibleIncome.income_Itemname} 
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">Price for pound</f:facet> 
 						#{availibleIncome.income_SellPrice} 
-					</h:column>
-					<h:column>
+					</p:column>
+					<p:column>
 						<f:facet name="header">Availible weight</f:facet> 
 						#{availibleIncome.income_Availibleweight} 
-					</h:column>
+					</p:column>
 					
-					<h:column>
+					<p:column>
 						<f:facet name="header">
 						</f:facet>
-						<h:commandLink action="#{customerEnterBean.addToBucket(availibleIncome.income_id)}">
+						<p:commandLink action="#{customerEnterBean.addToBucket(availibleIncome.income_id)}">
 							<h:graphicImage value="resources/add4.ico" height="26"
 								width="26" title="Add" />
-						</h:commandLink>
-					</h:column>
-				</h:dataTable>
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>
+</h:body>
 </html>

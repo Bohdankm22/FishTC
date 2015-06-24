@@ -3,48 +3,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-		<h1>New Customer</h1>
+		<h1>Registration</h1>
+		<br />
+		<br />
+		<br />
 		<h:form>
-			<h:panelGrid columns="3">
-				<h:outputText value="Name:"></h:outputText>
-				<h:inputText id="Name" value="#{customerRegBean.customer.customer_Name}"
-					required="true" requiredMessage="#{msgsReg.nameRequired}"
+			<h:panelGrid columns="3" columnClasses="wd,wd,wd">
+				<p:outputLabel value="Name:"></p:outputLabel>
+				<p:inputText id="Name"
+					value="#{customerRegBean.customer.customer_Name}" required="true"
+					requiredMessage="#{msgsReg.nameRequired}"
 					validatorMessage="#{msgsReg.nameLength}">
 					<f:validateLength minimum="5" maximum="25"></f:validateLength>
-				</h:inputText>
-				<h:message for="Name" style="color:red" />
-				
-				<h:outputText value="Email:"></h:outputText>
-				<h:inputText id="Email" value="#{customerRegBean.customer.customer_email}"
-					required="true" requiredMessage="#{msgsReg.emailRequired}">
+				</p:inputText>
+				<p:message for="Name" style="color:red" />
+
+				<p:outputLabel value="Email:"></p:outputLabel>
+				<p:inputText id="Email"
+					value="#{customerRegBean.customer.customer_email}" required="true"
+					requiredMessage="#{msgsReg.emailRequired}">
 					<f:validator validatorId="EmailValidator" />
-				</h:inputText>
-				<h:message for="Email" style="color:red" />
-				
-				<h:outputText value="Password:"></h:outputText>
-				<h:inputSecret id="Password" value="#{customerRegBean.customer.customer_password}"
+				</p:inputText>
+				<p:message for="Email" style="color:red" />
+
+				<p:outputLabel value="Password:"></p:outputLabel>
+				<p:inputMask id="Password"
+					value="#{customerRegBean.customer.customer_password}"
 					required="true" requiredMessage="#{msgsReg.passwordRequired}"
 					validatorMessage="#{msgsReg.passwordLength}">
 					<f:validateLength minimum="4" maximum="128"></f:validateLength>
-				</h:inputSecret>
-				<h:message for="Password" style="color:red" />
-				
-				<h:outputText value="Bank account:"></h:outputText>
-				<h:inputText id="bank" value="#{customerRegBean.customer.customer_bancAccount}"
+				</p:inputMask>
+				<p:message for="Password" style="color:red" />
+
+				<p:outputLabel value="Bank account:"></p:outputLabel>
+				<p:inputText id="bank"
+					value="#{customerRegBean.customer.customer_bancAccount}"
 					required="true" requiredMessage="#{msgsReg.bankAccRequired}"
 					validatorMessage="#{msgsReg.bankAccLength}">
 					<f:validateLength minimum="4" maximum="25"></f:validateLength>
-				</h:inputText>
-				<h:message for="bank" style="color:red" />
-				
-				<h:link value="Or log in!" outcome="customerEnter" />
-				
+				</p:inputText>
+				<p:message for="bank" style="color:red" />
+
 			</h:panelGrid>
-			<h:commandButton value="Submit" action="#{customerRegBean.SaveCust}"></h:commandButton>
+			<br />
+			<br />
+			<br />
+			<br />
+			<p:commandButton value="Submit" action="#{customerRegBean.SaveCust}"></p:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

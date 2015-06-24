@@ -52,3 +52,15 @@ h2{
 .dataInline{
 	display: inline-block;
 }
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 70%;
+	margin: auto;
+}
+.content{
+	margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.wd{
+	width: 350px;
+}
