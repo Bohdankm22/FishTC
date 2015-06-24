@@ -118,6 +118,7 @@ public class CustomerEnterBean {
 		outcome.setOutcome_weight(weight);
 		outcome.setOutcome_price(outcome.getOutcome_price() * weight);
 		bucket.add(outcome);
+		outcome = null;
 		return "customerPage";
 	}
 

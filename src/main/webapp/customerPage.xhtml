@@ -8,41 +8,102 @@
 <h:head>
 </h:head>
 <h:body>
-<ui:composition template="WEB-INF/templates/customerTemplate.xhtml">
+	<ui:composition template="WEB-INF/templates/customerTemplate.xhtml">
 
-	<ui:define name="content">
-		<h2>Add to bucket</h2> 
+		<ui:define name="content">
+			<h2>Shopping</h2> 
     		#{customerEnterBean.RefreshList()}
-    	<h:form class="content">
-			<h:panelGrid columns="1">
-				<p:dataTable value="#{customerEnterBean.incomes}" var="availibleIncome"
-					styleClass="AvailibleIncomeTable" headerClass="AvailibleIncomeTableHeader"
-					rowClasses="AvailibleIncomeTableOddRow, AvailibleIncomeTableEvenRow">
-					<p:column>
-						<f:facet name="header">Item</f:facet> 
+    		<h:panelGrid columns="2" columnClasses="text-center, text-center">
+				<p:column>
+				<h2>Add to bucket</h2>
+					<h:form class="content">
+						<h:panelGrid columns="1">
+							<p:dataTable value="#{customerEnterBean.incomes}"
+								var="availibleIncome" styleClass="AvailibleIncomeTable"
+								headerClass="AvailibleIncomeTableHeader"
+								rowClasses="AvailibleIncomeTableOddRow, AvailibleIncomeTableEvenRow">
+								<p:column>
+									<f:facet name="header">Item</f:facet> 
 						#{availibleIncome.income_Itemname} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Price for pound</f:facet> 
+								<p:column>
+									<f:facet name="header">Price for pound</f:facet> 
 						#{availibleIncome.income_SellPrice} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Availible weight</f:facet> 
+								<p:column>
+									<f:facet name="header">Availible weight</f:facet> 
 						#{availibleIncome.income_Availibleweight} 
 					</p:column>
-					
-					<p:column>
-						<f:facet name="header">
-						</f:facet>
-						<p:commandLink action="#{customerEnterBean.addToBucket(availibleIncome.income_id)}">
-							<h:graphicImage value="resources/add4.ico" height="26"
-								width="26" title="Add" />
+
+								<p:column>
+									<f:facet name="header">
+									</f:facet>
+									<p:commandLink
+										action="#{customerEnterBean.addToBucket(availibleIncome.income_id)}">
+										<h:graphicImage value="resources/add4.ico" height="26"
+											width="26" title="Add" />
+									</p:commandLink>
+								</p:column>
+							</p:dataTable>
+						</h:panelGrid>
+					</h:form>
+				</p:column>
+				
+				
+				
+				<p:column>
+					<h2>Your bucket</h2>
+					<h:form>
+						<h:panelGrid columns="1">
+							<p:dataTable value="#{customerEnterBean.bucket}" var="bucket"
+								styleClass="IncomeTable" headerClass="IncomeTableHeader"
+								rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
+								<p:column>
+									<f:facet name="header">Item</f:facet> 
+									#{bucket.income.income_Itemname} 
+								</p:column>
+								<p:column>
+									<f:facet name="header">Weight</f:facet> 
+									#{bucket.outcome_weight} 
+								</p:column>
+								<p:column>
+									<f:facet name="header">Price</f:facet> 
+									#{bucket.outcome_price} 
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+									</f:facet>
+									<h:commandLink
+										action="#{customerEnterBean.editOutcome(bucket.income.income_id)}">
+										<h:graphicImage value="resources/edit4.ico" height="16"
+											width="16" title="Edit" />
+									</h:commandLink>
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+									</f:facet>
+									<p:commandLink
+										action="#{customerEnterBean.deleteOutcome(bucket.income.income_id)}">
+										<h:graphicImage value="resources/delete.ico" height="16"
+											width="16" title="Delete" />
+									</p:commandLink>
+								</p:column>
+							</p:dataTable>
+						</h:panelGrid>
+						<br />
+
+						<p:outputLabel>Total: #{customerEnterBean.total}
+				
+						</p:outputLabel>
+						<br />
+						<p:commandLink action="#{customerEnterBean.buy}">
+							<h:graphicImage value="resources/buy.ico" height="32" width="32"
+								title="Buy" />
 						</p:commandLink>
-					</p:column>
-				</p:dataTable>
+					</h:form>
+				</p:column>
 			</h:panelGrid>
-		</h:form>
-	</ui:define>
-</ui:composition>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

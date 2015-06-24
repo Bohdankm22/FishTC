@@ -64,3 +64,7 @@ h2{
 .wd{
 	width: 350px;
 }
+.text-center{
+	text-align: center;
+	width: 600px;
+}
