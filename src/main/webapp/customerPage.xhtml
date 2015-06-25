@@ -53,7 +53,7 @@
 				
 				<p:column>
 					<h2>Your bucket</h2>
-					<h:form>
+					<h:form class="content">
 						<h:panelGrid columns="1">
 							<p:dataTable value="#{customerEnterBean.bucket}" var="bucket"
 								styleClass="IncomeTable" headerClass="IncomeTableHeader"
@@ -82,11 +82,11 @@
 								<p:column>
 									<f:facet name="header">
 									</f:facet>
-									<p:commandLink
+									<h:commandLink
 										action="#{customerEnterBean.deleteOutcome(bucket.income.income_id)}">
 										<h:graphicImage value="resources/delete.ico" height="16"
 											width="16" title="Delete" />
-									</p:commandLink>
+									</h:commandLink>
 								</p:column>
 							</p:dataTable>
 						</h:panelGrid>

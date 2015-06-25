@@ -116,9 +116,11 @@ public class CustomerEnterBean {
 	public String saveIncome(){
 		weight = Math.round(weight*100.0)/100.0;
 		outcome.setOutcome_weight(weight);
-		outcome.setOutcome_price(outcome.getOutcome_price() * weight);
+		outcome.setOutcome_price(outcome.getIncome().getIncome_SellPrice() * weight);
 		bucket.add(outcome);
 		outcome = null;
+		weight = 0.0;
+		countTotal();
 		return "customerPage";
 	}
 
