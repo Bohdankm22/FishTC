@@ -14,19 +14,17 @@
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-	<div>
+	<div class="moMargin">
 		<ui:insert name="header">
 			<ui:include src="header.xhtml" />
 		</ui:insert>
 	</div>
-	<br />
-	<div class="content">
+	<div class="content minH moMargin">
 		<ui:insert name="content">
 			<ui:include src="content.xhtml" />
 		</ui:insert>
 	</div>
-	<br />
-	<div>
+	<div class="moMargin">
 		<ui:insert name="footer">
 			<ui:include src="footer.xhtml" class="footer" />
 		</ui:insert>

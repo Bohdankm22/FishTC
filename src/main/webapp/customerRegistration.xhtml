@@ -32,12 +32,12 @@
 				<p:message for="Email" style="color:red" />
 
 				<p:outputLabel value="Password:"></p:outputLabel>
-				<p:inputMask id="Password"
+				<p:password id="Password"
 					value="#{customerRegBean.customer.customer_password}"
 					required="true" requiredMessage="#{msgsReg.passwordRequired}"
 					validatorMessage="#{msgsReg.passwordLength}">
 					<f:validateLength minimum="4" maximum="128"></f:validateLength>
-				</p:inputMask>
+				</p:password>
 				<p:message for="Password" style="color:red" />
 
 				<p:outputLabel value="Bank account:"></p:outputLabel>

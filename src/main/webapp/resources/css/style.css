@@ -68,3 +68,10 @@ h2{
 	text-align: center;
 	width: 600px;
 }
+.minH{
+	min-height: 400px;
+}
+.moMargin{
+	margin: 0px;
+	border-bottom-width: 0px;
+}
