@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<h:outputStylesheet library="css" name="style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
@@ -22,20 +24,46 @@
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="enter.xhtml">Home</a></li>
+					<li class="active"><a href="adminPage.xhtml">My page</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+						data-toggle="dropdown" href="#">Options <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Page 1-1</a></li>
-							<li><a href="#">Page 1-2</a></li>
-							<li><a href="#">Page 1-3</a></li>
+							<li><p:commandLink action="#{adminBean.showAllUsers}">
+									<p:outputLabel>Show all users  </p:outputLabel>
+									<p:graphicImage style="imgLeft" value="resources/showUsers.ico"
+										height="26" width="26" title="Show all users" />
+								</p:commandLink></li>
+							<li><p:commandLink action="#{adminBean.makeOrder}">
+									<p:outputLabel>Make an order of fish  </p:outputLabel>
+									<p:graphicImage style="imgLeft" value="resources/fish.ico"
+										height="26" width="26" title="Order fish" />
+								</p:commandLink></li>
+							<li><p:commandLink action="#{adminBean.lookIncomes}">
+									<p:outputLabel>List of unregistred incomes  </p:outputLabel>
+									<p:graphicImage style="imgLeft" value="resources/list.ico"
+										height="26" width="26" title="List unregistred incomes" />
+								</p:commandLink></li>
+							<li><p:commandLink
+									action="#{adminBean.lookColdStoreIncomes}">
+									<p:outputLabel>List of cold store incomes  </p:outputLabel>
+									<p:graphicImage style="imgLeft" value="resources/list1.ico"
+										height="26" width="26" title="List unregistred incomes" />
+								</p:commandLink></li>
+							<li><p:commandLink action="#{adminBean.takeReport}">
+									<p:outputLabel>List at the report </p:outputLabel>
+									<p:graphicImage style="imgLeft" value="resources/report.ico"
+										height="26" width="26" title="Look at the report" />
+								</p:commandLink></li>
 						</ul></li>
 					<li><a href="#">Page 2</a></li>
-					<li><a href="#">Page 3</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="adminPage.xhtml"><span class="glyphicon glyphicon-user"></span>
-							Welcome, #{userEnterBean.user.users_Name}</a></li>
+					<li><a href="adminPage.xhtml"><span
+							class="glyphicon glyphicon-user"></span> Welcome,
+							#{userEnterBean.user.users_Name}</a></li>
+
+					<li><a href="userEnter.xhtml"><span
+							class="glyphicon glyphicon-off"></span>Exit</a></li>
 				</ul>
 			</div>
 		</div>

@@ -3,42 +3,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</h:head>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
 <h:body>
 	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 
 		<ui:define name="content">
 
-			<h1>User log in</h1>
-			<h:form>
-				<h:panelGrid columns="3">
-					<h:outputText value="Name"></h:outputText>
-					<h:inputText id="name" value="#{userEnterBean.name}"
-						required="true" requiredMessage="#{msgsReg.nameRequired}">
-					</h:inputText>
-					<h:message for="name" style="color:red" />
+			<h1>User login</h1>
+			<br />
+			<br />
+			<br />
 
-					<h:outputText value="Password"></h:outputText>
-					<h:inputSecret id="pass" value="#{userEnterBean.pass}"
+			<h:form>
+				<h:panelGrid columns="3" columnClasses="wd,wd,wd">
+					<p:outputLabel value="Name"></p:outputLabel>
+					<p:inputText id="name" value="#{userEnterBean.name}"
+						required="true" requiredMessage="#{msgsReg.nameRequired}">
+						<f:validateLength minimum="4" maximum="128"></f:validateLength>
+					</p:inputText>
+					<p:message for="name" style="color:red" />
+
+					<p:outputLabel value="Password"></p:outputLabel>
+					<p:password id="pass" value="#{userEnterBean.pass}"
 						required="true" requiredMessage="#{msgsReg.passwordRequired}"
 						validatorMessage="#{msgsReg.passwordLength}">
 						<f:validateLength minimum="4" maximum="128"></f:validateLength>
-					</h:inputSecret>
-					<h:message for="pass" style="color:red" />
+					</p:password>
+					<p:message for="pass" style="color:red" />
 
 				</h:panelGrid>
-				<h:commandButton value="Submit" action="#{userEnterBean.findUser}"></h:commandButton>
+				<br />
+				<br />
+				<br />
+				<br />
+				<p:commandButton value="Submit"
+					action="#{userEnterBean.findUser}" />
 			</h:form>
+
+
+
 		</ui:define>
 	</ui:composition>
 </h:body>

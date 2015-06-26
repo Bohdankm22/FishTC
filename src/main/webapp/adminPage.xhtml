@@ -5,15 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
+
 <h:body>
 	<ui:composition template="WEB-INF/templates/admin.xhtml">
 
 		<ui:define name="content">
-			<div class="contentAdmin">
-				<h2 class="h2">Admin page!</h2>
+			<div class="contentAdmin elCentr">
+				<h1>Admin page!</h1>
+				<br/>
+				<br/>
 				<h:form>
 
 					<p:commandLink action="#{adminBean.showAllUsers}" >
@@ -51,6 +51,8 @@
 					</p:commandLink>
 					<br />
 				</h:form>
+				<br/>
+				<br/>
 			</div>
 		</ui:define>
 	</ui:composition>

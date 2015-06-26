@@ -44,6 +44,10 @@ public class UserEnterBean {
 		else
 			return "error403";
 	}
+	public Users getUser() {
+		return user;
+	}
+	
 	
 	
 	
