@@ -3,38 +3,53 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/customerTemplate.xhtml">
 
 	<ui:define name="content">
 		<h2>Your bucket</h2>
+		<br />
 		<h:form>
-			<h:panelGrid columns="1">
-				<h:dataTable value="#{customerEnterBean.bucket}" var="bucket"
+			<h:panelGrid columns="2" class="text-center">
+
+				<p:dataTable value="#{customerEnterBean.bucket}" var="bucket"
 					styleClass="IncomeTable" headerClass="IncomeTableHeader"
 					rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
-					<h:column>
-						<f:facet name="header">Item</f:facet> 
-						#{bucket.income.income_Itemname} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Weight</f:facet> 
-						#{bucket.outcome_weight} 
-					</h:column>
-					<h:column>
-						<f:facet name="header">Price</f:facet> 
-						#{bucket.outcome_price} 
-					</h:column>
-				</h:dataTable>
-				<h:outputLabel class='totalPrice'>Total price is : #{customerEnterBean.pay.payment_sum}</h:outputLabel>
+
+					<p:column>
+						<f:facet name="header">Item</f:facet>
+						<p:outputLabel value="#{bucket.income.income_Itemname}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Weight</f:facet>
+						<p:outputLabel value="#{bucket.outcome_weight}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Price</f:facet>
+						<p:outputLabel value="#{bucket.outcome_price}" />
+					</p:column>
+
+				</p:dataTable>
+
+				<p:column>
+					<br />
+					<br />
+					<h:outputText value="Total price is : " />
+					<div class="totalPrice">
+						<p:outputLabel value="#{customerEnterBean.pay.payment_sum}" />
+					</div>
+				</p:column>
 			</h:panelGrid>
-			
 			<br />
-			<h:commandLink action="#{customerEnterBean.buyAll}">
+			<br />
+			<p:commandLink action="#{customerEnterBean.buyAll}">
 				<h:graphicImage value="resources/buyAll.ico" title="Buy"
-					class="image" />
-			</h:commandLink>
+					height="100" width="100" />
+			</p:commandLink>
 
 		</h:form>
 	</ui:define>

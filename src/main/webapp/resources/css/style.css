@@ -21,12 +21,9 @@ div {
 	height: 200;
 }
 
-.image {
-	height ="40";
-	width ="40";
-}
 .totalPrice{
 	color: red;
+	font-size: 300%;
 }
 .contentAdmin{
 	text-align: left;
@@ -70,8 +67,4 @@ h2{
 }
 .minH{
 	min-height: 400px;
-}
-.moMargin{
-	margin: 0px;
-	border-bottom-width: 0px;
 }

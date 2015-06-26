@@ -3,40 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 </head>
-<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+<ui:composition template="WEB-INF/templates/customerTemplate.xhtml">
 	<ui:define name="content">
 		<h2>Add to bucket</h2>
+		<br/>
+		<br/>
 		<h:form>
-			<h:panelGrid columns="3">
-				<h:outputText value="Income item:"></h:outputText>
-				<h:outputText
+			<h:panelGrid columns="3" columnClasses="wd,wd,wd"> 
+				<p:outputLabel value="Income item:" />
+				<p:outputLabel
 					value="#{customerEnterBean.outcome.income.income_Itemname}" />
 				<br />
 
-				<h:outputText value="Availible weight:"></h:outputText>
-				<h:outputText
+				<p:outputLabel value="Availible weight:"/>
+				<p:outputLabel
 					value="#{customerEnterBean.outcome.income.income_Availibleweight}">
 					<f:convertNumber minFractionDigits="2" />
-				</h:outputText>
+				</p:outputLabel>
 				<br />
 
-				<h:outputText value="Weight:"></h:outputText>
-				<h:inputText id="iWeight" value="#{customerEnterBean.weight}"
+				<p:outputLabel value="Weight:"></p:outputLabel>
+				<p:inputText id="iWeight" value="#{customerEnterBean.weight}"
 					required="true" requiredMessage="#{msgs.orderWeightRequired}"
 					validatorMessage="#{msgs.weightRange}">
 					<f:convertNumber minFractionDigits="2" />
 					<f:validateDoubleRange minimum="0.10"
 						maximum="#{customerEnterBean.outcome.income.income_Availibleweight}" />
-				</h:inputText>
+				</p:inputText>
 				<h:message for="iWeight" style="color:red" />
 			</h:panelGrid>
-			<h:commandButton value="Submit"
-				action="#{customerEnterBean.saveIncome}"></h:commandButton>
+			<br/><br/>
+			<p:commandButton value="Submit"
+				action="#{customerEnterBean.saveIncome}"></p:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>
