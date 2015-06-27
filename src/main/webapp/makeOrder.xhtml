@@ -13,6 +13,9 @@
 		<ui:define name="content">
 			<div class="contentAdmin">
 				<h2 class="h2">Arrival List to order</h2>
+				
+				<br/>
+				<br/>
 				<h:form>
 
 					<h:panelGrid columns="1">
@@ -40,11 +43,14 @@
 						</p:dataTable>
 					</h:panelGrid>
 
-					<p:outputLabel value="Add new item to arrival"/>
+					<br />
+					<br />
+					<p:outputLabel value="Add new item to arrival" />
 					<p:commandLink action="#{adminBean.addItem}">
 						<p:graphicImage value="resources/add4.ico" height="26" width="26"
 							title="Add item" />
 					</p:commandLink>
+					<br />
 					<br />
 
 					<p:outputLabel>Order this list:</p:outputLabel>

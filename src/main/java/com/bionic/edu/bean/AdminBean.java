@@ -116,6 +116,7 @@ public class AdminBean {
 		arrival.setArrival_OrderDate(Timestamp.valueOf(LocalDateTime.now()));
 		arrival.setListOfIncome(order);
 		arrivalService.saveWithTheList(arrival);
+		arrival = null;
 		return "fishOrdered";
 	}
 	
