@@ -3,31 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
-	<ui:define name="header">
-		<h2>General manager header</h2>
-		<h:link value="Go to General manager page" outcome="adminPage" />
-	</ui:define>
+<ui:composition template="WEB-INF/templates/admin.xhtml">
+
 	<ui:define name="content">
 		<h1>Change sell price</h1>
+		<br />
+		<br />
 		<h:form>
+
+			<p:outputLabel>Income item: #{adminBean.inForEdit.income_Itemname}</p:outputLabel>
+			<br />
+
 			<h:panelGrid columns="3">
-				<h:outputText
-					value="Income item: #{adminBean.inForEdit.income_Itemname}"></h:outputText>
-				<br />
-				<h:outputText value="Sell price:"></h:outputText>
-				<h:inputText id="iWeight"
+				<p:outputLabel>Sell price:</p:outputLabel>
+				<p:inputText id="iWeight"
 					value="#{adminBean.inForEdit.income_SellPrice}" required="true"
 					requiredMessage="#{msgs.priceRequired}"
 					validatorMessage="#{msgs.priceRange}">
 					<f:convertNumber minFractionDigits="2" />
 					<f:validateDoubleRange minimum="0.10" maximum="100000.00" />
-				</h:inputText>
-				<h:message for="iWeight" style="color:red" />
+				</p:inputText>
+				<p:message for="iWeight" style="color:red" />
 			</h:panelGrid>
-			<h:commandButton value="Submit" action="#{adminBean.editIncome}"></h:commandButton>
+			<p:commandButton value="Submit" action="#{adminBean.editIncome}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -7,75 +7,77 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/admin.xhtml">
+<h:body>
+	<ui:composition template="WEB-INF/templates/admin.xhtml">
 
-	<ui:define name="content">
-		<h2>Unregistred incomes</h2> 
+		<ui:define name="content">
+			<h2>Unregistred incomes</h2> 
     #{adminBean.refreshList()}
     <h:form>
-			<h:panelGrid columns="1">
-				<p:dataTable value="#{adminBean.incomes}" var="income"
-					styleClass="IncomeTable" headerClass="IncomeTableHeader"
-					rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
-					<p:column>
-						<f:facet name="header">Id</f:facet> 
+				<h:panelGrid columns="1">
+					<p:dataTable value="#{adminBean.incomes}" var="income"
+						styleClass="IncomeTable" headerClass="IncomeTableHeader"
+						rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
+						<p:column>
+							<f:facet name="header">Id</f:facet> 
 						#{income.income_id} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Item</f:facet> 
+						<p:column>
+							<f:facet name="header">Item</f:facet> 
 						#{income.income_Itemname} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Order Weight</f:facet> 
+						<p:column>
+							<f:facet name="header">Order Weight</f:facet> 
 						#{income.income_OrderWeight} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Delivered Weight</f:facet> 
+						<p:column>
+							<f:facet name="header">Delivered Weight</f:facet> 
 						#{income.income_DeliveredWeight} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Income Price</f:facet> 
+						<p:column>
+							<f:facet name="header">Income Price</f:facet> 
 						#{income.income_price} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Sell Price</f:facet> 
+						<p:column>
+							<f:facet name="header">Sell Price</f:facet> 
 						#{income.income_SellPrice} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">
+						<p:column>
+							<f:facet name="header">
 							Put a price
 						</f:facet>
-						<p:commandLink action="#{adminBean.editIncome(income.income_id)}">
-							<p:graphicImage value="resources/edit4.ico" height="16"
-								width="16" title="Edit" />
-						</p:commandLink>
-					</p:column>
-					<p:column>
-						<f:facet name="header">Registred by GM</f:facet> 
+							<p:commandLink action="#{adminBean.editIncome(income.income_id)}">
+								<p:graphicImage value="resources/edit4.ico" height="16"
+									width="16" title="Edit" />
+							</p:commandLink>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Registred by GM</f:facet> 
 						#{income.income_registredbygm} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Availible Weight</f:facet> 
+						<p:column>
+							<f:facet name="header">Availible Weight</f:facet> 
 						#{income.income_Availibleweight} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">Is selling</f:facet> 
+						<p:column>
+							<f:facet name="header">Is selling</f:facet> 
 						#{income.income_isselling} 
 					</p:column>
-					<p:column>
-						<f:facet name="header">
+						<p:column>
+							<f:facet name="header">
 						Register
 						</f:facet>
-						<p:commandLink
-							action="#{adminBean.registerIncome(income.income_id)}">
-							<h:graphicImage value="resources/order.ico" height="16"
-								width="16" title="Edit" />
-						</p:commandLink>
-					</p:column>
+							<p:commandLink
+								action="#{adminBean.registerIncome(income.income_id)}">
+								<h:graphicImage value="resources/order.ico" height="16"
+									width="16" title="Edit" />
+							</p:commandLink>
+						</p:column>
 
-				</p:dataTable>
-			</h:panelGrid>
-		</h:form>
-	</ui:define>
-</ui:composition>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>
