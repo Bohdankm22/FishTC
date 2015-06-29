@@ -26,7 +26,7 @@ import com.bionic.edu.service.PaymentService;
 
 @Named
 @Scope("session")
-public class AdminBean {
+public class AdminBean extends UserRole{
 
 	private List<Customer> customers = null;
 	private List<Income> order = null;
@@ -40,6 +40,7 @@ public class AdminBean {
 	private List<Payment> payments = null;
 	private double totalSumIn = 0;
 	private double totalSumOut = 0;
+	private String userName = null;
 
 	@Inject
 	private CustomerService customerService;
@@ -50,6 +51,14 @@ public class AdminBean {
 	@Inject
 	private PaymentService paymentService;
 	
+
+	public AdminBean(String users_Name) {
+		this();
+		userName = users_Name;
+	}
+
+	public AdminBean() {
+	}
 
 	public String showAllUsers() {
 		return "allUsers";
@@ -281,4 +290,10 @@ public class AdminBean {
 		default: return "It's mistake";
 		}
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+	
+	
 }

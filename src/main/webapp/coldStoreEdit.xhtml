@@ -21,7 +21,7 @@
 			<div class="dataTable">
 				<p:panelGrid columns="2">
 					Incomes in this arrival
-					<p:dataTable value="#{coldStoreManagerBean.arrival.listOfIncome}"
+					<p:dataTable value="#{userEnterBean.coldStore.arrival.listOfIncome}"
 						var="incomes" styleClass="incomesTable"
 						headerClass="incomesTableHeader"
 						rowClasses="incomesTableOddRow, incomesTableEvenRow">
@@ -73,7 +73,7 @@
 					<p:outputLabel>Delivery Price</p:outputLabel>
 					<p:panelGrid columns="2">
 						<p:inputText id="DelPrice"
-							value="#{coldStoreManagerBean.arrival.arrival_deliveryprice}"
+							value="#{userEnterBean.coldStore.arrival.arrival_deliveryprice}"
 							required="true" requiredMessage="#{msgs.priceRequired}"
 							validatorMessage="#{msgs.priceRange1}">
 							<f:convertNumber minFractionDigits="2" />
@@ -86,7 +86,7 @@
 					<p:outputLabel>Ship Name</p:outputLabel>
 					<p:panelGrid columns="2">
 						<p:inputText id="Ship"
-							value="#{coldStoreManagerBean.arrival.arrival_RefrigeratorShipName}"
+							value="#{userEnterBean.coldStore.arrival.arrival_RefrigeratorShipName}"
 							required="true" requiredMessage="#{msgs.shipNameRequired}">
 							<f:validateLength minimum="4" maximum="127"></f:validateLength>
 						</p:inputText>
@@ -96,7 +96,7 @@
 
 					<p:outputLabel></p:outputLabel>
 
-					<p:commandLink action="#{coldStoreManagerBean.registerIncome}">
+					<p:commandLink action="#{userEnterBean.coldStore.registerIncome}">
 						<p:outputLabel>Register</p:outputLabel>
 						<p:graphicImage value="resources/edit4.ico" height="16" width="16"
 							title="Register" />

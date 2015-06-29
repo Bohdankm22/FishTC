@@ -16,14 +16,14 @@
 				<h2 class="h2">Accountant page!</h2>
 				<h:form>
 
-					<p:commandLink action="#{accountantBean.showUnregistered}" >
+					<p:commandLink action="#{accountantEnterBean.accountant.showUnregistered}" >
 						<p:outputLabel>Unregistred payments </p:outputLabel>
-						<p:graphicImage value="resources/showUsers.ico" height="26"
+						<p:graphicImage value="resources/showaccountants.ico" height="26"
 							width="26" title="Show uregistered payments" />
 					</p:commandLink>
 					<br />
 
-					<p:commandLink action="#{accountantBean.fishParcels}">
+					<p:commandLink action="#{accountantEnterBean.accountant.fishParcels}">
 						<p:outputLabel>Set cold store fish parcels prepayment type </p:outputLabel>
 						<p:graphicImage value="resources/fish.ico" height="26" width="26"
 							title="Fish parcels" />

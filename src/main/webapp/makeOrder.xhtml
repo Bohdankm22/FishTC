@@ -19,7 +19,7 @@
 				<h:form>
 
 					<h:panelGrid columns="1">
-						<p:dataTable value="#{adminBean.order}" var="order"
+						<p:dataTable value="#{userEnterBean.admin.order}" var="order"
 							styleClass="orderTable" headerClass="orderTableHeader"
 							rowClasses="orderTableOddRow, orderTableEvenRow">
 							<p:column>
@@ -35,7 +35,7 @@
 								<f:facet name="header">Delete
 								</f:facet>
 								<p:commandLink
-									action="#{adminBean.deleteItem(order.income_Itemname)}">
+									action="#{userEnterBean.admin.deleteItem(order.income_Itemname)}">
 									<p:graphicImage value="resources/delete.ico" height="16"
 										width="16" title="Delete" />
 								</p:commandLink>
@@ -46,7 +46,7 @@
 					<br />
 					<br />
 					<p:outputLabel value="Add new item to arrival" />
-					<p:commandLink action="#{adminBean.addItem}">
+					<p:commandLink action="#{userEnterBean.admin.addItem}">
 						<p:graphicImage value="resources/add4.ico" height="26" width="26"
 							title="Add item" />
 					</p:commandLink>
@@ -54,7 +54,7 @@
 					<br />
 
 					<p:outputLabel>Order this list:</p:outputLabel>
-					<p:commandLink action="#{adminBean.orderList}">
+					<p:commandLink action="#{userEnterBean.admin.orderList}">
 						<p:graphicImage value="resources/order.ico" height="26" width="26"
 							title="Order list" />
 					</p:commandLink>

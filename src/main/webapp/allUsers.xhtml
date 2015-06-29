@@ -11,20 +11,20 @@
 
 		<ui:define name="content">
 			<h2>All the customers</h2> 
-    	#{adminBean.refreshListOfUsers()}
+    	#{userEnterBean.admin.refreshListOfUsers()}
 
 			<h:form id="form">
 				<p:growl id="msgs" showDetail="true" />
 
-				<p:dataTable id="Incomes" value="#{adminBean.customers}"
+				<p:dataTable id="Incomes" value="#{userEnterBean.admin.customers}"
 					var="customers" editable="true" style="margin-bottom:20px">
 					<f:facet name="header">
 		           All the customers
 		       </f:facet>
 
-					<p:ajax event="rowEdit" listener="#{adminBean.onRowEdit}"
+					<p:ajax event="rowEdit" listener="#{userEnterBean.admin.onRowEdit}"
 						update=":form:msgs" />
-					<p:ajax event="rowEditCancel" listener="#{adminBean.onRowCancel}"
+					<p:ajax event="rowEditCancel" listener="#{userEnterBean.admin.onRowCancel}"
 						update=":form:msgs" />
 
 					<p:column headerText="Name">
@@ -76,7 +76,7 @@
 						<p:cellEditor>
 							<f:facet name="output">
 								<h:outputLabel
-									value="#{adminBean.type(customers.customer_prepaymenttype)}" />
+									value="#{userEnterBean.admin.type(customers.customer_prepaymenttype)}" />
 							</f:facet>
 							<f:facet name="input">
 								<p:selectOneMenu value="#{customers.customer_prepaymenttype}"

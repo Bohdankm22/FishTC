@@ -12,10 +12,10 @@
 
 		<ui:define name="content">
 			<h2>Unregistred incomes</h2> 
-    #{adminBean.refreshList()}
+    #{userEnterBean.admin.refreshList()}
     <h:form>
 				<h:panelGrid columns="1">
-					<p:dataTable value="#{adminBean.incomes}" var="income"
+					<p:dataTable value="#{userEnterBean.admin.incomes}" var="income"
 						styleClass="IncomeTable" headerClass="IncomeTableHeader"
 						rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
 						<p:column>
@@ -46,7 +46,7 @@
 							<f:facet name="header">
 							Put a price
 						</f:facet>
-							<p:commandLink action="#{adminBean.editIncome(income.income_id)}">
+							<p:commandLink action="#{userEnterBean.admin.editIncome(income.income_id)}">
 								<p:graphicImage value="resources/edit4.ico" height="16"
 									width="16" title="Edit" />
 							</p:commandLink>
@@ -68,7 +68,7 @@
 						Register
 						</f:facet>
 							<p:commandLink
-								action="#{adminBean.registerIncome(income.income_id)}">
+								action="#{userEnterBean.admin.registerIncome(income.income_id)}">
 								<h:graphicImage value="resources/order.ico" height="16"
 									width="16" title="Edit" />
 							</p:commandLink>

@@ -11,22 +11,18 @@
 <h:body>
 	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 
-		<ui:define name="header">
-			<h2>Edit user</h2>
-		</ui:define>
-
 		<ui:define name="content">
 			<h2>Edit user</h2>
 			<h:form>
 				<h:panelGrid columns="3">
 
 					<p:outputLabel value="User's name:" />
-					<p:outputLabel value="#{securityOfficerBean.user.users_Name}" />
+					<p:outputLabel value="#{userEnterBean.security.user.users_Name}" />
 					<p:outputLabel></p:outputLabel>
 				
 					<p:outputLabel value="New user's name:" />
 					<p:inputText id="name1"
-						value="#{securityOfficerBean.user.users_Name}" required="true"
+						value="#{userEnterBean.security.user.users_Name}" required="true"
 						requiredMessage="#{msgs.nameRequired}"
 						validatorMessage="#{msgs.nameLenght}">
 						<f:validateLength minimum="4" maximum="127" />
@@ -34,12 +30,12 @@
 					<p:message for="name1" style="color:red" />
 
 					<p:outputLabel value="User's role" />
-					<p:outputLabel value="#{securityOfficerBean.user.users_Role}" />
+					<p:outputLabel value="#{userEnterBean.security.user.users_Role}" />
 					<p:outputLabel></p:outputLabel>
 					
 					<p:outputLabel value="New user's role:" />
 					<p:inputText id="role"
-						value="#{securityOfficerBean.user.users_Role}" required="true"
+						value="#{userEnterBean.security.user.users_Role}" required="true"
 						requiredMessage="#{msgs.roleRequired}"
 						validatorMessage="#{msgs.roleNumb}">
 						<f:convertNumber minFractionDigits="0" />
@@ -50,7 +46,7 @@
 
 				</h:panelGrid>
 				<p:commandButton value="Submit"
-					action="#{securityOfficerBean.saveUser}" />
+					action="#{userEnterBean.security.saveUser}" />
 			</h:form>
 		</ui:define>
 

@@ -15,7 +15,7 @@ import com.bionic.edu.service.ArrivalService;
 
 @Named
 @Scope("session")
-public class ColdStoreManagerBean {
+public class ColdStoreManagerBean extends UserRole{
 	
 	private List<Arrival> orders = null;
 	private Arrival arrival = null;

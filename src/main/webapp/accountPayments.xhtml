@@ -14,18 +14,14 @@
 <h:body>
 	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 
-		<ui:define name="header">
-			<h2>Accountant page</h2>
-			<h:link value="Go to accountant page" outcome="accountant" />
-		</ui:define>
 
 		<ui:define name="content">
 			<h2>Unregistered payments</h2> 
-    	#{accountantBean.refreshUnregistered()}
+    	#{userEnterBean.accountant.refreshUnregistered()}
     	<h:form>
 
 				<p:panelGrid columns="1">
-					<p:dataTable value="#{accountantBean.unregistered}" var="payments"
+					<p:dataTable value="#{userEnterBean.accountant.unregistered}" var="payments"
 						styleClass="paymentsTable" headerClass="paymentsTableHeader"
 						rowClasses="paymentsTableOddRow, paymentsTableEvenRow">
 						<p:column>
@@ -52,7 +48,7 @@
 							<f:facet name="header">
 							</f:facet>
 							<p:commandLink
-								action="#{accountantBean.register(payments.payment_id)}">
+								action="#{userEnterBean.accountant.register(payments.payment_id)}">
 								<p:graphicImage value="resources/edit4.ico" height="16"
 									width="16" title="Edit" />
 							</p:commandLink>

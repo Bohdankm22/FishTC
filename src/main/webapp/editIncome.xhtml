@@ -14,13 +14,13 @@
 		<br />
 		<h:form>
 
-			<p:outputLabel>Income item: #{adminBean.inForEdit.income_Itemname}</p:outputLabel>
+			<p:outputLabel>Income item: #{userEnterBean.admin.inForEdit.income_Itemname}</p:outputLabel>
 			<br />
 
 			<h:panelGrid columns="3">
 				<p:outputLabel>Sell price:</p:outputLabel>
 				<p:inputText id="iWeight"
-					value="#{adminBean.inForEdit.income_SellPrice}" required="true"
+					value="#{userEnterBean.admin.inForEdit.income_SellPrice}" required="true"
 					requiredMessage="#{msgs.priceRequired}"
 					validatorMessage="#{msgs.priceRange}">
 					<f:convertNumber minFractionDigits="2" />
@@ -28,7 +28,7 @@
 				</p:inputText>
 				<p:message for="iWeight" style="color:red" />
 			</h:panelGrid>
-			<p:commandButton value="Submit" action="#{adminBean.editIncome}" />
+			<p:commandButton value="Submit" action="#{userEnterBean.admin.editIncome}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -14,21 +14,21 @@
 	</ui:define>
 	<ui:define name="content">
 		<h2>Cold store fish list</h2> 
-    #{accountantBean.refreshIncomes()}
+    #{userEnterBean.accountant.refreshIncomes()}
 
 		<h:form id="form">
 			<p:growl id="msgs" showDetail="true" />
 
-			<p:dataTable id="Incomes" value="#{accountantBean.incomes}"
+			<p:dataTable id="Incomes" value="#{userEnterBean.accountant.incomes}"
 				var="income" editable="true" style="margin-bottom:20px">
 				<f:facet name="header">
 		           Prepayment type
 		       </f:facet>
 
-				<p:ajax event="rowEdit" listener="#{accountantBean.onRowEdit}"
+				<p:ajax event="rowEdit" listener="#{userEnterBean.accountant.onRowEdit}"
 					update=":form:msgs" />
 				<p:ajax event="rowEditCancel"
-					listener="#{accountantBean.onRowCancel}" update=":form:msgs" />
+					listener="#{userEnterBean.accountant.onRowCancel}" update=":form:msgs" />
 
 				<p:column headerText="Id">
 					<p:cellEditor>
@@ -99,7 +99,7 @@
 				<p:column headerText="Prepayment type">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputLabel value="#{accountantBean.type(income.income_PrepaymentType)}" />
+							<h:outputLabel value="#{userEnterBean.accountant.type(income.income_PrepaymentType)}" />
 						</f:facet>
 						<f:facet name="input">
 							<p:selectOneMenu value="#{income.income_PrepaymentType}"

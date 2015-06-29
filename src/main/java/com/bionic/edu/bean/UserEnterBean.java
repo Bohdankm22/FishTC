@@ -9,11 +9,15 @@ import com.bionic.edu.entity.Users;
 import com.bionic.edu.service.UsersService;
 
 @Named
-@Scope("request")
+@Scope("session")
 public class UserEnterBean {
 	private String name = null;
 	private String pass = null;
-	private Users user = null;
+	private Users userPers = null;
+	private AdminBean admin = null;
+	private AccountantBean accountant = null;
+	private SecurityOfficerBean security = null;
+	private ColdStoreManagerBean coldStore = null;
 	
 	@Inject
 	private UsersService usersService;
@@ -31,21 +35,49 @@ public class UserEnterBean {
 		this.pass = pass;
 	}
 	public String findUser(){
-		user = usersService.findByNamePass(name, pass);
-		if(user != null){
-			switch(user.getUsers_Role()){
-				case 1: return "adminPage";
-				case 2: return "coldStore";
-				case 3: return "accountant";
-				case 4: return "security";
+		userPers = usersService.findByNamePass(name, pass);
+		if(userPers != null){
+			switch(userPers.getUsers_Role()){
+				case 1: 
+					admin = new AdminBean(userPers.getUsers_Name());
+					return "adminPage";
+				case 2: 
+					coldStore = new ColdStoreManagerBean();
+					return "coldStore";
+				case 3:
+					accountant = new AccountantBean();
+					return "accountant";
+				case 4:
+					security = new SecurityOfficerBean();
+					return "security";
 				default: return "error";
 			}
 		}
 		else
 			return "error403";
 	}
-	public Users getUser() {
-		return user;
+	
+	public Users getUserPers() {
+		return userPers;
+	}
+	
+	public void userNull(){
+		admin = null;
+		accountant = null;
+		security = null;
+		coldStore = null;
+	}
+	public AccountantBean getAccountant() {
+		return accountant;
+	}
+	public SecurityOfficerBean getSecurity() {
+		return security;
+	}
+	public ColdStoreManagerBean getColdStore() {
+		return coldStore;
+	}
+	public AdminBean getAdmin() {
+		return admin;
 	}
 	
 	

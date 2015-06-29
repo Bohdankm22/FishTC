@@ -17,7 +17,7 @@ import com.bionic.edu.service.PaymentService;
 
 @Named
 @Scope("session")
-public class AccountantBean {
+public class AccountantBean extends UserRole{
 	
 	private List<Payment> unregistered = null;
 	private List<Income> incomes = null;

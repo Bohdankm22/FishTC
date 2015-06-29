@@ -28,28 +28,28 @@
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Options </a>
 						<ul class="dropdown-menu">
-							<li><p:commandLink action="#{adminBean.showAllUsers}">
+							<li><p:commandLink action="#{userEnterBean.admin.showAllUsers}">
 									<p:outputLabel>Show all users  </p:outputLabel>
 									<p:graphicImage style="imgLeft" value="resources/showUsers.ico"
 										height="26" width="26" title="Show all users" />
 								</p:commandLink></li>
-							<li><p:commandLink action="#{adminBean.makeOrder}">
+							<li><p:commandLink action="#{userEnterBean.admin.makeOrder}">
 									<p:outputLabel>Make an order of fish  </p:outputLabel>
 									<p:graphicImage style="imgLeft" value="resources/fish.ico"
 										height="26" width="26" title="Order fish" />
 								</p:commandLink></li>
-							<li><p:commandLink action="#{adminBean.lookIncomes}">
+							<li><p:commandLink action="#{userEnterBean.admin.lookIncomes}">
 									<p:outputLabel>List of unregistred incomes  </p:outputLabel>
 									<p:graphicImage style="imgLeft" value="resources/list.ico"
 										height="26" width="26" title="List unregistred incomes" />
 								</p:commandLink></li>
 							<li><p:commandLink
-									action="#{adminBean.lookColdStoreIncomes}">
+									action="#{userEnterBean.admin.lookColdStoreIncomes}">
 									<p:outputLabel>List of cold store incomes  </p:outputLabel>
 									<p:graphicImage style="imgLeft" value="resources/list1.ico"
 										height="26" width="26" title="List unregistred incomes" />
 								</p:commandLink></li>
-							<li><p:commandLink action="#{adminBean.takeReport}">
+							<li><p:commandLink action="#{userEnterBean.admin.takeReport}">
 									<p:outputLabel>List at the report </p:outputLabel>
 									<p:graphicImage style="imgLeft" value="resources/report.ico"
 										height="26" width="26" title="Look at the report" />
@@ -60,7 +60,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="adminPage.xhtml"><span
 							class="glyphicon glyphicon-user"></span> Welcome,
-							#{userEnterBean.user.users_Name}</a></li>
+							#{userEnterBean.admin.userName}</a></li>
 
 					<li><a href="userEnter.xhtml"><span
 							class="glyphicon glyphicon-off"></span>Exit</a></li>

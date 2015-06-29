@@ -11,11 +11,11 @@
 	
 	<ui:define name="content">
 		<h2>Cold store fish list</h2> 
-    #{adminBean.refreshList1()}
+    #{userEnterBean.admin.refreshList1()}
     
     <h:form>
 			<h:panelGrid columns="1">
-				<p:dataTable value="#{adminBean.incomes}" var="income"
+				<p:dataTable value="#{userEnterBean.admin.incomes}" var="income"
 					styleClass="IncomeTable" headerClass="IncomeTableHeader"
 					rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
 					<p:column>
@@ -45,7 +45,7 @@
 					<p:column>
 						<f:facet name="header">
 						</f:facet>
-						<p:commandLink action="#{adminBean.editSellPrice(income.income_id)}">
+						<p:commandLink action="#{userEnterBean.admin.editSellPrice(income.income_id)}">
 							<p:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</p:commandLink>
@@ -57,7 +57,7 @@
 					<p:column>
 						<f:facet name="header">
 						</f:facet>
-						<p:commandLink action="#{adminBean.registerIncome1(income.income_id)}">
+						<p:commandLink action="#{userEnterBean.admin.registerIncome1(income.income_id)}">
 							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</p:commandLink>
@@ -74,7 +74,7 @@
 						<f:facet name="header">
 							For sale
 						</f:facet>
-						<p:commandLink action="#{adminBean.putForSaleIncome1(income.income_id)}">
+						<p:commandLink action="#{userEnterBean.admin.putForSaleIncome1(income.income_id)}">
 							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</p:commandLink>

@@ -12,7 +12,7 @@ import com.bionic.edu.service.UsersService;
 
 @Named
 @Scope("session")
-public class SecurityOfficerBean {
+public class SecurityOfficerBean extends UserRole{
 	
 	private List<Users> users = null;
 	private Users user = null;

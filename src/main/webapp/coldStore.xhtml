@@ -17,11 +17,11 @@
 
 		<ui:define name="content">
 			<h2>All the incomes</h2> 
-    	#{coldStoreManagerBean.refreshListOfOrders()}
+    	#{userEnterBean.coldStore.refreshListOfOrders()}
     	<h:form>
 				<p:panelGrid columns="1">
 				Ordered arrivals:
-					<p:dataTable value="#{coldStoreManagerBean.orders}" var="orders"
+					<p:dataTable value="#{userEnterBean.coldStore.orders}" var="orders"
 						styleClass="ordersTable" headerClass="ordersTableHeader"
 						rowClasses="ordersTableOddRow, ordersTableEvenRow">
 						<p:column>
@@ -40,7 +40,7 @@
 							Register
 							</f:facet>
 							<p:commandLink
-								action="#{coldStoreManagerBean.editArrival(orders.arrival_id)}">
+								action="#{userEnterBean.coldStore.editArrival(orders.arrival_id)}">
 								<p:graphicImage value="resources/edit4.ico" height="16"
 									width="16" title="Register" />
 							</p:commandLink>
