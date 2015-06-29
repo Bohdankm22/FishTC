@@ -6,6 +6,10 @@ import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
 
 import com.bionic.edu.entity.Users;
+import com.bionic.edu.service.ArrivalService;
+import com.bionic.edu.service.CustomerService;
+import com.bionic.edu.service.IncomeService;
+import com.bionic.edu.service.PaymentService;
 import com.bionic.edu.service.UsersService;
 
 @Named
@@ -21,6 +25,14 @@ public class UserEnterBean {
 	
 	@Inject
 	private UsersService usersService;
+	@Inject
+	private CustomerService customerService;
+	@Inject
+	private ArrivalService arrivalService;
+	@Inject
+	private IncomeService incomeService;
+	@Inject
+	private PaymentService paymentService;
 	
 	public String getName() {
 		return name;
@@ -39,16 +51,16 @@ public class UserEnterBean {
 		if(userPers != null){
 			switch(userPers.getUsers_Role()){
 				case 1: 
-					admin = new AdminBean(userPers.getUsers_Name());
+					admin = new AdminBean(customerService,arrivalService,incomeService,paymentService);
 					return "adminPage";
 				case 2: 
-					coldStore = new ColdStoreManagerBean();
+					coldStore = new ColdStoreManagerBean(arrivalService);
 					return "coldStore";
 				case 3:
-					accountant = new AccountantBean();
+					accountant = new AccountantBean(paymentService,incomeService);
 					return "accountant";
 				case 4:
-					security = new SecurityOfficerBean();
+					security = new SecurityOfficerBean(usersService);
 					return "security";
 				default: return "error";
 			}
@@ -66,6 +78,8 @@ public class UserEnterBean {
 		accountant = null;
 		security = null;
 		coldStore = null;
+		name = null;
+		pass = null;
 	}
 	public AccountantBean getAccountant() {
 		return accountant;
@@ -79,9 +93,17 @@ public class UserEnterBean {
 	public AdminBean getAdmin() {
 		return admin;
 	}
+	public void setAdmin(AdminBean admin) {
+		this.admin = admin;
+	}
+	public void setAccountant(AccountantBean accountant) {
+		this.accountant = accountant;
+	}
+	public void setSecurity(SecurityOfficerBean security) {
+		this.security = security;
+	}
+	public void setColdStore(ColdStoreManagerBean coldStore) {
+		this.coldStore = coldStore;
+	}
 	
-	
-	
-	
-
 }

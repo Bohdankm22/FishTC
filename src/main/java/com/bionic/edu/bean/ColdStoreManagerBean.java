@@ -4,27 +4,23 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.springframework.context.annotation.Scope;
-
 import com.bionic.edu.entity.Arrival;
 import com.bionic.edu.entity.Income;
 import com.bionic.edu.service.ArrivalService;
 
-@Named
-@Scope("session")
 public class ColdStoreManagerBean extends UserRole{
 	
 	private List<Arrival> orders = null;
 	private Arrival arrival = null;
 	private String shipName = "";
 	
-	@Inject
 	private ArrivalService arrivalService;
 
 	
+	public ColdStoreManagerBean(ArrivalService arrivalService2) {
+		this.arrivalService = arrivalService2;
+	}
+
 	public void refreshListOfOrders(){
 		orders = arrivalService.getListOfUndeliveredArrivals();
 	}

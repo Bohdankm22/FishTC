@@ -12,7 +12,7 @@
 </h:head>
 
 <h:body>
-	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:composition template="WEB-INF/templates/accountant.xhtml">
 
 
 		<ui:define name="content">
@@ -45,13 +45,13 @@
 
 
 						<p:column>
-							<f:facet name="header">
+							<f:facet name="header"> Register
 							</f:facet>
-							<p:commandLink
+							<h:commandLink
 								action="#{userEnterBean.accountant.register(payments.payment_id)}">
 								<p:graphicImage value="resources/edit4.ico" height="16"
 									width="16" title="Edit" />
-							</p:commandLink>
+							</h:commandLink>
 						</p:column>
 
 					</p:dataTable>

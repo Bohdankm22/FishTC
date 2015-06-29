@@ -19,6 +19,8 @@ public interface IncomeService {
 	public Income update(Income income);
 	
 	public List<Income> getAvailibleFish();
+
+	public List<Income> getAdminIncomes();
 	
 
 }

@@ -9,11 +9,8 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.primefaces.event.RowEditEvent;
-import org.springframework.context.annotation.Scope;
 
 import com.bionic.edu.entity.Arrival;
 import com.bionic.edu.entity.Customer;
@@ -24,8 +21,6 @@ import com.bionic.edu.service.CustomerService;
 import com.bionic.edu.service.IncomeService;
 import com.bionic.edu.service.PaymentService;
 
-@Named
-@Scope("session")
 public class AdminBean extends UserRole{
 
 	private List<Customer> customers = null;
@@ -42,22 +37,17 @@ public class AdminBean extends UserRole{
 	private double totalSumOut = 0;
 	private String userName = null;
 
-	@Inject
 	private CustomerService customerService;
-	@Inject
 	private ArrivalService arrivalService;
-	@Inject
 	private IncomeService incomeService;
-	@Inject
 	private PaymentService paymentService;
 	
 
-	public AdminBean(String users_Name) {
-		this();
-		userName = users_Name;
-	}
-
-	public AdminBean() {
+	public AdminBean(CustomerService customerService2, ArrivalService arrivalService2, IncomeService incomeService2, PaymentService paymentService2) {
+		this.paymentService = paymentService2;
+		this.customerService = customerService2;
+		this.incomeService = incomeService2;
+		this.arrivalService = arrivalService2;
 	}
 
 	public String showAllUsers() {
@@ -134,7 +124,7 @@ public class AdminBean extends UserRole{
 	}
 	
 	public void refreshList(){
-		incomes = incomeService.getUnregisteredIncomesList();
+		incomes = incomeService.getAdminIncomes();
 	}
 
 	public List<Income> getIncomes() {
@@ -164,6 +154,7 @@ public class AdminBean extends UserRole{
 		int n = Integer.parseInt(id);
 		Income in = incomeService.findById(n);
 		in.setIncome_registredbygm(!in.isIncome_registredbygm());
+		in.setIncome_Availibleweight(in.getIncome_DeliveredWeight());
 		incomeService.update(in);
 		return "incomeList";
 	}
@@ -293,6 +284,10 @@ public class AdminBean extends UserRole{
 
 	public String getUserName() {
 		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 	

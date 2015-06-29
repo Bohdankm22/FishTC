@@ -74,5 +74,15 @@ public class IncomeDaoImpl implements IncomeDao {
 		list = q.getResultList();
 		return list;
 	}
+
+	@Override
+	public List<Income> getAdminIncomes() {
+		boolean a = false;
+		String txt = "SELECT i FROM Income i WHERE i.income_registredbygm = " + a + " and " + 
+				"i.income_DeliveredWeight>0";
+		TypedQuery<Income> q = em.createQuery(txt, Income.class);
+		List<Income> list = q.getResultList();
+		return list;
+	}
 	
 }

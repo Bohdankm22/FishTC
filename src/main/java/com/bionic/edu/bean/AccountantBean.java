@@ -4,29 +4,28 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.primefaces.event.RowEditEvent;
-import org.springframework.context.annotation.Scope;
 
 import com.bionic.edu.entity.Income;
 import com.bionic.edu.entity.Payment;
 import com.bionic.edu.service.IncomeService;
 import com.bionic.edu.service.PaymentService;
 
-@Named
-@Scope("session")
 public class AccountantBean extends UserRole{
 	
 	private List<Payment> unregistered = null;
 	private List<Income> incomes = null;
 	
-	@Inject
 	private PaymentService paymentService;
-	@Inject
 	private IncomeService incomeService;
 	
+	public AccountantBean(PaymentService paymentService2,
+			IncomeService incomeService2) {
+		this.paymentService = paymentService2;
+		this.incomeService = incomeService2;
+	}
+
 	public void refreshUnregistered(){
 		unregistered = paymentService.getUnregisred();
 	}

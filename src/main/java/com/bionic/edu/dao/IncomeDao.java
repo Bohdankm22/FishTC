@@ -20,4 +20,6 @@ public interface IncomeDao {
 	
 	public List<Income> getAvailibleFish();
 
+	public List<Income> getAdminIncomes();
+
 }

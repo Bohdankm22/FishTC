@@ -2,7 +2,9 @@
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<link rel="shortcut icon" type="image/x-icon"
 		href="resources/fish.ico" />
@@ -18,11 +20,11 @@
 <h:body>
 	<div>
 		<ui:insert name="header">
-			<ui:include src="customerHeader.xhtml" />
+			<ui:include src="headAccountant.xhtml" />
 		</ui:insert>
 	</div>
 	<br />
-	<div class="content">
+	<div>
 		<ui:insert name="content">
 			<ui:include src="content.xhtml" />
 		</ui:insert>
@@ -30,7 +32,7 @@
 	<br />
 	<div>
 		<ui:insert name="footer">
-			<ui:include src="footer.xhtml" class="footer" />
+			<ui:include src="footer.xhtml" />
 		</ui:insert>
 	</div>
 </h:body>

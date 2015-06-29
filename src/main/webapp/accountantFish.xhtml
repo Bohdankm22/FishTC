@@ -7,11 +7,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
-	<ui:define name="header">
-		<h2>Accountant header</h2>
-		<h:link value="Go to accountant" outcome="accountant" />
-	</ui:define>
+<ui:composition template="WEB-INF/templates/accountant.xhtml">
+	
 	<ui:define name="content">
 		<h2>Cold store fish list</h2> 
     #{userEnterBean.accountant.refreshIncomes()}

@@ -7,29 +7,28 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="WEB-INF/templates/admin.xhtml">
-	<ui:define name="content">
-		<h1>New Income</h1>
-		<h:form>
-			<h:panelGrid columns="3">
-				<p:outputLabel value="Income item:"/>
-				<p:inputText id="iItem" value="#{userEnterBean.admin.income.income_Itemname}"
-					required="true" requiredMessage="#{msgs.itemRequired}">
-					<f:validateLength minimum="4" maximum="127"/>
-				</p:inputText>
-				<p:message for="iItem" style="color:red" />
 
-				<p:outputLabel value="Weight to order:" />
+	<ui:define name="content">
+		<h1>Change sell price</h1>
+		<br />
+		<br />
+		<h:form>
+
+			<p:outputLabel>Income item: #{userEnterBean.admin.inForEdit.income_Itemname}</p:outputLabel>
+			<br />
+
+			<h:panelGrid columns="3">
+				<p:outputLabel>Sell price:</p:outputLabel>
 				<p:inputText id="iWeight"
-					value="#{userEnterBean.admin.income.income_OrderWeight}" required="true"
-					requiredMessage="#{msgs.orderWeightRequired}"
-					validatorMessage="#{msgs.weightRange}">
+					value="#{userEnterBean.admin.inForEdit.income_SellPrice}" required="true"
+					requiredMessage="#{msgs.priceRequired}"
+					validatorMessage="#{msgs.priceRange}">
 					<f:convertNumber minFractionDigits="2" />
 					<f:validateDoubleRange minimum="0.10" maximum="100000.00" />
 				</p:inputText>
 				<p:message for="iWeight" style="color:red" />
-				
-			<p:commandButton value="Submit" action="#{userEnterBean.admin.saveIncome}" />
 			</h:panelGrid>
+			<p:commandButton value="Submit" action="#{userEnterBean.admin.editSellPrice}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

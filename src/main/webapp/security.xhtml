@@ -7,16 +7,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
+	<ui:composition template="WEB-INF/templates/security.xhtml">
 
-<h:body>
-	<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
-
-		<ui:define name="header">
-			<h2>Security Manager Page</h2>
-		</ui:define>
 
 		<ui:define name="content">
 			<h2>All the users</h2> 

@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<h:outputStylesheet library="css" name="style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
@@ -12,17 +14,21 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
 </h:head>
 <h:body>
 	<ui:composition>
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="customerEnter.xhtml">FishKa</a>
+				<a class="navbar-brand" href="customerEnter.xhtml">
+					<p:graphicImage height="32" width="32" title="FishKa" value="resources/fish1.ico"></p:graphicImage>
+				</a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="enter.xhtml">History of company</a></li>
+					<li class="active"><a href="enter.xhtml">History of
+							company</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -34,10 +40,10 @@
 					<li><a href="#">Contact us</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="customerRegistration.xhtml"><span class="glyphicon glyphicon-user"></span>
-							Sign Up</a></li>
-					<li><a href="customerEnter.xhtml"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
+					<li><a href="customerRegistration.xhtml"><span
+							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="customerEnter.xhtml"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</ul>
 			</div>
 		</div>

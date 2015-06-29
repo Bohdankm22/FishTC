@@ -2,16 +2,9 @@ package com.bionic.edu.bean;
 
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.springframework.context.annotation.Scope;
-
 import com.bionic.edu.entity.Users;
 import com.bionic.edu.service.UsersService;
 
-@Named
-@Scope("session")
 public class SecurityOfficerBean extends UserRole{
 	
 	private List<Users> users = null;
@@ -19,8 +12,11 @@ public class SecurityOfficerBean extends UserRole{
 	private String name = null;
 	private int role = 0;
 	
-	@Inject
 	private UsersService usersService;
+
+	public SecurityOfficerBean(UsersService usersService2) {
+		this.usersService = usersService2;
+	}
 
 	public List<Users> getUsers() {
 		return users;
