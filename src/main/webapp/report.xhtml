@@ -16,14 +16,14 @@
 		<h:form>
 			<div class="dateInput">
 				Start date:
-				<p:calendar value="#{adminBean.date1}" pattern="MM/dd/yyyy" />
+				<p:calendar value="#{userEnterBean.admin.date1}" pattern="MM/dd/yyyy" />
 			</div>
 			<div class="dateInput">
 				Finish date:
-				<p:calendar value="#{adminBean.date2}" pattern="MM/dd/yyyy" />
+				<p:calendar value="#{userEnterBean.admin.date2}" pattern="MM/dd/yyyy" />
 			</div>
 			<div class="dateInput">
-				<h:commandLink action="#{adminBean.refreshReport}">
+				<h:commandLink action="#{userEnterBean.admin.refreshReport}">
 					<h:graphicImage value="resources/order.ico" height="16" width="16"
 						title="Edit" />
 				</h:commandLink>
@@ -34,7 +34,7 @@
 				<div class="dataTableLeft">
 					<p:panelGrid columns="1">
 					Arrivals for this period
-					<p:dataTable value="#{adminBean.arrivals}" var="arrivals"
+					<p:dataTable value="#{userEnterBean.admin.arrivals}" var="arrivals"
 							styleClass="arrivalsTable" headerClass="arrivalsTableHeader"
 							rowClasses="arrivalsTableOddRow, arrivalsTableEvenRow">
 							<p:column>
@@ -52,14 +52,14 @@
 								</p:outputLabel>
 							</p:column>
 						</p:dataTable>
-						<h:outputLabel>Total sum spent this period: #{adminBean.totalSumIn}</h:outputLabel>
+						<h:outputLabel>Total sum spent this period: #{userEnterBean.admin.totalSumIn}</h:outputLabel>
 					</p:panelGrid>
 				</div>
 
 				<div class="dataTableRight">
 					<p:panelGrid columns="1">
 				Payments for this period
-					<p:dataTable value="#{adminBean.payments}" var="payments"
+					<p:dataTable value="#{userEnterBean.admin.payments}" var="payments"
 							styleClass="paymentsTable" headerClass="paymentsTableHeader"
 							rowClasses="paymentsTableOddRow, paymentsTableEvenRow">
 							<p:column>
@@ -82,7 +82,7 @@
 						#{payments.customer.customer_Name} 
 					</p:column>
 						</p:dataTable>
-						<h:outputLabel>Total sum earned this period: #{adminBean.totalSumOut}</h:outputLabel>
+						<h:outputLabel>Total sum earned this period: #{userEnterBean.admin.totalSumOut}</h:outputLabel>
 					</p:panelGrid>
 				</div>
 			</div>
