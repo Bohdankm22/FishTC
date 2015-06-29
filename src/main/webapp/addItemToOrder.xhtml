@@ -5,32 +5,44 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
 <ui:composition template="WEB-INF/templates/admin.xhtml">
 	<ui:define name="content">
 		<h1>New Income</h1>
+		<br />
+		<br />
+		<br />
+		<div class="content">
 		<h:form>
-			<h:panelGrid columns="3">
-				<p:outputLabel value="Income item:"/>
-				<p:inputText id="iItem" value="#{userEnterBean.admin.income.income_Itemname}"
-					required="true" requiredMessage="#{msgs.itemRequired}">
-					<f:validateLength minimum="4" maximum="127"/>
-				</p:inputText>
-				<p:message for="iItem" style="color:red" />
+		
+				<h:panelGrid columns="3" columnClasses="wd, wd, wd">
+					<p:outputLabel value="Income item:" />
+					<p:inputText id="iItem"
+						value="#{userEnterBean.admin.income.income_Itemname}"
+						required="true" requiredMessage="#{msgs.itemRequired}">
+						<f:validateLength minimum="4" maximum="127" />
+					</p:inputText>
+					<p:message for="iItem" style="color:red" />
 
-				<p:outputLabel value="Weight to order:" />
-				<p:inputText id="iWeight"
-					value="#{userEnterBean.admin.income.income_OrderWeight}" required="true"
-					requiredMessage="#{msgs.orderWeightRequired}"
-					validatorMessage="#{msgs.weightRange}">
-					<f:convertNumber minFractionDigits="2" />
-					<f:validateDoubleRange minimum="0.10" maximum="100000.00" />
-				</p:inputText>
-				<p:message for="iWeight" style="color:red" />
-				
-			<p:commandButton value="Submit" action="#{userEnterBean.admin.saveIncome}" />
+					<p:outputLabel value="Weight to order:" />
+					<p:inputText id="iWeight"
+						value="#{userEnterBean.admin.income.income_OrderWeight}"
+						required="true" requiredMessage="#{msgs.orderWeightRequired}"
+						validatorMessage="#{msgs.weightRange}">
+						<f:convertNumber minFractionDigits="2" />
+						<f:validateDoubleRange minimum="0.10" maximum="100000.00" />
+					</p:inputText>
+					<p:message for="iWeight" style="color:red" />
+					<br />
+					<br />
+					<br />
+					<p:commandButton value="Submit"
+						action="#{userEnterBean.admin.saveIncome}" />
 			</h:panelGrid>
 		</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>

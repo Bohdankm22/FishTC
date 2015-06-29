@@ -78,7 +78,7 @@ h2 {
 }
 
 .minH {
-	min-height: 400px;
+	min-height: 510px;
 }
 
 .imgLeft {
@@ -88,4 +88,8 @@ h2 {
 .elCentr {
 	margin: 0 auto;
 	width: 250px;
+}
+
+.admin{
+min-height: 300px; width: 400px; text-align: center; display: block;
 }
