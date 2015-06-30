@@ -91,6 +91,9 @@ public class CustomerEnterBean {
 			if(a)
 				out.add(i);
 		}
+		for(Income i: out){
+			i.setIncome_Availibleweight(Math.round(i.getIncome_Availibleweight() * 100.0) / 100.0d);
+		}
 		incomes = out;
 	}
 	

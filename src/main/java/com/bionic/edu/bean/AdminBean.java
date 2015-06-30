@@ -239,8 +239,10 @@ public class AdminBean extends UserRole{
 		totalSumIn = totalSumOut = 0.0d;
 		for(Arrival a: arrivals)
 			totalSumIn += a.getArrival_sum();
+		totalSumIn = Math.round(totalSumIn * 100.0) / 100.0d;
 		for(Payment p: payments)
 			totalSumOut += p.getPayment_sum();
+		totalSumOut = Math.round(totalSumOut * 100.0) / 100.0d;
 		return "report";
 	}
 

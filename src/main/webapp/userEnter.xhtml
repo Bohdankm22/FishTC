@@ -18,21 +18,23 @@
 			<br />
 
 			<h:form>
-				<h:panelGrid columns="3" columnClasses="wd,wd,wd">
-					<p:outputLabel value="Name"></p:outputLabel>
-					<p:inputText id="name" value="#{userEnterBean.name}"
-						required="true" requiredMessage="#{msgsReg.nameRequired}">
-						<f:validateLength minimum="4" maximum="128"></f:validateLength>
+				<h:panelGrid id="grid" columns="3" columnClasses="wd, wd, wd">
+					<p:outputLabel for="namek" value="Name"></p:outputLabel>
+					<p:inputText id="namek"
+						required="true" value="#{userEnterBean.name}"
+						requiredMessage="#{msgsReg.nameRequired}"
+						validatorMessage="#{msgsReg.nameLength}">
+						<f:validateLength minimum="5" maximum="25"></f:validateLength>
 					</p:inputText>
-					<p:message for="name" style="color:red" />
+					<p:message for="namek" display="text"/>
 
-					<p:outputLabel value="Password"></p:outputLabel>
-					<p:password id="pass" value="#{userEnterBean.pass}"
+					<p:outputLabel for="passk" value="Password"></p:outputLabel>
+					<p:password id="passk" value="#{userEnterBean.pass}"
 						required="true" requiredMessage="#{msgsReg.passwordRequired}"
 						validatorMessage="#{msgsReg.passwordLength}">
 						<f:validateLength minimum="4" maximum="128"></f:validateLength>
 					</p:password>
-					<p:message for="pass" style="color:red" />
+					<p:message for="passk" display="text"/>
 
 				</h:panelGrid>
 				<br />
@@ -40,7 +42,7 @@
 				<br />
 				<br />
 				<p:commandButton value="Submit"
-					action="#{userEnterBean.findUser}" />
+					action="#{userEnterBean.findUser}" update="grid"/>
 			</h:form>
 
 

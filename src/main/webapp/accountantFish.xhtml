@@ -99,12 +99,12 @@
 							<h:outputLabel value="#{userEnterBean.accountant.type(income.income_PrepaymentType)}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:selectOneMenu value="#{income.income_PrepaymentType}"
+							<h:selectOneMenu value="#{income.income_PrepaymentType}"
 								style="width:125px">
 								<f:selectItem itemLabel="Half prepayment(50%)" itemValue="1" />
 								<f:selectItem itemLabel="Partial prepayment (75%)" itemValue="2" />
 								<f:selectItem itemLabel="Full prepayment (100%)" itemValue="3" />
-							</p:selectOneMenu>
+							</h:selectOneMenu>
 						</f:facet>
 					</p:cellEditor>
 				</p:column>

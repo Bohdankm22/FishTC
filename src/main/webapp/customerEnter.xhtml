@@ -14,7 +14,7 @@
 		<br />
 
 		<h:form>
-			<h:panelGrid columns="3" columnClasses="wd,wd,wd">
+			<h:panelGrid id="grid" columns="3" columnClasses="wd,wd,wd">
 				<p:outputLabel value="Email"></p:outputLabel>
 				<p:inputText id="email" value="#{customerEnterBean.email}"
 					required="true" requiredMessage="#{msgsReg.emailRequired}">
@@ -36,7 +36,7 @@
 			<br />
 			<br />
 			<p:commandButton value="Submit"
-				action="#{customerEnterBean.findCustomer}"/>
+				action="#{customerEnterBean.findCustomer}" update="grid"/>
 		</h:form>
 
 
