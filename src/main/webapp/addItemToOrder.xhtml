@@ -17,8 +17,8 @@
 		<div class="content">
 		<h:form>
 		
-				<h:panelGrid columns="3" columnClasses="wd, wd, wd">
-					<p:outputLabel value="Income item:" />
+				<h:panelGrid id="grid" columns="3" columnClasses="wd, wd, wd">
+					<p:outputLabel for="iItem" value="Income item:" />
 					<p:inputText id="iItem"
 						value="#{userEnterBean.admin.income.income_Itemname}"
 						required="true" requiredMessage="#{msgs.itemRequired}">
@@ -26,7 +26,7 @@
 					</p:inputText>
 					<p:message for="iItem" style="color:red" />
 
-					<p:outputLabel value="Weight to order:" />
+					<p:outputLabel for="iWeight" value="Weight to order:" />
 					<p:inputText id="iWeight"
 						value="#{userEnterBean.admin.income.income_OrderWeight}"
 						required="true" requiredMessage="#{msgs.orderWeightRequired}"
@@ -38,7 +38,7 @@
 					<br />
 					<br />
 					<br />
-					<p:commandButton value="Submit"
+					<p:commandButton update="grid" value="Submit"
 						action="#{userEnterBean.admin.saveIncome}" />
 			</h:panelGrid>
 		</h:form>

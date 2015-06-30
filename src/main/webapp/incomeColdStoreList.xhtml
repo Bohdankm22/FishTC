@@ -8,15 +8,16 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="WEB-INF/templates/admin.xhtml">
-	
+
 	<ui:define name="content">
 		<h2>Cold store fish list</h2> 
     #{userEnterBean.admin.refreshList1()}
     
     <h:form>
 			<h:panelGrid columns="1">
-				<p:dataTable value="#{userEnterBean.admin.incomes}" var="income"
-					styleClass="IncomeTable" headerClass="IncomeTableHeader"
+				<p:dataTable id="table" value="#{userEnterBean.admin.incomes}"
+					var="income" styleClass="IncomeTable"
+					headerClass="IncomeTableHeader"
 					rowClasses="IncomeTableOddRow, IncomeTableEvenRow">
 					<p:column>
 						<f:facet name="header">Id</f:facet> 
@@ -45,7 +46,8 @@
 					<p:column>
 						<f:facet name="header">
 						</f:facet>
-						<p:commandLink action="#{userEnterBean.admin.editSellPrice(income.income_id)}">
+						<p:commandLink
+							action="#{userEnterBean.admin.editSellPrice(income.income_id)}">
 							<p:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</p:commandLink>
@@ -57,7 +59,8 @@
 					<p:column>
 						<f:facet name="header">
 						</f:facet>
-						<h:commandLink action="#{userEnterBean.admin.registerIncome1(income.income_id)}">
+						<h:commandLink
+							action="#{userEnterBean.admin.registerIncome1(income.income_id)}">
 							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</h:commandLink>
@@ -74,15 +77,28 @@
 						<f:facet name="header">
 							For sale
 						</f:facet>
-						<h:commandLink action="#{userEnterBean.admin.putForSaleIncome1(income.income_id)}">
+						<h:commandLink
+							action="#{userEnterBean.admin.putForSaleIncome1(income.income_id)}">
 							<h:graphicImage value="resources/edit4.ico" height="16"
 								width="16" title="Edit" />
 						</h:commandLink>
 					</p:column>
-			
-					
+
+					<p:column>
+						<f:facet name="header">
+							Write off
+						</f:facet>
+						<p:commandLink value="Write off"
+							action="#{userEnterBean.admin.writeOff(income.income_id)}">
+							<p:graphicImage value="resources/edit4.ico" height="16"
+								width="16" title="Edit" />
+						</p:commandLink>
+
+					</p:column>
+
 				</p:dataTable>
 			</h:panelGrid>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

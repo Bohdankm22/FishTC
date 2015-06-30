@@ -13,7 +13,7 @@
 		<br />
 		<br />
 		<h:form>
-			<h:panelGrid columns="3" columnClasses="wd,wd,wd">
+			<h:panelGrid id="grid" columns="3" columnClasses="wd,wd,wd">
 				<p:outputLabel value="Name:"></p:outputLabel>
 				<p:inputText id="Name"
 					value="#{customerRegBean.customer.customer_Name}" required="true"
@@ -54,7 +54,7 @@
 			<br />
 			<br />
 			<br />
-			<p:commandButton value="Submit" action="#{customerRegBean.SaveCust}"></p:commandButton>
+			<p:commandButton update="grid" value="Submit" action="#{customerRegBean.SaveCust}"></p:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

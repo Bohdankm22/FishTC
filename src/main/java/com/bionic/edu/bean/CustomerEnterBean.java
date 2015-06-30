@@ -54,7 +54,7 @@ public class CustomerEnterBean {
 	
 	public String findCustomer(){
 		customer = customerService.findByEmail(email);
-		if(customer != null && customer.getCustomer_password().equals(pass))
+		if(customer != null && customer.getCustomer_password().equals(pass) && !customer.isCustomer_isDeleted())
 			return "customerPage";
 		else
 			return "error404";
@@ -208,5 +208,11 @@ public class CustomerEnterBean {
 			pay.setPayment_sum(pay.getPayment_sum() + o.getOutcome_price());
 		}
 		pay.setPayment_sum(Math.round(pay.getPayment_sum()*100)/100.0);
+	}
+	
+	public void toNull(){
+		customer = null;
+		email = null;
+		pass = null;
 	}
 }

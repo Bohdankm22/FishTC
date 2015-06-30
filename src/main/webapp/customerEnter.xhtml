@@ -8,6 +8,7 @@
 
 <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
+	#{customerEnterBean.toNull()}
 		<h1>Login</h1>
 		<br />
 		<br />
@@ -15,14 +16,14 @@
 
 		<h:form>
 			<h:panelGrid id="grid" columns="3" columnClasses="wd,wd,wd">
-				<p:outputLabel value="Email"></p:outputLabel>
+				<p:outputLabel for="email" value="Email"></p:outputLabel>
 				<p:inputText id="email" value="#{customerEnterBean.email}"
 					required="true" requiredMessage="#{msgsReg.emailRequired}">
 					<f:validator validatorId="EmailValidator" />
 				</p:inputText>
 				<p:message for="email" style="color:red" />
 
-				<p:outputLabel value="Password"></p:outputLabel>
+				<p:outputLabel for="pass" value="Password"></p:outputLabel>
 				<p:password id="pass" value="#{customerEnterBean.pass}"
 					required="true" requiredMessage="#{msgsReg.passwordRequired}"
 					validatorMessage="#{msgsReg.passwordLength}">

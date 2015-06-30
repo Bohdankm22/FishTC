@@ -36,6 +36,7 @@ public class AdminBean extends UserRole{
 	private double totalSumIn = 0;
 	private double totalSumOut = 0;
 	private String userName = null;
+	private double write = 0;
 
 	private CustomerService customerService;
 	private ArrivalService arrivalService;
@@ -291,6 +292,30 @@ public class AdminBean extends UserRole{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	public double getWrite() {
+		return write;
+	}
+
+	public void setWrite(double write) {
+		this.write = write;
+	}
+	
+	public String writeOff(String id){
+		int n = Integer.parseInt(id);
+		inForEdit = incomeService.findById(n);	
+		return "writeOff";
+	}
+	
+	public String writeOff(){
+		inForEdit.setIncome_Availibleweight(inForEdit.getIncome_Availibleweight() - write);
+		incomeService.update(inForEdit);
+		inForEdit = null;
+		write = 0.0;
+		System.err.println("IDSFKJSDFKJSDKLFJSDKLFJSDKLJFLKDSFJLKDFJ  " + write);
+		return "fishOrdered";
+	}
+	
 	
 	
 }
