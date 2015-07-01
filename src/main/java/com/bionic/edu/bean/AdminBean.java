@@ -173,7 +173,7 @@ public class AdminBean extends UserRole{
 	}
 	
 	public void refreshList1(){
-		incomes = incomeService.getAvailibleFish();
+		incomes = incomeService.getAvailibleFish();		
 	}
 	
 	public String registerIncome1(String id){

@@ -48,7 +48,8 @@ public class UserEnterBean {
 	}
 	public String findUser(){
 		userPers = usersService.findByNamePass(name, pass);
-		if(userPers != null && !userPers.isUsers_isDeleted()){
+		if((userPers != null && !userPers.isUsers_isDeleted()) 
+				|| (userPers != null && userPers.getUsers_Role() == 4)){
 			switch(userPers.getUsers_Role()){
 				case 1: 
 					admin = new AdminBean(customerService,arrivalService,incomeService,paymentService);
