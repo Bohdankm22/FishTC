@@ -33,6 +33,9 @@ public class CustomerRegBean implements Serializable{
 
 	public String SaveCust(){
 		customer.setCustomer_prepaymenttype(1);
+		Customer cust = customerService.findByEmail(customer.getCustomer_email());
+		if(cust != null)
+			return "errorReg";
 		customerService.save(customer);
 		return "customerEnter";
 	}

@@ -14,7 +14,8 @@
 			<h2>Shopping</h2>
 #{customerEnterBean.RefreshList()}
 <h:form class="content">
-				<h:panelGrid columns="3" columnClasses="text-center, wd, text-center">
+				<h:panelGrid columns="3"
+					columnClasses="text-center, wd, text-center">
 
 					<p:column>
 
@@ -137,6 +138,10 @@
 										<h:outputText value="Total price is : " />
 										<div class="totalPrice">
 											<p:outputLabel value="#{customerEnterBean.pay.payment_sum}" />
+										</div>
+										<h:outputText value="Your prepayment is: " />
+										<div class="tota">
+											<p:outputLabel value="#{customerEnterBean.paySum}" />
 										</div>
 									</p:column>
 								</h:panelGrid>

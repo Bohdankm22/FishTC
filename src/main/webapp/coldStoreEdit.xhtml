@@ -9,17 +9,14 @@
 
 <ui:composition template="WEB-INF/templates/coldStore.xhtml">
 
-	<ui:define name="header">
-		<h2>General manager header</h2>
-		<h:link value="Go to orders page" outcome="coldStore" />
-	</ui:define>
+	
 	<ui:define name="content">
 		<h2>Register arrival</h2>
 
 
 		<h:form>
 			<div class="dataTable">
-				<p:panelGrid columns="2">
+				<p:panelGrid id="grid" columns="2">
 					Incomes in this arrival
 					<p:dataTable value="#{userEnterBean.coldStore.arrival.listOfIncome}"
 						var="incomes" styleClass="incomesTable"
@@ -57,8 +54,7 @@
 
 							<p:panelGrid columns="2">
 								<p:inputText id="Price" value="#{incomes.income_price}"
-									required="true" requiredMessage="#{msgs.priceRequired}"
-									validatorMessage="#{msgs.priceRange1}">
+									required="true" requiredMessage="#{msgs.priceRequired}">
 									<f:convertNumber minFractionDigits="2" />
 									<f:validateDoubleRange minimum="1" maximum="1000" />
 								</p:inputText>
@@ -70,12 +66,11 @@
 
 					</p:dataTable>
 
-					<p:outputLabel>Delivery Price</p:outputLabel>
+					<p:outputLabel for="DelPrice">Delivery Price</p:outputLabel>
 					<p:panelGrid columns="2">
 						<p:inputText id="DelPrice"
 							value="#{userEnterBean.coldStore.arrival.arrival_deliveryprice}"
-							required="true" requiredMessage="#{msgs.priceRequired}"
-							validatorMessage="#{msgs.priceRange1}">
+							required="true" requiredMessage="#{msgs.priceRequired}">
 							<f:convertNumber minFractionDigits="2" />
 							<f:validateDoubleRange minimum="1" maximum="1000" />
 						</p:inputText>
@@ -83,7 +78,7 @@
 						<h:message for="DelPrice" style="color:red" />
 					</p:panelGrid>
 
-					<p:outputLabel>Ship Name</p:outputLabel>
+					<p:outputLabel for="Ship">Ship Name</p:outputLabel>
 					<p:panelGrid columns="2">
 						<p:inputText id="Ship"
 							value="#{userEnterBean.coldStore.arrival.arrival_RefrigeratorShipName}"
@@ -96,7 +91,7 @@
 
 					<p:outputLabel></p:outputLabel>
 
-					<p:commandLink action="#{userEnterBean.coldStore.registerIncome}">
+					<p:commandLink update="grid" action="#{userEnterBean.coldStore.registerIncome}">
 						<p:outputLabel>Register</p:outputLabel>
 						<p:graphicImage value="resources/edit4.ico" height="16" width="16"
 							title="Register" />

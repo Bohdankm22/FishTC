@@ -11,6 +11,7 @@ public class SecurityOfficerBean extends UserRole{
 	private Users user = null;
 	private String name = null;
 	private int role = 0;
+	private Users newUser = null;
 	
 	private UsersService usersService;
 
@@ -39,8 +40,6 @@ public class SecurityOfficerBean extends UserRole{
 	public String editUser(String role){
 		int n = Integer.valueOf(role);
 		user = usersService.findById(n);
-		System.out.println("I'm here");
-		System.out.println(user);
 		return "editUser";
 	}
 	
@@ -49,7 +48,7 @@ public class SecurityOfficerBean extends UserRole{
 		Users user1 = usersService.findById(n);
 		user1.setUsers_isDeleted(!user1.isUsers_isDeleted());
 		usersService.update(user1);
-		System.out.println("I'm here");
+		refreshList();
 		return "security";
 	}
 
@@ -62,8 +61,6 @@ public class SecurityOfficerBean extends UserRole{
 	}
 	
 	public String saveUser(){
-		user.setUsers_Name(name);
-		user.setUsers_Role(role);
 		usersService.update(user);
 		return "security";
 	}
@@ -82,6 +79,25 @@ public class SecurityOfficerBean extends UserRole{
 
 	public void setRole(int role) {
 		this.role = role;
+	}
+	
+	public String addNew(){
+		newUser = new Users();
+		return "addNewUser";
+	}
+
+	public Users getNewUser() {
+		return newUser;
+	}
+
+	public void setNewUser(Users newUser) {
+		this.newUser = newUser;
+	}
+	
+	public String saveUser1(){
+		usersService.save(newUser);
+		newUser = null;
+		return "security";
 	}
 	
 }

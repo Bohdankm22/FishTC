@@ -30,6 +30,7 @@ public class CustomerEnterBean {
 	private Payment pay = null;
 	private Outcome outcome = null;
 	private List<Outcome> bucket = new ArrayList<>();
+	private double paySum = 0.0;
 	
 
 
@@ -208,6 +209,17 @@ public class CustomerEnterBean {
 			pay.setPayment_sum(pay.getPayment_sum() + o.getOutcome_price());
 		}
 		pay.setPayment_sum(Math.round(pay.getPayment_sum()*100)/100.0);
+		switch(customer.getCustomer_prepaymenttype()){
+			case 1: 
+				paySum = pay.getPayment_sum() / 2;
+				break;
+			case 2: 
+				paySum = pay.getPayment_sum() * 3 / 4;
+				break;
+			case 3: 
+			default: paySum = pay.getPayment_sum();
+		}
+		
 	}
 	
 	public void toNull(){
@@ -215,4 +227,9 @@ public class CustomerEnterBean {
 		email = null;
 		pass = null;
 	}
+
+	public double getPaySum() {
+		return paySum;
+	}
+	
 }

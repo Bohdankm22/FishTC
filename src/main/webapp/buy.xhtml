@@ -12,7 +12,7 @@
 		<h2>Your bucket</h2>
 		<br />
 		<h:form>
-		
+
 			<h:panelGrid columns="2" class="text-center">
 
 				<p:dataTable value="#{customerEnterBean.bucket}" var="bucket"
@@ -38,10 +38,13 @@
 
 				<p:column>
 					<br />
-					<br />
 					<h:outputText value="Total price is : " />
 					<div class="totalPrice">
 						<p:outputLabel value="#{customerEnterBean.pay.payment_sum}" />
+					</div>
+					<h:outputText value="Your prepayment is: " />
+					<div class="tota">
+						<p:outputLabel value="#{customerEnterBean.paySum}" />
 					</div>
 				</p:column>
 			</h:panelGrid>

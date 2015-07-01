@@ -14,33 +14,24 @@
 		<ui:define name="content">
 			<h2>Edit user</h2>
 			<h:form>
-				<h:panelGrid columns="3">
-
-					<p:outputLabel value="User's name:" />
-					<p:outputLabel value="#{userEnterBean.security.user.users_Name}" />
-					<p:outputLabel></p:outputLabel>
+				<h:panelGrid columns="3" columnClasses="wd,wd,wd">
 				
-					<p:outputLabel value="New user's name:" />
+					<p:outputLabel for="name1" value="User's name:" />
 					<p:inputText id="name1"
-						value="#{userEnterBean.security.user.users_Name}" required="true"
-						requiredMessage="#{msgs.nameRequired}"
-						validatorMessage="#{msgs.nameLenght}">
-						<f:validateLength minimum="4" maximum="127" />
+						value="#{userEnterBean.security.user.users_Name}" required="true">
+						<f:validateLength minimum="5" maximum="127" />
 					</p:inputText>
 					<p:message for="name1" style="color:red" />
 
-					<p:outputLabel value="User's role" />
-					<p:outputLabel value="#{userEnterBean.security.user.users_Role}" />
-					<p:outputLabel></p:outputLabel>
 					
-					<p:outputLabel value="New user's role:" />
-					<p:inputText id="role"
-						value="#{userEnterBean.security.user.users_Role}" required="true"
-						requiredMessage="#{msgs.roleRequired}"
-						validatorMessage="#{msgs.roleNumb}">
-						<f:convertNumber minFractionDigits="0" />
-						<f:validateDoubleRange minimum="1" maximum="4" />
-					</p:inputText>
+					<p:outputLabel for="role" value="New user's role:" />
+					<h:selectOneMenu id="role" required="true"
+						value="#{userEnterBean.security.user.users_Role}">
+						<f:selectItem itemValue="1" itemLabel="General Manager"></f:selectItem>
+						<f:selectItem itemValue="2" itemLabel="Cold Store Manager"></f:selectItem>
+						<f:selectItem itemValue="3" itemLabel="Accountant"></f:selectItem>
+						<f:selectItem itemValue="4" itemLabel="Security Officer"></f:selectItem>
+					</h:selectOneMenu>
 					<p:message for="role" style="color:red" />
 
 

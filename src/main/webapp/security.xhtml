@@ -6,17 +6,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+<h:body>
 	<ui:composition template="WEB-INF/templates/security.xhtml">
 
-
+	
 		<ui:define name="content">
 			<h2>All the users</h2> 
 			#{userEnterBean.security.refreshList()}
     	<h:form>
 
 				<p:panelGrid columns="1">
-					<p:dataTable value="#{userEnterBean.security.users}" var="users"
+					<p:dataTable id="grid" value="#{userEnterBean.security.users}" var="users"
 						styleClass="usersTable" headerClass="usersTableHeader"
 						rowClasses="usersTableOddRow, usersTableEvenRow">
 						<p:column>
@@ -29,7 +29,7 @@
 					</p:column>
 						<p:column>
 							<f:facet name="header">Users Role</f:facet> 
-						#{users.users_Role} 
+						#{userEnterBean.security.userRole(users.users_Role)} 
 					</p:column>
 						<p:column>
 							<f:facet name="header">Is deleted</f:facet> 
@@ -50,16 +50,18 @@
 						<p:column>
 							<f:facet name="header">Delete/Undelete
 							</f:facet>
-							<p:commandLink
+							<p:commandLink update="grid"
 								action="#{userEnterBean.security.deleteUser(users.users_id)}">
 								<p:graphicImage value="resources/delete.ico" height="16"
 									width="16" title="Delete" />
 							</p:commandLink>
 						</p:column>
 					</p:dataTable>
+					<p:commandButton value="Add new user" action="#{userEnterBean.security.addNew()}"></p:commandButton>
 				</p:panelGrid>
 			</h:form>
 		</ui:define>
+	
 	</ui:composition>
 </h:body>
 </html>

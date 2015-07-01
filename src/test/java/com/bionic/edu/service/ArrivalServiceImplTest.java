@@ -82,6 +82,18 @@ public class ArrivalServiceImplTest {
 	}
 	
 	@Test
+	public void getListOfIncomesOfArrival(){
+		List<Arrival> list = arrivalService.getListOfUndeliveredArrivals();
+		for(Arrival a : list){
+			System.out.println(a.getListOfIncome().size());
+//			if(a.getListOfIncome().size() == 0){
+//				System.out.println("DELETE");
+//				arrivalService.remove(a.getArrival_id());
+//			}
+		}
+	}
+	
+	@Test
 	public void getArrivalsListInDuringPeriod(){
 		LocalDateTime ldt = LocalDateTime.of(2015, 5, 5, 4, 1);
 		LocalDateTime ldt2 = LocalDateTime.of(2015, 5, 7, 2, 4);
