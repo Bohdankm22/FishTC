@@ -9,7 +9,7 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
 		<property name="url"
-			value="jdbc:derby:C:\Users\Bohdan\workspace\FishTC\CM;create=true" />
+			value="jdbc:derby:C:\Users\Bohdan\git\FishTC\CM;create=true" />
 	</bean>
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
