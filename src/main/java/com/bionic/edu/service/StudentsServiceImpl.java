@@ -2,7 +2,6 @@ package com.bionic.edu.service;
 
 import com.bionic.edu.dao.StudentsDao;
 import com.bionic.edu.entity.Students;
-import com.bionic.edu.entity.Users;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
@@ -22,10 +21,11 @@ public class StudentsServiceImpl implements StudentsService {
     }
 
     @Override
-    public Students findByLoginPass(String name, String pass){
-        Students u = studentsDao.findByName(name);
-        if(u != null && u.getStudents_password().equals(pass))
+    public Students findByLoginPass(String login, String pass){
+        Students u = studentsDao.findByLogin(login);
+        if(u != null && u.getStudents_password().equals(pass)) {
             return u;
+        }
         return null;
     }
 

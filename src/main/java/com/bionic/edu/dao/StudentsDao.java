@@ -8,7 +8,7 @@ public interface StudentsDao {
 
     void save(Students students);
 
-    Students findByName(String name);
+    Students findByLogin(String login);
 
     List<Students> getAll();
 
