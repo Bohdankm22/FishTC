@@ -8,7 +8,7 @@ public interface StudentsService {
 
     void save(Students student);
 
-    Students findByLoginPass(String name, String pass);
+    Students findByLoginPass(String login, String pass);
 
     List<Students> getAll();
 

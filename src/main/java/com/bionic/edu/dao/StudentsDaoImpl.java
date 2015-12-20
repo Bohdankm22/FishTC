@@ -19,15 +19,15 @@ public class StudentsDaoImpl implements StudentsDao{
     }
 
     @Override
-    public Students findByName(String name){
+    public Students findByLogin(String login){
         Students student = null;
-        String txt = "SELECT u FROM Students u WHERE u.Students_Name='" + name + "'";
+        String txt = "SELECT u FROM Students u WHERE u.Students_Login='" + login + "'";
         TypedQuery<Students> querry = em.createQuery(txt, Students.class);
         try{
             student = querry.getSingleResult();
         }
         catch(NoResultException e){
-//            LOG.info("No student found with name " + name);
+//            LOG.info("No student found with login " + name);
         }
         return student;
     }
