@@ -7,9 +7,11 @@
 	<context:component-scan base-package="com.bionic.edu" />
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="url"
-			value="jdbc:derby:C:\Users\Bohdan\git\FishTC\CM;create=true" />
+			value="jdbc:oracle:thin:@//localhost:1521/XE" />
+		<property name="username" value="university"/>
+		<property name="password" value="1234"/>
 	</bean>
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -32,7 +34,8 @@
 				<property value="true" name="showSql" />
 				<property value="true" name="generateDdl" />
 				<property name="databasePlatform"
-					value="org.eclipse.persistence.platform.database.DerbyPlatform" />
+					value="org.eclipse.persistence.platform.database.OraclePlatform" />
+				<property name="database" value="ORACLE"/>
 			</bean>
 		</property>
 		<property name="jpaPropertyMap">
