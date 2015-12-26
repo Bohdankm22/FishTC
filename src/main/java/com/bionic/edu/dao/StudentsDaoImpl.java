@@ -46,7 +46,6 @@ public class StudentsDaoImpl implements StudentsDao{
 
     @Override
     public void update(Students student1) {
-        em.merge(student1);
         Students student2 = em.find(Students.class, student1.getStudents_id());
         if (student2 != null) {
             em.merge(student1);
