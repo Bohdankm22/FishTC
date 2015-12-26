@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Users {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -45,7 +45,14 @@ public class Users {
 	public void setUsers_isDeleted(boolean users_isDeleted) {
 		Users_isDeleted = users_isDeleted;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Users{" +
+				"Users_Name='" + Users_Name + '\'' +
+				", Users_Role=" + Users_Role +
+				", Users_isDeleted=" + Users_isDeleted +
+				", Users_password='" + Users_password + '\'' +
+				'}';
+	}
 }
