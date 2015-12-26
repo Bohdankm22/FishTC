@@ -1,7 +1,6 @@
 package com.bionic.edu.dao;
 
 import com.bionic.edu.entity.Group;
-import com.bionic.edu.entity.Students;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
