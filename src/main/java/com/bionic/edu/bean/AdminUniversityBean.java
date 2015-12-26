@@ -1,7 +1,6 @@
 package com.bionic.edu.bean;
 
 
-import com.bionic.edu.entity.Customer;
 import com.bionic.edu.entity.Students;
 import com.bionic.edu.service.StudentsService;
 import org.primefaces.event.RowEditEvent;
@@ -21,6 +20,8 @@ public class AdminUniversityBean {
     private StudentsService studentsService;
 
     private List<Students> allStudents = null;
+
+    private Students newAddedStudent = null;
 
     private static AdminUniversityBean admin = new AdminUniversityBean();
 
@@ -64,7 +65,7 @@ public class AdminUniversityBean {
 
     public void onRowEdit(RowEditEvent event) {
         Students i = (Students) event.getObject();
-        if(studentsService.findById(i.getStudents_id()) != null){
+        if (studentsService.findById(i.getStudents_id()) != null) {
             studentsService.update(i);
         }
         FacesMessage msg = new FacesMessage("Customer edited", i.getStudents_Name());
@@ -74,5 +75,32 @@ public class AdminUniversityBean {
     public void onRowCancel(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Edit Cancelled", ((Students) event.getObject()).getStudents_Name());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public String addStudentPage() {
+        return "addStudentPage";
+    }
+
+    public Students getNewAddedStudent() {
+        return newAddedStudent;
+    }
+
+    public void setNewAddedStudent(Students newAddedStudent) {
+        this.newAddedStudent = newAddedStudent;
+    }
+
+    public void createNewStudent() {
+        setNewAddedStudent(new Students());
+    }
+
+    public String saveNewStudent() {
+        if (studentsService.isLoginExist(newAddedStudent.getStudents_Login())) {
+            return "loginExists";
+        }
+        else {
+            newAddedStudent.setStudents_isDeleted(false);
+            studentsService.save(newAddedStudent);
+            return "success";
+        }
     }
 }

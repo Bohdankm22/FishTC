@@ -15,4 +15,6 @@ public interface StudentsService {
     Students findById(int n);
 
     void update(Students student1);
+
+    boolean isLoginExist(String login);
 }

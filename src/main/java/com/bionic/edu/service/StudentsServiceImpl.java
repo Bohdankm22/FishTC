@@ -44,4 +44,9 @@ public class StudentsServiceImpl implements StudentsService {
     public void update(Students student) {
         studentsDao.update(student);
     }
+
+    @Override
+    public boolean isLoginExist(String login){
+        return studentsDao.findByLogin(login) != null;
+    }
 }
