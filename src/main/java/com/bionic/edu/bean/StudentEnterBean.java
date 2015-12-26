@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -14,11 +15,13 @@ public class StudentEnterBean {
     private String login = null;
     private String pass = null;
     private Students studentsPers = null;
+    private static final String ADMIN_LOGIN = "admin";
+    private static final String ADMIN_PASSWORD = "admin";
 
-    private static ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-    private static StudentsService studentsService = context.getBean(StudentsService.class);
-//    @Inject
-//    private StudentsService studentsService;
+//    private static ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+//    private static StudentsService studentsService = context.getBean(StudentsService.class);
+    @Inject
+    private StudentsService studentsService;
 
     public String getLogin() {
         return login;
@@ -37,12 +40,17 @@ public class StudentEnterBean {
     }
 
     public String findStudent() {
-        studentsPers = studentsService.findByLoginPass(login, pass);
-        if(studentsPers != null) {
-            return "studentPage";
+        if (login.equals(ADMIN_LOGIN) && pass.equals(ADMIN_PASSWORD)) {
+            AdminUniversityBean.setAdmin(true);
+            return "adminUniversityPage";
         }
         else {
-            return "error403";
+            studentsPers = studentsService.findByLoginPass(login, pass);
+            if (studentsPers != null) {
+                return "studentPage";
+            } else {
+                return "error403";
+            }
         }
     }
 
