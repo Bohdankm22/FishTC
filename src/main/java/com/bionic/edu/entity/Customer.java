@@ -73,7 +73,4 @@ public class Customer {
 	public void setCustomer_password(String customer_password) {
 		Customer_password = customer_password;
 	}
-	
-	
-	
 }

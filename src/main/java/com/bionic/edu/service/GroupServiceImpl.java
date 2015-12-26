@@ -1,7 +1,7 @@
 package com.bionic.edu.service;
 
 import com.bionic.edu.dao.GroupDao;
-import com.bionic.edu.entity.Group;
+import com.bionic.edu.entity.Groups;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
@@ -16,23 +16,28 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public void save(Group group){
-        groupDao.save(group);
+    public void save(Groups groups){
+        groupDao.save(groups);
     }
 
     @Override
-    public List<Group> getAll() {
+    public List<Groups> getAll() {
         return groupDao.getAll();
     }
 
     @Override
-    public Group findById(int n) {
+    public Groups findById(int n) {
         return groupDao.findById(n);
     }
 
     @Override
     @Transactional
-    public void update(Group group) {
-        groupDao.update(group);
+    public void update(Groups groups) {
+        groupDao.update(groups);
+    }
+
+    @Override
+    public boolean isGroupNameExists(String name) {
+        return groupDao.findByName(name) != null;
     }
 }

@@ -1,16 +1,18 @@
 package com.bionic.edu.dao;
 
-import com.bionic.edu.entity.Group;
+import com.bionic.edu.entity.Groups;
 
 import java.util.List;
 
 public interface GroupDao {
 
-    void save(Group group);
+    void save(Groups groups);
 
-    List<Group> getAll();
+    List<Groups> getAll();
 
-    Group findById(int id);
+    Groups findById(int id);
 
-    void update(Group group1);
+    void update(Groups groups1);
+
+    Groups findByName(String name);
 }

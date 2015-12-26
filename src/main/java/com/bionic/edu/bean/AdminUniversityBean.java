@@ -1,7 +1,9 @@
 package com.bionic.edu.bean;
 
 
+import com.bionic.edu.entity.Groups;
 import com.bionic.edu.entity.Students;
+import com.bionic.edu.service.GroupService;
 import com.bionic.edu.service.StudentsService;
 import org.primefaces.event.RowEditEvent;
 import org.springframework.context.annotation.Scope;
@@ -19,9 +21,14 @@ public class AdminUniversityBean {
     @Inject
     private StudentsService studentsService;
 
+    @Inject
+    private GroupService groupService;
+
     private List<Students> allStudents = null;
 
     private Students newAddedStudent = null;
+
+    private Groups newAddedGroups = null;
 
     private static AdminUniversityBean admin = new AdminUniversityBean();
 
@@ -100,6 +107,33 @@ public class AdminUniversityBean {
         else {
             newAddedStudent.setStudents_isDeleted(false);
             studentsService.save(newAddedStudent);
+            return "success";
+        }
+    }
+
+    public String addGroupPage() {
+        return "addGroupPage";
+    }
+
+    public void createNewGroup() {
+        setNewAddedGroups(new Groups());
+    }
+
+    public Groups getNewAddedGroups() {
+        return newAddedGroups;
+    }
+
+    public void setNewAddedGroups(Groups newAddedGroups) {
+        this.newAddedGroups = newAddedGroups;
+    }
+
+    public String saveNewGroup() {
+        if (groupService.isGroupNameExists(newAddedGroups.getGroups_Number())) {
+            return "groupNameExists";
+        }
+        else {
+            newAddedGroups.setGroups_isDeleted(false);
+            groupService.save(newAddedGroups);
             return "success";
         }
     }

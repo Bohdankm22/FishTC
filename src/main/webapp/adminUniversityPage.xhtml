@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -10,30 +11,50 @@
     <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
 
         <ui:define name="content">
-            <div class="contentAdmin elCentr">
-                <h1>Admin page!</h1>
-                <br/>
-                <br/>
-                <h:form>
 
-                    <p:commandLink action="#{adminUniversityBean.showAllStudents}" >
-                        <p:outputLabel>Show all students </p:outputLabel>
-                        <p:graphicImage value="resources/showUsers.ico" height="26"
-                                        width="26" title="Show all students" />
-                    </p:commandLink>
-                    <br />
+            <h:form>
 
-                    <p:commandLink action="#{adminUniversityBean.addStudentPage}" >
-                        <p:outputLabel>Show all students </p:outputLabel>
-                        <p:graphicImage value="resources/showUsers.ico" height="26"
-                                        width="26" title="Add new student" />
-                    </p:commandLink>
-                    <br/>
+                <p:panel rendered='#{!studentEnterBean.login.equals("admin")}'>
+                    #{studentEnterBean.backToLoginPage()}
+                </p:panel>
 
-                </h:form>
-                <br/>
-                <br/>
-            </div>
+                <p:panel>
+                    <div class="contentAdmin elCentr">
+                        <h1>Admin page!</h1>
+                        <br/>
+                        <br/>
+                        <h:form>
+
+                            <p:commandLink action="#{adminUniversityBean.showAllStudents}">
+                                <p:outputLabel>Show all students </p:outputLabel>
+                                <p:graphicImage value="resources/showUsers.ico" height="26"
+                                                width="26" title="Show all students"/>
+                            </p:commandLink>
+                            <br/>
+
+                            <p:commandLink action="#{adminUniversityBean.addStudentPage}">
+                                <p:outputLabel>Add new student </p:outputLabel>
+                                <p:graphicImage value="resources/showUsers.ico" height="26"
+                                                width="26" title="Add new student"/>
+                            </p:commandLink>
+                            <br/>
+
+                            <p:commandLink action="#{adminUniversityBean.addGroupPage}">
+                                <p:outputLabel>Add new group</p:outputLabel>
+                                <p:graphicImage value="resources/showUsers.ico" height="26"
+                                                width="26" title="Add new student"/>
+                            </p:commandLink>
+                            <br/>
+
+                        </h:form>
+                        <br/>
+                        <br/>
+                    </div>
+
+                </p:panel>
+
+            </h:form>
+
         </ui:define>
     </ui:composition>
 </h:body>

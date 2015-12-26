@@ -1,6 +1,5 @@
 package com.bionic.edu.dao;
 
-import com.bionic.edu.entity.Group;
 import com.bionic.edu.entity.Job;
 import org.springframework.stereotype.Repository;
 

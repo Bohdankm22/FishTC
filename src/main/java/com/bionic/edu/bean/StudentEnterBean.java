@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,6 +18,7 @@ public class StudentEnterBean {
     private Students studentsPers = null;
     private static final String ADMIN_LOGIN = "admin";
     private static final String ADMIN_PASSWORD = "admin";
+
 
 //    private static ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 //    private static StudentsService studentsService = context.getBean(StudentsService.class);
@@ -64,6 +66,15 @@ public class StudentEnterBean {
 
     public void studentNull(){
         studentsPers = null;
+    }
+
+    public void backToLoginPage() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .redirect("studentEnter.xhtml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

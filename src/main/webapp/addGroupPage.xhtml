@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+<ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+
+        #{adminUniversityBean.createNewGroup()}
+
+        <h1>New Group</h1>
+        <br/>
+        <br/>
+        <br/>
+        <div class="content">
+            <h:form>
+
+                <h:panelGrid id="grid" columns="3" columnClasses="wd, wd, wd">
+
+                    <p:outputLabel for="studName" value="Group Name:"/>
+                    <p:inputText id="studName"
+                                 value="#{adminUniversityBean.newAddedGroups.groups_Number}"
+                                 required="true">
+                        <f:validateLength minimum="5" maximum="127"/>
+                    </p:inputText>
+                    <p:message for="studName" style="color:red"/>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <p:commandButton update="grid" value="Submit"
+                                     action="#{adminUniversityBean.saveNewGroup}"/>
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

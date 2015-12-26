@@ -1,18 +1,20 @@
 package com.bionic.edu.service;
 
 
-import com.bionic.edu.entity.Group;
+import com.bionic.edu.entity.Groups;
 
 import java.util.List;
 
 public interface GroupService {
 
-    void save(Group group);
+    void save(Groups groups);
 
-    List<Group> getAll();
+    List<Groups> getAll();
 
-    Group findById(int n);
+    Groups findById(int n);
 
-    void update(Group group1);
+    void update(Groups groups1);
+
+    boolean isGroupNameExists(String name);
 
 }
