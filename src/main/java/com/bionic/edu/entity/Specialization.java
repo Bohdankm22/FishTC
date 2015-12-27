@@ -15,7 +15,7 @@ public class Specialization {
 
     @ManyToMany
     @JoinTable(name="SPEC_LESSON")
-    private List<Lesson> specializationLessons;
+    private List<Lesson> specLesson;
 
     @OneToMany(mappedBy="specialization")
     private List<Groups> listOfGroups;
@@ -52,12 +52,12 @@ public class Specialization {
         Specialization_isDeleted = specialization_isDeleted;
     }
 
-    public List<Lesson> getSpecializationLessons() {
-        return specializationLessons;
+    public List<Lesson> getSpecLesson() {
+        return specLesson;
     }
 
-    public void setSpecializationLessons(List<Lesson> specializationLessons) {
-        this.specializationLessons = specializationLessons;
+    public void setSpecLesson(List<Lesson> specLesson) {
+        this.specLesson = specLesson;
     }
 
     public List<Groups> getListOfGroups() {
@@ -75,7 +75,7 @@ public class Specialization {
                 ", Specialization_Name='" + Specialization_Name + '\'' +
                 ", Specialization_ShortName='" + Specialization_ShortName + '\'' +
                 ", Specialization_isDeleted=" + Specialization_isDeleted +
-                ", specializationLessons=" + specializationLessons +
+                ", specLesson=" + specLesson +
                 ", listOfGroups=" + listOfGroups +
                 '}';
     }
