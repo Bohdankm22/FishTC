@@ -1,9 +1,7 @@
 package com.bionic.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Specialization {
@@ -14,6 +12,10 @@ public class Specialization {
     private String Specialization_Name;
     private String Specialization_ShortName;
     private boolean Specialization_isDeleted;
+
+    @ManyToMany
+    @JoinTable(name="SPECIALIZATION_LESSON")
+    private List<Lesson> specializationLessons;
 
     public int getSpecialization_id() {
         return Specialization_id;
@@ -45,5 +47,13 @@ public class Specialization {
 
     public void setSpecialization_isDeleted(boolean specialization_isDeleted) {
         Specialization_isDeleted = specialization_isDeleted;
+    }
+
+    public List<Lesson> getSpecializationLessons() {
+        return specializationLessons;
+    }
+
+    public void setSpecializationLessons(List<Lesson> specializationLessons) {
+        this.specializationLessons = specializationLessons;
     }
 }

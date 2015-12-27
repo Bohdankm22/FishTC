@@ -6,6 +6,7 @@ import java.util.List;
 
 @Entity
 public class Lesson {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Lesson_id;
@@ -14,6 +15,9 @@ public class Lesson {
 
     @OneToMany(mappedBy="lesson")
     private List<Job> listOfJobs;
+
+    @ManyToMany(mappedBy="specializationLessons")
+    private List<Specialization> lessonSpecializations;
 
     public int getLesson_id() {
         return Lesson_id;
@@ -45,5 +49,13 @@ public class Lesson {
 
     public void setListOfJobs(List<Job> listOfJobs) {
         this.listOfJobs = listOfJobs;
+    }
+
+    public List<Specialization> getLessonSpecializations() {
+        return lessonSpecializations;
+    }
+
+    public void setLessonSpecializations(List<Specialization> lessonSpecializations) {
+        this.lessonSpecializations = lessonSpecializations;
     }
 }
