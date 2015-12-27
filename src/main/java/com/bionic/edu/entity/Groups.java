@@ -13,6 +13,7 @@ public class Groups {
     private int Groups_id;
     private String Groups_Number;
     private boolean Groups_isDeleted;
+    private int Groups_StartYear;
 
     public int getGroups_id() {
         return Groups_id;
@@ -36,5 +37,13 @@ public class Groups {
 
     public void setGroups_isDeleted(boolean groups_isDeleted) {
         Groups_isDeleted = groups_isDeleted;
+    }
+
+    public int getGroups_StartYear() {
+        return Groups_StartYear;
+    }
+
+    public void setGroups_StartYear(int groups_StartYear) {
+        Groups_StartYear = groups_StartYear;
     }
 }
