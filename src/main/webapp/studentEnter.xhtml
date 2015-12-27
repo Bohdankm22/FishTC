@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -12,12 +13,18 @@
         #{studentEnterBean.studentNull()}
         <ui:define name="content">
 
+            <h:panelGrid columns="1">
+                <p:outputLabel id="errm"/>
+                <p:messages id="errm2" for="errm" display="text"/>
+                <p:outputLabel />
+            </h:panelGrid>
             <h1>Student login</h1>
-            <br />
-            <br />
-            <br />
+            <br/>
+            <br/>
+            <br/>
 
             <h:form>
+
                 <h:panelGrid id="grid" columns="3" columnClasses="wd, wd, wd">
                     <p:outputLabel for="namek" value="Login"/>
                     <p:inputText id="namek"
@@ -38,12 +45,12 @@
                     <p:message for="passk" display="text"/>
 
                 </h:panelGrid>
-                <br />
-                <br />
-                <br />
-                <br />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <p:commandButton value="Submit"
-                                 action="#{studentEnterBean.findStudent}" update="grid"/>
+                                 action="#{studentEnterBean.findStudent()}" update="grid"/>
             </h:form>
 
         </ui:define>

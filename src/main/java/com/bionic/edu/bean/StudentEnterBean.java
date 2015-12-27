@@ -8,10 +8,12 @@ import com.bionic.edu.service.LessonService;
 import com.bionic.edu.service.StudentsService;
 import org.springframework.context.annotation.Scope;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Named
@@ -57,19 +59,28 @@ public class StudentEnterBean {
         this.pass = pass;
     }
 
-    public String findStudent() {
+    public void findStudent() {
         if (login.equals(ADMIN_LOGIN) && pass.equals(ADMIN_PASSWORD)) {
             AdminUniversityBean.setAdmin(true);
-            return "adminUniversityPage";
+            try {
+                FacesContext.getCurrentInstance().getExternalContext()
+                        .redirect("adminUniversityPage.xhtml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else {
             studentsPers = studentsService.findByLoginPass(login, pass);
             if (studentsPers != null) {
-                return "studentPage";
-            } else {
-                return "error403";
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext()
+                            .redirect("studentPage.xhtml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
+        showMessage();
     }
 
     public Students getStudentsPers() {
@@ -133,5 +144,11 @@ public class StudentEnterBean {
 
     public void setFile(File file) {
         this.file = file;
+    }
+
+    public void showMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage("errm", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Login/password is incorrect!", "dsdfsdf"));
+        context.addMessage("errm2", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Login/password is incorrect2!", "sdfsdfsd"));
     }
 }
