@@ -14,5 +14,5 @@ public interface LessonDao {
 
     void update(Lesson lesson1);
 
-    List<Lesson> getStudentLessons(String studentLogin);
+    List<Lesson> getStudentLessons(int id);
 }

@@ -95,7 +95,7 @@ public class StudentEnterBean {
 
     public void refreshListOfLessons() {
         if (studentsPers != null) {
-            studentLessonsList = lessonService.getStudentLessons(login);
+            studentLessonsList = lessonService.getStudentLessons(studentsPers.getStudents_id());
         }
     }
 

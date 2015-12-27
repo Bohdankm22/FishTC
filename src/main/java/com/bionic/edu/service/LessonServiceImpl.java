@@ -43,12 +43,8 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     @Transactional
-    public List<Lesson> getStudentLessons(String studentLogin){
-        List<Lesson> result = null;
-        Students student = studentsDao.findByLogin(studentLogin);
-        if (student != null) {
-            result = lessonDao.getStudentLessons(studentLogin);
-        }
+    public List<Lesson> getStudentLessons(int id){
+        List<Lesson> result = lessonDao.getStudentLessons(id);
         return result;
     }
 }

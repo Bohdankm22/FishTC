@@ -26,17 +26,13 @@
                     <p:growl id="msgs" showDetail="true"/>
 
                     <p:dataTable id="Lessons" value="#{studentEnterBean.studentLessonsList}"
-                                 var="lessons" editable="true" style="margin-bottom:20px">
+                                 var="lessons" editable="false" style="margin-bottom:20px">
                         <f:facet name="header">
                             All the lessons for you
                         </f:facet>
 
                         <p:column headerText="Lesson name">
-                            <p:cellEditor>
-                                <f:facet name="output">
-                                    <h:outputLabel value="#{lessons.lesson_Name}"/>
-                                </f:facet>
-                            </p:cellEditor>
+                            <h:outputLabel value="#{lessons.lesson_Name}"/>
                         </p:column>
 
                     </p:dataTable>

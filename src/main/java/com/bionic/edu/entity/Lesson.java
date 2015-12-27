@@ -16,8 +16,8 @@ public class Lesson {
     @OneToMany(mappedBy="lesson")
     private List<Job> listOfJobs;
 
-    @ManyToMany(mappedBy="specializationLessons")
-    private List<Specialization> lessonSpecializations;
+    @ManyToMany(mappedBy="specLesson")
+    private List<Specialization> specLesson;
 
     public int getLesson_id() {
         return Lesson_id;
@@ -51,11 +51,11 @@ public class Lesson {
         this.listOfJobs = listOfJobs;
     }
 
-    public List<Specialization> getLessonSpecializations() {
-        return lessonSpecializations;
+    public List<Specialization> getSpecLesson() {
+        return specLesson;
     }
 
-    public void setLessonSpecializations(List<Specialization> lessonSpecializations) {
-        this.lessonSpecializations = lessonSpecializations;
+    public void setSpecLesson(List<Specialization> lessonSpecializations) {
+        this.specLesson = lessonSpecializations;
     }
 }
