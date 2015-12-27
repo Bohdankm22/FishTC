@@ -13,4 +13,6 @@ public interface JobService {
     Job findById(int n);
 
     void update(Job job1);
+
+    List<Job> getStudentJobsById(int id);
 }

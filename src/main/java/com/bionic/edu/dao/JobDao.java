@@ -13,4 +13,6 @@ public interface JobDao {
     Job findById(int id);
 
     void update(Job job1);
+
+    List<Job> getStudentJobsById(int id);
 }
