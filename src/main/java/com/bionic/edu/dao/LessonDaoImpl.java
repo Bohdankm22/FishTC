@@ -38,4 +38,11 @@ public class LessonDaoImpl implements LessonDao {
             em.merge(lesson1);
         }
     }
+
+    @Override
+    public List<Lesson> getStudentLessons(String studentLogin) {
+        String txt = "SELECT u FROM Lesson u";
+        TypedQuery<Lesson> querry = em.createQuery(txt, Lesson.class);
+        return querry.getResultList();
+    }
 }

@@ -13,4 +13,6 @@ public interface LessonDao {
     Lesson findById(int id);
 
     void update(Lesson lesson1);
+
+    List<Lesson> getStudentLessons(String studentLogin);
 }

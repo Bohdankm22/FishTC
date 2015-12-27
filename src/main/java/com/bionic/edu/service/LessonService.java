@@ -14,4 +14,6 @@ public interface LessonService {
     Lesson findById(int n);
 
     void update(Lesson lesson1);
+
+    List<Lesson> getStudentLessons(String studentLogin);
 }
