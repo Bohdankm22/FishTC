@@ -13,7 +13,7 @@ public class Specialization {
     private int Specialization_id;
     private String Specialization_Name;
     private String Specialization_ShortName;
-    private boolean Teacher_isDeleted;
+    private boolean Specialization_isDeleted;
 
     public int getSpecialization_id() {
         return Specialization_id;
@@ -39,11 +39,11 @@ public class Specialization {
         Specialization_ShortName = specialization_ShortName;
     }
 
-    public boolean isTeacher_isDeleted() {
-        return Teacher_isDeleted;
+    public boolean isSpecialization_isDeleted() {
+        return Specialization_isDeleted;
     }
 
-    public void setTeacher_isDeleted(boolean teacher_isDeleted) {
-        Teacher_isDeleted = teacher_isDeleted;
+    public void setSpecialization_isDeleted(boolean specialization_isDeleted) {
+        Specialization_isDeleted = specialization_isDeleted;
     }
 }
