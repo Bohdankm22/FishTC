@@ -1,7 +1,9 @@
 package com.bionic.edu.service;
 
 import com.bionic.edu.dao.LessonDao;
+import com.bionic.edu.dao.StudentsDao;
 import com.bionic.edu.entity.Lesson;
+import com.bionic.edu.entity.Students;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
@@ -13,6 +15,9 @@ public class LessonServiceImpl implements LessonService {
 
     @Inject
     private LessonDao lessonDao;
+
+    @Inject
+    private StudentsDao studentsDao;
 
     @Override
     @Transactional
@@ -34,5 +39,16 @@ public class LessonServiceImpl implements LessonService {
     @Transactional
     public void update(Lesson lesson) {
         lessonDao.update(lesson);
+    }
+
+    @Override
+    @Transactional
+    public List<Lesson> getStudentLessons(String studentLogin){
+        List<Lesson> result = null;
+        Students student = studentsDao.findByLogin(studentLogin);
+        if (student != null) {
+            result = lessonDao.getStudentLessons(studentLogin);
+        }
+        return result;
     }
 }

@@ -15,4 +15,6 @@ public interface GroupDao {
     void update(Groups groups1);
 
     Groups findByName(String name);
+
+    List<Groups> getGroupsByStudentId(int id);
 }

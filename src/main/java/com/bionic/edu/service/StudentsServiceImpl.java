@@ -1,5 +1,6 @@
 package com.bionic.edu.service;
 
+import com.bionic.edu.dao.GroupDao;
 import com.bionic.edu.dao.StudentsDao;
 import com.bionic.edu.entity.Students;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,9 @@ public class StudentsServiceImpl implements StudentsService {
 
     @Inject
     private StudentsDao studentsDao;
+
+    @Inject
+    private GroupDao groupDao;
 
     @Override
     @Transactional
@@ -30,7 +34,12 @@ public class StudentsServiceImpl implements StudentsService {
     }
 
     @Override
+    @Transactional
     public List<Students> getAll() {
+        List<Students> result = studentsDao.getAll();
+        for (Students students : result) {
+            students.setStudentsInGroups(groupDao.getGroupsByStudentId(students.getStudents_id()));
+        }
         return studentsDao.getAll();
     }
 

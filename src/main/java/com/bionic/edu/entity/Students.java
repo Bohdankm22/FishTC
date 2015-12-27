@@ -1,9 +1,7 @@
 package com.bionic.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Students {
@@ -14,6 +12,9 @@ public class Students {
     private boolean Students_isDeleted;
     private String Students_Login;
     private String Students_password;
+
+    @ManyToMany(mappedBy = "studentsInGroups")
+    private List<Groups> studentsInGroups;
 
     public int getStudents_id() {
         return Students_id;
@@ -55,6 +56,14 @@ public class Students {
         Students_password = students_password;
     }
 
+    public List<Groups> getStudentsInGroups() {
+        return studentsInGroups;
+    }
+
+    public void setStudentsInGroups(List<Groups> studentsInGroups) {
+        this.studentsInGroups = studentsInGroups;
+    }
+
     @Override
     public String toString() {
         return "Students{" +
@@ -63,6 +72,7 @@ public class Students {
                 ", Students_isDeleted=" + Students_isDeleted +
                 ", Students_Login='" + Students_Login + '\'' +
                 ", Students_password='" + Students_password + '\'' +
+                ", studentsInGroups=" + studentsInGroups +
                 '}';
     }
 }

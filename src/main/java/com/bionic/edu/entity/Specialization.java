@@ -1,9 +1,7 @@
 package com.bionic.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Specialization {
@@ -13,7 +11,14 @@ public class Specialization {
     private int Specialization_id;
     private String Specialization_Name;
     private String Specialization_ShortName;
-    private boolean Teacher_isDeleted;
+    private boolean Specialization_isDeleted;
+
+    @ManyToMany
+    @JoinTable(name="SPEC_LESSON")
+    private List<Lesson> specializationLessons;
+
+    @OneToMany(mappedBy="specialization")
+    private List<Groups> listOfGroups;
 
     public int getSpecialization_id() {
         return Specialization_id;
@@ -39,11 +44,39 @@ public class Specialization {
         Specialization_ShortName = specialization_ShortName;
     }
 
-    public boolean isTeacher_isDeleted() {
-        return Teacher_isDeleted;
+    public boolean isSpecialization_isDeleted() {
+        return Specialization_isDeleted;
     }
 
-    public void setTeacher_isDeleted(boolean teacher_isDeleted) {
-        Teacher_isDeleted = teacher_isDeleted;
+    public void setSpecialization_isDeleted(boolean specialization_isDeleted) {
+        Specialization_isDeleted = specialization_isDeleted;
+    }
+
+    public List<Lesson> getSpecializationLessons() {
+        return specializationLessons;
+    }
+
+    public void setSpecializationLessons(List<Lesson> specializationLessons) {
+        this.specializationLessons = specializationLessons;
+    }
+
+    public List<Groups> getListOfGroups() {
+        return listOfGroups;
+    }
+
+    public void setListOfGroups(List<Groups> listOfGroups) {
+        this.listOfGroups = listOfGroups;
+    }
+
+    @Override
+    public String toString() {
+        return "Specialization{" +
+                "Specialization_id=" + Specialization_id +
+                ", Specialization_Name='" + Specialization_Name + '\'' +
+                ", Specialization_ShortName='" + Specialization_ShortName + '\'' +
+                ", Specialization_isDeleted=" + Specialization_isDeleted +
+                ", specializationLessons=" + specializationLessons +
+                ", listOfGroups=" + listOfGroups +
+                '}';
     }
 }
