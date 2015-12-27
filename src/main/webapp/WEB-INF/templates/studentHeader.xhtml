@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="javascript"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="javascript"></script>
+</h:head>
+<h:body>
+    <ui:composition>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../../studentPage.xhtml"> <p:graphicImage
+                            height="32" width="32" title="FishKa" value="resources/fish1.ico"/>
+                    </a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="../../studentPage.xhtml">My page</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../../studentPage.xhtml"><span
+                                class="glyphicon glyphicon-user"/> Welcome,
+                            #{studentEnterBean.studentsPers.students_Name}</a></li>
+                        <li><a href="../../studentEnter.xhtml"><span
+                                class="glyphicon glyphicon-off"/>Exit</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </ui:composition>
+</h:body>
+</html>

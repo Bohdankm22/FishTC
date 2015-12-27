@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+    <ui:composition template="WEB-INF/templates/studentTemplate.xhtml">
+
+        <ui:define name="content">
+
+            <h:form>
+
+                <p:panel rendered='#{studentEnterBean.studentsPers == null}'>
+                    #{studentEnterBean.backToLoginPage()}
+                </p:panel>
+
+                <h2>All the lessons</h2>
+
+                #{studentEnterBean.refreshListOfLessons()}
+
+                <h:form id="form">
+                    <p:growl id="msgs" showDetail="true"/>
+
+                    <p:dataTable id="Lessons" value="#{studentEnterBean.studentLessonsList}"
+                                 var="lessons" editable="true" style="margin-bottom:20px">
+                        <f:facet name="header">
+                            All the lessons for you
+                        </f:facet>
+
+                        <p:column headerText="Lesson name">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputLabel value="#{lessons.lesson_Name}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

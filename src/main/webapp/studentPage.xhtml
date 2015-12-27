@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-    <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:composition template="WEB-INF/templates/studentTemplate.xhtml">
 
         <ui:define name="content">
 
@@ -29,6 +29,13 @@
                                 <p:outputLabel>Show all lessons</p:outputLabel>
                                 <p:graphicImage value="resources/showUsers.ico" height="26"
                                                 width="26" title="Show all lessons"/>
+                            </p:commandLink>
+                            <br/>
+
+                            <p:commandLink action="#{studentEnterBean.showAllJobsToDoPage}">
+                                <p:outputLabel>Show all jobs to do</p:outputLabel>
+                                <p:graphicImage value="resources/showUsers.ico" height="26"
+                                                width="26" title="Show all jobs to do"/>
                             </p:commandLink>
                             <br/>
 
