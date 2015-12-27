@@ -52,4 +52,18 @@ public class GroupDaoImpl implements GroupDao {
         }
         return groups;
     }
+
+    @Override
+    public List<Groups> getGroupsByStudentId(int id) {
+        List<Groups> result = null;
+        String txt = "SELECT g FROM Groups g, Students s" +
+                " WHERE s.Students_id=" + id;
+        TypedQuery<Groups> query = em.createQuery(txt, Groups.class);
+        try {
+            result = query.getResultList();
+        } catch (NoResultException e) {
+//            LOG.info("Couldn't find any result on " + query);
+        }
+        return result;
+    }
 }

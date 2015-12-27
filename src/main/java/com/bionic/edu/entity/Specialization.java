@@ -14,8 +14,11 @@ public class Specialization {
     private boolean Specialization_isDeleted;
 
     @ManyToMany
-    @JoinTable(name="SPECIALIZATION_LESSON")
+    @JoinTable(name="SPEC_LESSON")
     private List<Lesson> specializationLessons;
+
+    @OneToMany(mappedBy="specialization")
+    private List<Groups> listOfGroups;
 
     public int getSpecialization_id() {
         return Specialization_id;
@@ -55,5 +58,25 @@ public class Specialization {
 
     public void setSpecializationLessons(List<Lesson> specializationLessons) {
         this.specializationLessons = specializationLessons;
+    }
+
+    public List<Groups> getListOfGroups() {
+        return listOfGroups;
+    }
+
+    public void setListOfGroups(List<Groups> listOfGroups) {
+        this.listOfGroups = listOfGroups;
+    }
+
+    @Override
+    public String toString() {
+        return "Specialization{" +
+                "Specialization_id=" + Specialization_id +
+                ", Specialization_Name='" + Specialization_Name + '\'' +
+                ", Specialization_ShortName='" + Specialization_ShortName + '\'' +
+                ", Specialization_isDeleted=" + Specialization_isDeleted +
+                ", specializationLessons=" + specializationLessons +
+                ", listOfGroups=" + listOfGroups +
+                '}';
     }
 }
