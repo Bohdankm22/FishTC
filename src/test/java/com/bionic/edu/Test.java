@@ -21,8 +21,7 @@ public class Test {
     private static final List<String> studNames = Arrays.asList("Bohdan_Ivanov", "Ivan_Bozhenko", "Petro_Sagaydak", "Vasily_Rybka", "Evgeny_Ozerny");
 
     public static void main(String[] args) {
-        Groups groups = new Groups();
-//        groups.se
+        printAllStudentsAndGroups();
     }
 
     public Students getStudByLogin(String login, String pass) {
@@ -48,5 +47,10 @@ public class Test {
 
     public static void saveGroups(List<Groups> groups) {
 
+    }
+
+    private static void printAllStudentsAndGroups() {
+        System.out.println(studentsService.getAll());
+        System.out.println(groupService.getAll());
     }
 }
