@@ -1,9 +1,6 @@
 package com.bionic.edu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Job {
@@ -14,6 +11,10 @@ public class Job {
     private String Job_Title;
     private String Job_Description;
     private boolean Job_isDeleted;
+
+    @ManyToOne
+    @JoinColumn(name="Lesson_id")
+    private Lesson lesson;
 
     public int getJob_id() {
         return Job_id;
@@ -45,5 +46,13 @@ public class Job {
 
     public void setJob_isDeleted(boolean job_isDeleted) {
         Job_isDeleted = job_isDeleted;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 }

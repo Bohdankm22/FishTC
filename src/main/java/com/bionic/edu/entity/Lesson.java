@@ -1,10 +1,8 @@
 package com.bionic.edu.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Lesson {
@@ -13,6 +11,9 @@ public class Lesson {
     private int Lesson_id;
     private String Lesson_Name;
     private boolean Lesson_isDeleted;
+
+    @OneToMany(mappedBy="lesson")
+    private List<Job> listOfJobs;
 
     public int getLesson_id() {
         return Lesson_id;
@@ -36,5 +37,13 @@ public class Lesson {
 
     public void setLesson_isDeleted(boolean lesson_isDeleted) {
         Lesson_isDeleted = lesson_isDeleted;
+    }
+
+    public List<Job> getListOfJobs() {
+        return listOfJobs;
+    }
+
+    public void setListOfJobs(List<Job> listOfJobs) {
+        this.listOfJobs = listOfJobs;
     }
 }
