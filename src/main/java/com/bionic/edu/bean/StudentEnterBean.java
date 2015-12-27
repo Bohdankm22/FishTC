@@ -1,16 +1,17 @@
 package com.bionic.edu.bean;
 
+import com.bionic.edu.entity.Job;
 import com.bionic.edu.entity.Lesson;
 import com.bionic.edu.entity.Students;
+import com.bionic.edu.service.JobService;
 import com.bionic.edu.service.LessonService;
 import com.bionic.edu.service.StudentsService;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.File;
 import java.util.List;
 
 @Named
@@ -24,6 +25,10 @@ public class StudentEnterBean {
 
     private List<Lesson> studentLessonsList = null;
 
+    private List<Job> studentJobsList = null;
+
+    private File file;
+
 
 //    private static ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 //    private static StudentsService studentsService = context.getBean(StudentsService.class);
@@ -32,6 +37,9 @@ public class StudentEnterBean {
 
     @Inject
     private LessonService lessonService;
+
+    @Inject
+    private JobService jobService;
 
     public String getLogin() {
         return login;
@@ -89,5 +97,41 @@ public class StudentEnterBean {
         if (studentsPers != null) {
             studentLessonsList = lessonService.getStudentLessons(login);
         }
+    }
+
+    public String showAllLessonsPage() {
+        return "showAllLessonsPage";
+    }
+
+    public List<Lesson> getStudentLessonsList() {
+        return studentLessonsList;
+    }
+
+    public void setStudentLessonsList(List<Lesson> studentLessonsList) {
+        this.studentLessonsList = studentLessonsList;
+    }
+
+    public String showAllJobsToDoPage() {
+        return "showAllJobsToDoPage";
+    }
+
+    public void refreshListOfJobs() {
+        studentJobsList = jobService.getStudentJobsById(studentsPers.getStudents_id());
+    }
+
+    public List<Job> getStudentJobsList() {
+        return studentJobsList;
+    }
+
+    public void setStudentJobsList(List<Job> studentJobsList) {
+        this.studentJobsList = studentJobsList;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 }
