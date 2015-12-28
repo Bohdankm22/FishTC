@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:body>
-    <ui:composition template="WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:composition template="WEB-INF/templates/adminUniversityTemp.xhtml">
 
         <ui:define name="content">
             <h2>All the students</h2>
@@ -18,16 +18,15 @@
             <h:form id="form">
                 <p:growl id="msgs" showDetail="true"/>
 
-                <p:dataTable id="Incomes" value="#{adminUniversityBean.allStudents}"
+                <p:dataTable id="Students" value="#{adminUniversityBean.allStudents}"
                              var="students" editable="true" style="margin-bottom:20px">
                     <f:facet name="header">
                         All the customers
                     </f:facet>
 
-                    <p:ajax event="rowEdit" listener="#{adminUniversityBean.onRowEdit}"
-                            update=":form:msgs"/>
+                    <p:ajax event="rowEdit" listener="#{adminUniversityBean.onRowEdit}"/>
                     <p:ajax event="rowEditCancel"
-                            listener="#{adminUniversityBean.onRowCancel}" update=":form:msgs"/>
+                            listener="#{adminUniversityBean.onRowCancel}"/>
 
                     <p:column headerText="Name">
                         <p:cellEditor>

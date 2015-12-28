@@ -12,6 +12,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Named
@@ -33,6 +35,10 @@ public class AdminUniversityBean {
     private static AdminUniversityBean admin = new AdminUniversityBean();
 
     private static boolean isAdmin = false;
+
+    private List<Groups> groups = null;
+
+    private Groups selectedGroup = null;
 
     private AdminUniversityBean() {
 
@@ -106,6 +112,7 @@ public class AdminUniversityBean {
         }
         else {
             newAddedStudent.setStudents_isDeleted(false);
+            newAddedStudent.setStudentsInGroups(Arrays.asList(groupService.findById(1)));
             studentsService.save(newAddedStudent);
             return "success";
         }
@@ -136,5 +143,21 @@ public class AdminUniversityBean {
             groupService.save(newAddedGroups);
             return "success";
         }
+    }
+
+    public List<Groups> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Groups> groups) {
+        this.groups = groups;
+    }
+
+    public Groups getSelectedGroup() {
+        return selectedGroup;
+    }
+
+    public void setSelectedGroup(Groups selectedGroup) {
+        this.selectedGroup = selectedGroup;
     }
 }
