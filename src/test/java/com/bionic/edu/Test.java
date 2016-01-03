@@ -1,9 +1,6 @@
 package com.bionic.edu;
 
-import com.bionic.edu.entity.Groups;
 import com.bionic.edu.entity.Students;
-import com.bionic.edu.service.GroupService;
-import com.bionic.edu.service.LessonService;
 import com.bionic.edu.service.StudentsService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,8 +13,6 @@ public class Test {
 
     private static ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
     private static StudentsService studentsService = context.getBean(StudentsService.class);
-    private static GroupService groupService = context.getBean(GroupService.class);
-    private static LessonService lessonService = context.getBean(LessonService.class);
     private static final List<String> studNames = Arrays.asList("Bohdan_Ivanov", "Ivan_Bozhenko", "Petro_Sagaydak", "Vasily_Rybka", "Evgeny_Ozerny");
 
     public static void main(String[] args) {
@@ -45,12 +40,8 @@ public class Test {
         }
     }
 
-    public static void saveGroups(List<Groups> groups) {
-
-    }
 
     private static void printAllStudentsAndGroups() {
         System.out.println(studentsService.getAll());
-        System.out.println(groupService.getAll());
     }
 }

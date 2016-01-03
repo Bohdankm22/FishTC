@@ -1,10 +1,6 @@
 package com.bionic.edu.bean;
 
-import com.bionic.edu.entity.Job;
-import com.bionic.edu.entity.Lesson;
 import com.bionic.edu.entity.Students;
-import com.bionic.edu.service.JobService;
-import com.bionic.edu.service.LessonService;
 import com.bionic.edu.service.StudentsService;
 import org.springframework.context.annotation.Scope;
 
